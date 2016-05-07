@@ -70,12 +70,17 @@ $config['url_suffix'] = '';
 | than english.
 |
 */
-$config['language'] = 'english';
+$config['language'] = 'chinese';
 
 /*
- * 語系檔案名稱
+ * 後台語系檔案名稱
  */
-$config['language_file_name'] = 'all';
+$config['language_admin_file_name'] = 'admin';
+
+/*
+ * 前台語系檔案名稱
+ */
+$config['language_front_file_name'] = 'front';
 
 /*
 |--------------------------------------------------------------------------

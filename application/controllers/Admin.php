@@ -11,11 +11,13 @@ class Admin extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        $this->language = $this->session->language;
+        $this->language = $this->session->adminLanguage;
 
         if (isset($this->language)) {
             //設定語系
-            $this->lang->load($this->config->item('language_file_name'), $this->session->language);
+            $this->lang->load($this->config->item('language_admin_file_name'), $this->session->adminLanguage);
+        } else {
+            $this->lang->load($this->config->item('language_admin_file_name'), 'chinese');
         }
     }
 
