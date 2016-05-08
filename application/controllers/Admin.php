@@ -22,12 +22,13 @@ class Admin extends CI_Controller {
     }
 
 	/**
-	 * 後台資料列表
+	 * 帳號設定列表
 	 */
-	public function dataList()
+	public function accountList()
 	{
 		$data = array(
-            'content' => $this->load->view('admin/list', '', true),
+            'left_active' => 'account',
+            'content' => $this->load->view('admin/account_list', '', true),
             'layout'  => $this->lang->line('layout')
         );
 
