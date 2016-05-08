@@ -8,7 +8,7 @@
 	<meta name="description" content="admin" />
 	<meta name="author" content="" />
 	
-	<title>admin</title>
+	<title><?php echo $layout['admin_title'];?></title>
 
 	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Arimo:400,700,400italic">
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/fonts/linecons/css/linecons.css">
@@ -30,7 +30,7 @@
 	
 </head>
 <body class="page-body">
-	
+
 	<div class="page-container"><!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
 			
 		<!-- Add "fixed" class to make the sidebar fixed always to the browser viewport. -->
@@ -216,9 +216,7 @@
 				
 					<!-- Add your copyright text here -->
 					<div class="footer-text">
-						&copy; 2014 
-						<strong>Xenon</strong> 
-						theme by <a href="http://laborator.co" target="_blank">Laborator</a>
+						<?php echo $layout['admin_title']?> by <a href="http://qcwork.byethost12.com"><strong>QCwork</strong></a>
 					</div>
 					
 					<!-- Go to Top Link, just add rel="go-top" to any link to add this functionality -->
@@ -260,7 +258,6 @@
 	<script src="<?php echo base_url(); ?>assets/js/dataTables.bootstrap.js"></script>
 	<script src="<?php echo base_url(); ?>assets/js/jquery.dataTables.yadcf.js"></script>
 	<script src="<?php echo base_url(); ?>assets/js/dataTables.tableTools.min.js"></script>
-
 
 	<!-- JavaScripts initializations and stuff -->
 	<script src="<?php echo base_url(); ?>assets/js/xenon-custom.js"></script>
