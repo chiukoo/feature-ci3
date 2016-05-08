@@ -77,12 +77,13 @@ class Admin extends CI_Controller {
 
         
         // set validation rules
-        $this->form_validation->set_rules('username', 'Username', 'trim|required|alpha_numeric|is_unique[account.username]', array('is_unique' => 'This username already exists. Please choose another one.'));
+        $this->form_validation->set_rules('username', 'Username', 'trim|required|alpha_numeric|is_unique[account.username]', array('is_unique' => 'This username already exists'));
         $this->form_validation->set_rules('password', 'Password', 'trim|required');
         $this->form_validation->set_rules('password_confirm', 'Confirm Password', 'trim|required|matches[password]');
 
         if ($this->form_validation->run() === false) {
-            echo "<script>alert(validation_errors())</script>";
+            echo "<script>alert('".validation_errors()."');</script>";
+            echo "<script>window.location.replace('accountAdd')</script>";
         } else {
             // set variables from the form
             $username = $this->input->post('username');

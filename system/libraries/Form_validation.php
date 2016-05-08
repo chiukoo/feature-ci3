@@ -88,14 +88,14 @@ class CI_Form_validation {
 	 *
 	 * @var string
 	 */
-	protected $_error_prefix	= '<p>';
+	protected $_error_prefix	= '';
 
 	/**
 	 * End tag for error wrapping
 	 *
 	 * @var string
 	 */
-	protected $_error_suffix	= '</p>';
+	protected $_error_suffix	= '';
 
 	/**
 	 * Custom error message
@@ -396,7 +396,7 @@ class CI_Form_validation {
 		{
 			if ($val !== '')
 			{
-				$str .= $prefix.$val.$suffix."\n";
+				$str .= $prefix.$val.$suffix." ";
 			}
 		}
 
