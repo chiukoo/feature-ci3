@@ -19,7 +19,6 @@
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/components.css">
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/skins.css">
 	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/custom.css">
-
 	<script src="<?php echo base_url(); ?>assets/js/jquery-1.11.1.min.js"></script>
 
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -60,7 +59,7 @@
 				</header>
 						
 				<ul id="main-menu" class="main-menu">
-					<li class="active opened">
+					<!--<li class="active opened">
 						<a href="#">
 							<i class="linecons-cloud"></i>
 							<span class="title">Menu Levels</span>
@@ -128,6 +127,18 @@
 								</a>
 							</li>
 						</ul>
+					</li>-->
+
+					<li class="<?php if ($left_active == 'account') { echo 'active';}?>">
+						<a href="#"><i class="linecons-star"></i><span class="title"><?php echo $layout['left_account_setting']; ?></span></a>
+					</li>
+
+					<li class="">
+						<a href="#" onclick="fileMessageUrl();">
+							<i class="linecons-cloud"></i>
+							<span class="label label-purple pull-right hidden-collapsed">File Upload</span>
+							<span class="title"><?php echo $layout['left_file_explorer']; ?></span>
+						</a>
 					</li>
 				</ul>
 						
@@ -253,6 +264,46 @@
 
 	<!-- JavaScripts initializations and stuff -->
 	<script src="<?php echo base_url(); ?>assets/js/xenon-custom.js"></script>
+	 <script type="text/javascript">
+	 var urlobj;
 
+
+	$('.ckeditor').each(function(){
+	    CKEDITOR.replace($(this).attr('id') ,{
+			filebrowserImageBrowseUrl : '<?php echo base_url('assets/filemanager/index.html');?>'
+		});
+	});
+
+	function fileMessageUrl() {
+		window.open('<?php echo base_url('assets/filemanager/index.html');?>', '<?php echo $layout['left_account_setting']; ?>', config='height=750,width=1000,toolbar=no,resizable=no,location=no');
+	}
+
+	function BrowseServer(obj)
+	{
+		urlobj = obj;
+		OpenServerBrowser(
+		"<?php echo base_url('assets/filemanager/index.html');?>",
+		screen.width * 0.7,
+		screen.height * 0.7 ) ;
+	}
+
+	function OpenServerBrowser( url, width, height )
+	{
+		var iLeft = (screen.width - width) / 2 ;
+		var iTop = (screen.height - height) / 2 ;
+		var sOptions = "toolbar=no,status=no,resizable=yes,dependent=yes" ;
+		sOptions += ",width=" + width ;
+		sOptions += ",height=" + height ;
+		sOptions += ",left=" + iLeft ;
+		sOptions += ",top=" + iTop ;
+		var oWindow = window.open( url, "BrowseWindow", sOptions ) ;
+	}
+
+	function SetUrl( url, width, height, alt )
+	{
+		document.getElementById(urlobj).value = url ;
+		oWindow = null;
+	}
+	 </script>
 </body>
 </html>
