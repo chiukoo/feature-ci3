@@ -21,6 +21,54 @@ class Admin extends CI_Controller {
         }
     }
 
+    /**
+     * 登入頁面
+     */
+    public function login()
+    {
+        if ($this->session->isLogin) {
+            redirect('admin/accountList');
+        }
+
+        //layout data
+        $data = array(
+            'layout'  => $this->lang->line('layout'),
+            'token' => $this->security->get_csrf_token_name(),
+            'hash' => $this->security->get_csrf_hash(),
+        ); 
+
+        $this->load->view('admin/login', $data);
+    }
+
+    /**
+     * 登入驗證
+     */
+    public function loginPost()
+    {
+        $this->load->library('form_validation');
+        $this->load->model('account_model');
+
+        // set validation rules
+        $this->form_validation->set_rules('username', 'Username', 'trim|required|alpha_numeric');
+        $this->form_validation->set_rules('password', 'Password', 'trim|required');
+
+        if ($this->form_validation->run() === false) {
+            echo "<script>alert('".validation_errors()."');</script>";
+        } else {
+            $username = $this->input->post('username');
+            $password = $this->input->post('password');
+            if ($this->account_model->checkUser($username, $password)) {
+                //檔案上傳權限開啟
+                $this->session->set_userdata('upload_image_file_manager', true);
+                $this->session->set_userdata('username', $username);
+                $this->session->set_userdata('isLogin', true);
+                redirect('admin/accountList');
+            } else {
+                echo 'no data';
+            }
+        }
+    }
+
 	/**
 	 * 帳號設定列表
 	 */

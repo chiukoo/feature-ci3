@@ -35,14 +35,28 @@ class Account_model extends CI_Model {
 	}
 
 	/**
+	 * check user for login
+	 *
+	 * @return bool true on success, false on failure
+	 */
+	public function checkUser($username, $password) {
+		$this->db->select('password');
+		$this->db->from(self::DB_NAME);
+		$this->db->where('username', $username);
+		$hash = $this->db->get()->row('password');
+
+		return $this->verify_password_hash($password, $hash);
+	}
+
+	/**
 	 * update Password By Id
 	 * @return bool true on success, false on failure
 	 */
 	public function updatePasswordById($id, $password) {
-		
 		$data = array(
 			'password'   => $this->hash_password($password),
 		);
+
 		return $this->db->update(self::DB_NAME, $data, array('id' => $id));
 	}
 
@@ -83,8 +97,18 @@ class Account_model extends CI_Model {
 	 * @return string|bool could be a string on success, or bool false on failure
 	 */
 	private function hash_password($password) {
-		
 		return password_hash($password, PASSWORD_BCRYPT);
-		
+	}
+	
+	/**
+	 * verify_password_hash function.
+	 * 
+	 * @access private
+	 * @param mixed $password
+	 * @param mixed $hash
+	 * @return bool
+	 */
+	private function verify_password_hash($password, $hash) {
+		return password_verify($password, $hash);
 	}
 }

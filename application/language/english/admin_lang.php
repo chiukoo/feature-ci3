@@ -5,7 +5,7 @@ $lang['layout'] = array(
     'left_menu' => 'index',
     'left_account_setting' => 'Account Setting',
     'left_file_explorer' => 'File Explorer',
-    'admin_title' => 'Background systems',
+    'admin_title' => 'Background Systems',
 );
 
 $lang['account_list'] = array(
