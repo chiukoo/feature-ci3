@@ -30,7 +30,6 @@
 	
 </head>
 <body class="page-body">
-
 	<div class="page-container"><!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
 			
 		<!-- Add "fixed" class to make the sidebar fixed always to the browser viewport. -->
@@ -182,7 +181,7 @@
 					<li class="dropdown user-profile">
 						<a href="#" data-toggle="dropdown">
 							<span>
-								name
+								<?php echo $this->session->username; ?>
 								<i class="fa-angle-down"></i>
 							</span>
 						</a>
@@ -195,7 +194,7 @@
 								</a>
 							</li>
 							<li class="last">
-								<a href="extra-lockscreen.html">
+								<a href="../login/logout">
 									<i class="fa-lock"></i>
 									Logout
 								</a>
