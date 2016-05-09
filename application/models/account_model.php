@@ -47,6 +47,18 @@ class Account_model extends CI_Model {
 	}
 
 	/**
+	 * delete By Id
+	 * @return bool true on success, false on failure
+	 */
+	public function deleteById($id) {
+		
+		$data = array(
+			'password'   => $this->hash_password($password),
+		);
+		return $this->db->delete(self::DB_NAME, array('id' => $id));
+	}
+
+	/**
 	 * get_user function.
 	 * 
 	 * @return array

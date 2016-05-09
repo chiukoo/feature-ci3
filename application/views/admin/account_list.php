@@ -58,7 +58,7 @@
 				<?php } ?>
 			</tbody>
 		</table>
-		
+		<input type="hidden" id="token" name="<?php echo $token;?>" value="<?php echo $hash;?>" />
 	</div>
 </div>
 
@@ -83,18 +83,22 @@
 <script type="text/javascript">
 
 	//delete
-	function deleteModel($id, $username)
+	function deleteModel(id, username)
 	{
-		$('#delete .modal-body').html('<?php echo $account['sure_delete'];?> <span class="red">' + $username + '</span> ?');
-		$('#delete').appendTo("body").modal('show', {backdrop: 'static'})
-        .one('click', '#sure', function() {
-		/*jQuery.ajax({
-			data:
-			url: "accountDelete",
-			success: function(response)
-			{
-			}
-		});*/
+		var token = $('#token').val();
+		$('#delete .modal-body').html('<?php echo $account['sure_delete'];?> <span class="red">' + username + '</span> ?');
+		$('#delete').appendTo("body").modal('show', {backdrop: 'static'}).one('click', '#sure', function() {
+			jQuery.ajax({
+				data: {'id' : id, 'csrf_token_name' : token},
+				type: "POST",
+				url: "accountDelete",
+				success: function(msg) {
+					location.reload();
+				},
+		        error: function(msg){
+		            alert(msg);
+		        }
+			});
            $('#delete').modal('hide');
         });
 	}

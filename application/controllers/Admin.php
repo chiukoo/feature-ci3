@@ -32,6 +32,8 @@ class Admin extends CI_Controller {
         $accountData = array(
             'account' => $this->lang->line('account_list'),
             'account_data' => $this->account_model->getAllData(),
+            'token' => $this->security->get_csrf_token_name(),
+            'hash' => $this->security->get_csrf_hash(),
         );
 
         //layout data
@@ -54,7 +56,6 @@ class Admin extends CI_Controller {
             'account' => $this->lang->line('account_add'),
             'token' => $this->security->get_csrf_token_name(),
             'hash' => $this->security->get_csrf_hash()
-
         );
 
         //layout data
@@ -68,7 +69,7 @@ class Admin extends CI_Controller {
     }
 
     /**
-     * 帳號新增
+     * 帳號編輯
      */
     public function accountEdit()
     {
@@ -126,7 +127,7 @@ class Admin extends CI_Controller {
     }
 
     /**
-     * 帳號新增post
+     * 帳號編輯post
      */
     public function accountEditPost()
     {
@@ -152,6 +153,21 @@ class Admin extends CI_Controller {
                  echo "<script>alert('Please try again')</script>";
                  echo "<script>history.go(-1)</script>";
             }
+        }
+    }
+
+    /**
+     * 帳號刪除
+     */
+    public function accountDelete()
+    {
+        $this->load->model('account_model');
+        $id = $this->input->post('id');
+
+        if ($this->account_model->deleteById($id)) {
+            echo 'success';
+        } else {
+             echo 'error';
         }
     }
 }

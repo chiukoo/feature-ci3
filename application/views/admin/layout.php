@@ -130,7 +130,7 @@
 					</li>-->
 
 					<li class="<?php if ($left_active == 'account') { echo 'active';}?>">
-						<a href="#"><i class="linecons-star"></i><span class="title"><?php echo $layout['left_account_setting']; ?></span></a>
+						<a href="accountList"><i class="linecons-star"></i><span class="title"><?php echo $layout['left_account_setting']; ?></span></a>
 					</li>
 
 					<li class="">
