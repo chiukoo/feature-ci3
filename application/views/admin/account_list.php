@@ -50,7 +50,7 @@
 								<?php echo $account['account_list_edit'];?>
 							</a>
 							
-							<a href="accountEdit/id/<?php echo $value['id'];?>" class="btn btn-danger btn-sm btn-icon icon-left">
+							<a href="javascript:;" onclick="deleteModel('<?php echo $value['id'];?>', '<?php echo $value['username'];?>');" class="btn btn-danger btn-sm btn-icon icon-left">
 								<?php echo $account['account_list_delete'];?>
 							</a>
 						</td>
@@ -62,9 +62,44 @@
 	</div>
 </div>
 
+<!-- delete modal-->
+<div class="modal fade" id="delete">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title"><?php echo $account['confirm_delete'];?></h4>
+			</div>
+			<div class="modal-body"></div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-white" data-dismiss="modal"><?php echo $account['close'];?></button>
+				<button type="button" id="sure" class="btn btn-info"><?php echo $account['save'];?></button>
+			</div>
+		</div>
+	</div>
+</div>
+
 <!--data list-->				
 <script type="text/javascript">
-	jQuery(document).ready(function($)
+
+	//delete
+	function deleteModel($id, $username)
+	{
+		$('#delete .modal-body').html('<?php echo $account['sure_delete'];?> <span class="red">' + $username + '</span> ?');
+		$('#delete').appendTo("body").modal('show', {backdrop: 'static'})
+        .one('click', '#sure', function() {
+		/*jQuery.ajax({
+			data:
+			url: "accountDelete",
+			success: function(response)
+			{
+			}
+		});*/
+           $('#delete').modal('hide');
+        });
+	}
+
+	$(document).ready(function($)
 	{
 		$("#dataList").dataTable({
 			dom: "t" + "<'row'<'col-xs-6'i><'col-xs-6'p>>",

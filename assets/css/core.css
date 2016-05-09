@@ -14,6 +14,9 @@
   -o-transition: background-color .2s linear, opacity .2s linear;
   transition: background-color .2s linear, opacity .2s linear;
 }
+.red{
+  color:red;
+}
 .ps-container:hover .ps-scrollbar-x-rail,
 .ps-container.hover .ps-scrollbar-x-rail {
   zoom: 1;

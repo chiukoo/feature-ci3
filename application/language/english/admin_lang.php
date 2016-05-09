@@ -17,6 +17,10 @@ $lang['account_list'] = array(
 	'account_add' => 'account add',
     'account_list_edit' => 'Edit',
     'account_list_delete' => 'Delete',
+    'sure_delete' => 'Are you sure delete',
+    'confirm_delete' => 'Delete',
+    'close' => 'Close',
+    'save' => 'Save',
 );
 
 $lang['account_add'] = array(

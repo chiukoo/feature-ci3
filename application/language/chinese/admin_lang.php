@@ -16,7 +16,11 @@ $lang['account_list'] = array(
 	'table_list_actions' => '功能',
     'account_add' => '帳號新增',
     'account_list_edit' => '編輯',
-	'account_list_delete' => '刪除',
+    'account_list_delete' => '刪除',
+    'sure_delete' => '確定要刪除',
+    'confirm_delete' => '刪除確認',
+    'close' => '關閉',
+	'save' => '確認',
 );
 
 $lang['account_add'] = array(
