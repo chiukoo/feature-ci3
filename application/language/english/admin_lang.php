@@ -15,18 +15,34 @@ $lang['account_list'] = array(
 	'table_list_create_dt' => 'Create Time',
 	'table_list_actions' => 'Actions',
 	'account_add' => 'account add',
+    'account_list_edit' => 'Edit',
+    'account_list_delete' => 'Delete',
 );
 
-$lang['account_list'] = array(
-	'main_title' => 'Account List',
-	'nav_index' => 'index',
-	'account_title' => 'Account',
-	'password_title' => 'Password',
-	'password_again_title' => 'Password Again',
-	'account_username_error' => 'Please enter your account',
-	'account_password_error' => 'Please enter your password',
-	'account_password_agent_error' => 'Please enter your password again',
-	'account_add_submit' => 'submit',
-	'account_add_reset' => 'reset',
-	'account_enter_same_password' => 'Please enter same password',
+$lang['account_add'] = array(
+    'main_title' => 'account add',
+    'nav_index' => 'index',
+    'account_title' => 'account',
+    'password_title' => 'password',
+    'password_again_title' => 'password again',
+    'account_username_error' => 'please enter your account',
+    'account_password_error' => 'please enter your password',
+    'account_password_agent_error' => 'please enter your password again',
+    'account_add_submit' => 'Submit',
+    'account_add_reset' => 'Reset',
+    'account_enter_same_password' => 'please enter same password',
+);
+
+$lang['account_edit'] = array(
+    'main_title' => 'account',
+    'nav_index' => 'index',
+    'account_title' => 'account',
+    'password_title' => 'password',
+    'password_again_title' => 'password again',
+    'account_username_error' => 'please enter your account',
+    'account_password_error' => 'please enter your password',
+    'account_password_agent_error' => 'please enter your password again',
+    'account_add_submit' => 'Submit',
+    'account_add_reset' => 'Reset',
+    'account_enter_same_password' => 'please enter same password',
 );

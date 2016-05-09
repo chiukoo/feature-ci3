@@ -2,6 +2,9 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Account_model extends CI_Model {
+
+	const DB_NAME = 'account';
+
 	/**
 	 * __construct function.
 	 * 
@@ -18,12 +21,9 @@ class Account_model extends CI_Model {
 	/**
 	 * create_user function.
 	 * 
-	 * @access public
-	 * @param mixed $username
-	 * @param mixed $password
 	 * @return bool true on success, false on failure
 	 */
-	public function create_user($username, $password) {
+	public function createUser($username, $password) {
 		
 		$data = array(
 			'username'   => $username,
@@ -31,19 +31,36 @@ class Account_model extends CI_Model {
 			'create_dt' => date('Y-m-d H:i:s'),
 		);
 		
-		return $this->db->insert('account', $data);
-		
+		return $this->db->insert(self::DB_NAME, $data);
 	}
-	
+
+	/**
+	 * update Password By Id
+	 * @return bool true on success, false on failure
+	 */
+	public function updatePasswordById($id, $password) {
+		
+		$data = array(
+			'password'   => $this->hash_password($password),
+		);
+		return $this->db->update(self::DB_NAME, $data, array('id' => $id));
+	}
+
 	/**
 	 * get_user function.
 	 * 
-	 * @access public
-	 * @param mixed $user_id
 	 * @return array
 	 */
-	public function get_all_data() {
-		return $this->db->get('account')->result_array();
+	public function getAllData() {
+		return $this->db->get(self::DB_NAME)->result_array();
+	}
+
+	/**
+	 * get_user by id.
+	 * @return array
+	 */
+	public function selectById($id) {
+		return $this->db->get_where(self::DB_NAME, array('id' => $id), 1)->result_array();
 	}
 
 	/**

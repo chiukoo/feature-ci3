@@ -46,12 +46,12 @@
 						<td><?php echo $value['username'];?></td>
 						<td><?php echo $value['create_dt'];?></td>
 						<td>
-							<a href="#" class="btn btn-secondary btn-sm btn-icon icon-left">
-								Edit
+							<a href="accountEdit/id/<?php echo $value['id'];?>" class="btn btn-secondary btn-sm btn-icon icon-left">
+								<?php echo $account['account_list_edit'];?>
 							</a>
 							
-							<a href="#" class="btn btn-danger btn-sm btn-icon icon-left">
-								Delete
+							<a href="accountEdit/id/<?php echo $value['id'];?>" class="btn btn-danger btn-sm btn-icon icon-left">
+								<?php echo $account['account_list_delete'];?>
 							</a>
 						</td>
 					</tr>
