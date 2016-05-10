@@ -4,6 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Admin extends CI_Controller {
 
     private $language;
+    private $layoutData;
 
     /**
      * setting
@@ -22,6 +23,22 @@ class Admin extends CI_Controller {
         } else {
             $this->lang->load($this->config->item('language_admin_file_name'), 'chinese');
         }
+
+        //設定layout data
+        $this->layoutData = array(
+            'left_active' => 'account',
+            'layout'  => $this->lang->line('layout'),
+            'layoutToken' => $this->security->get_csrf_token_name(),
+            'layoutHash' => $this->security->get_csrf_hash(),
+        );
+    }
+
+    /**
+     * 更換語系
+     */
+    public function changeLanguage()
+    {
+        $this->session->set_userdata('adminLanguage', $this->input->post('lang'));
     }
 
 	/**
@@ -40,13 +57,8 @@ class Admin extends CI_Controller {
         );
 
         //layout data
-		$layoutData = array(
-            'left_active' => 'account',
-            'content' => $this->load->view('admin/account_list', $accountData, true),
-            'layout'  => $this->lang->line('layout'),
-        );
-
-		$this->load->view('admin/layout', $layoutData);
+        $this->layoutData['content'] = $this->load->view('admin/account_list', $accountData, true);
+		$this->load->view('admin/layout', $this->layoutData);
 	}
 
     /**
@@ -62,13 +74,8 @@ class Admin extends CI_Controller {
         );
 
         //layout data
-        $layoutData = array(
-            'left_active' => 'account',
-            'content' => $this->load->view('admin/account_add', $accountData, true),
-            'layout'  => $this->lang->line('layout'),
-        );
-
-        $this->load->view('admin/layout', $layoutData);
+        $this->layoutData['content'] = $this->load->view('admin/account_add', $accountData, true);
+        $this->load->view('admin/layout', $this->layoutData);
     }
 
     /**
@@ -90,13 +97,8 @@ class Admin extends CI_Controller {
         );
 
         //layout data
-        $layoutData = array(
-            'left_active' => 'account',
-            'content' => $this->load->view('admin/account_edit', $accountData, true),
-            'layout'  => $this->lang->line('layout'),
-        );
-
-        $this->load->view('admin/layout', $layoutData);
+        $this->layoutData['content'] = $this->load->view('admin/account_edit', $accountData, true);
+        $this->load->view('admin/layout', $this->layoutData);
     }
 
     /**

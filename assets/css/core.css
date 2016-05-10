@@ -2071,7 +2071,7 @@ body.chat-open .user-info-navbar a[data-toggle="chat"] {
   font-size: 400;
   line-height: 1;
 }
-.user-info-navbar .user-info-menu > li > form {
+.user-info-navbar .user-info-menu > li > form{
   position: relative;
   display: block;
   padding: 30px 20px;
@@ -2079,6 +2079,10 @@ body.chat-open .user-info-navbar a[data-toggle="chat"] {
   margin: 0;
   border-bottom: 1px solid #ffffff;
 }
+.user-info-navbar .user-info-menu > li > .language {
+      margin-top: 24px;
+}
+
 .user-info-navbar .user-info-menu > li a[data-toggle="sidebar"] {
   padding-left: 25px;
 }

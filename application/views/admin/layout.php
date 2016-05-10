@@ -167,15 +167,12 @@
 				<ul class="user-info-menu right-links list-inline list-unstyled">
 					
 					<li class="search-form"><!-- You can add "always-visible" to show make the search input visible -->
-						
-						<form method="get" action="extra-search.html">
-							<input type="text" name="s" class="form-control search-field" placeholder="Type to search..." />
-							
-							<button type="submit" class="btn btn-link">
-								<i class="linecons-search"></i>
-							</button>
-						</form>
-						
+
+					<select id="changeLanguage" class="form-control language">
+						<option value="chinese" <?php if (!isset($this->session->adminLanguage) || $this->session->adminLanguage == 'chinese') { echo 'selected';}?>>繁體中文</option>
+						<option value="english" <?php if (isset($this->session->adminLanguage) || $this->session->adminLanguage == 'english') { echo 'selected';}?>>English</option>
+					</select>
+					<input type="hidden" id="layoutToken" name="<?php echo $layoutToken;?>" value="<?php echo $layoutHash;?>" />
 					</li>
 					
 					<li class="dropdown user-profile">
@@ -260,46 +257,60 @@
 
 	<!-- JavaScripts initializations and stuff -->
 	<script src="<?php echo base_url(); ?>assets/js/xenon-custom.js"></script>
-	 <script type="text/javascript">
-	 var urlobj;
+	<script type="text/javascript">
 
-
-	$('.ckeditor').each(function(){
-	    CKEDITOR.replace($(this).attr('id') ,{
-			filebrowserImageBrowseUrl : '<?php echo base_url('assets/filemanager/index.html');?>'
+		$('#changeLanguage').change(function() {
+			var lang = $(this).val();
+			var token = $('#layoutToken').val();
+			$.ajax({
+				data: {'lang' : lang, 'csrf_token_name' : token},
+				type: "POST",
+				url: "changeLanguage",
+				success: function(msg) {
+					location.reload();
+				},
+		        error: function(msg){
+		            alert(msg);
+		        }
+			});
 		});
-	});
+		var urlobj;
+		$('.ckeditor').each(function(){
+		    CKEDITOR.replace($(this).attr('id') ,{
+				filebrowserImageBrowseUrl : '<?php echo base_url('assets/filemanager/index.html');?>'
+			});
+		});
 
-	function fileMessageUrl() {
-		window.open('<?php echo base_url('assets/filemanager/index.html');?>', '<?php echo $layout['left_account_setting']; ?>', config='height=750,width=1000,toolbar=no,resizable=no,location=no');
-	}
+		function fileMessageUrl() {
+			window.open('<?php echo base_url('assets/filemanager/index.html');?>', '<?php echo $layout['left_account_setting']; ?>', config='height=750,width=1000,toolbar=no,resizable=no,location=no');
+		}
 
-	function BrowseServer(obj)
-	{
-		urlobj = obj;
-		OpenServerBrowser(
-		"<?php echo base_url('assets/filemanager/index.html');?>",
-		screen.width * 0.7,
-		screen.height * 0.7 ) ;
-	}
+		function BrowseServer(obj)
+		{
+			urlobj = obj;
+			OpenServerBrowser(
+			"<?php echo base_url('assets/filemanager/index.html');?>",
+			screen.width * 0.7,
+			screen.height * 0.7 ) ;
+		}
 
-	function OpenServerBrowser( url, width, height )
-	{
-		var iLeft = (screen.width - width) / 2 ;
-		var iTop = (screen.height - height) / 2 ;
-		var sOptions = "toolbar=no,status=no,resizable=yes,dependent=yes" ;
-		sOptions += ",width=" + width ;
-		sOptions += ",height=" + height ;
-		sOptions += ",left=" + iLeft ;
-		sOptions += ",top=" + iTop ;
-		var oWindow = window.open( url, "BrowseWindow", sOptions ) ;
-	}
+		function OpenServerBrowser( url, width, height )
+		{
+			var iLeft = (screen.width - width) / 2 ;
+			var iTop = (screen.height - height) / 2 ;
+			var sOptions = "toolbar=no,status=no,resizable=yes,dependent=yes" ;
+			sOptions += ",width=" + width ;
+			sOptions += ",height=" + height ;
+			sOptions += ",left=" + iLeft ;
+			sOptions += ",top=" + iTop ;
+			var oWindow = window.open( url, "BrowseWindow", sOptions ) ;
+		}
 
-	function SetUrl( url, width, height, alt )
-	{
-		document.getElementById(urlobj).value = url ;
-		oWindow = null;
-	}
-	 </script>
+		function SetUrl( url, width, height, alt )
+		{
+			document.getElementById(urlobj).value = url ;
+			oWindow = null;
+		}
+	</script>
 </body>
 </html>
