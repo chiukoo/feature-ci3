@@ -37,9 +37,9 @@
 				</tr>
 			</thead>
 			
-			<tbody class="middle-align">
+			<tbody class="middle-align" id="sortable">
 				<?php foreach ($account_data as $value) {?>
-					<tr>
+					<tr data-order="<?php echo $value['order']?>">
 						<td>
 							<input type="checkbox" class="cbr">
 						</td>
@@ -58,6 +58,10 @@
 				<?php } ?>
 			</tbody>
 		</table>
+		<!--寫在table取得順訓-->
+		<?php foreach ($account_data as $value) {?>
+			<input type="hidden" name="getOldData" data-id="<?php echo $value['id'];?>" data-order="<?php echo $value['order'];?>">
+		<?php } ?>
 		<input type="hidden" id="token" name="<?php echo $token;?>" value="<?php echo $hash;?>" />
 	</div>
 </div>
@@ -78,6 +82,48 @@
 		</div>
 	</div>
 </div>
+
+<!--sortable-->
+<script src="<?php echo base_url();?>assets/js/jquery-ui.js"></script>
+<script>
+$(function() {
+	var fixHelper = function(e, ui) {  
+	ui.children().each(function() {  
+		$(this).width($(this).width());  
+		});  
+		return ui;  
+	};
+	$("#sortable").sortable({ 
+		helper: fixHelper,
+	    update: function (event, ui) {
+	    	var id              = [];
+	    	var newOrder        = [];
+	    	var oldOrder        = [];
+	    	var needUpdataId    = [];
+	    	var needUpdataOrder = [];
+
+	    	$(this).find('tr').each(function(){
+	    		newOrder.push($(this).attr('data-order'));
+	    	});
+
+	    	$('input[name=getOldData]').each(function(){
+	    		id.push($(this).attr('data-id'));
+	    		oldOrder.push($(this).attr('data-order'));
+	    	});
+
+	    	//取出需要update資訊
+	    	for ($i = 0; $i < oldOrder.length; $i++) {
+	    		if (oldOrder[$i] != newOrder[$i]) {
+	    			needUpdataId.push(id[$i]);
+	    			needUpdataOrder.push(newOrder[$i]);
+	    		}
+	    	}
+
+	    	//todo update newOrder
+	    },
+	}).disableSelection();  
+});
+</script>
 
 <!--data list-->				
 <script type="text/javascript">

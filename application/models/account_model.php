@@ -25,12 +25,15 @@ class Account_model extends CI_Model {
 	 */
 	public function createUser($username, $password) {
 		
+		//取得最後id
+		$last_id = $this->db->limit(1)->order_by('id', 'desc')->get(self::DB_NAME)->row('id');
 		$data = array(
 			'username'   => $username,
 			'password'   => $this->hash_password($password),
-			'create_dt' => date('Y-m-d H:i:s'),
+			'create_dt'  => date('Y-m-d H:i:s'),
+			'order'      => $last_id + 1,
 		);
-		
+
 		return $this->db->insert(self::DB_NAME, $data);
 	}
 
@@ -78,7 +81,7 @@ class Account_model extends CI_Model {
 	 * @return array
 	 */
 	public function getAllData() {
-		return $this->db->get(self::DB_NAME)->result_array();
+		return $this->db->order_by('order', 'asc')->get(self::DB_NAME)->result_array();
 	}
 
 	/**
