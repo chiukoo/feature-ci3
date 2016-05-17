@@ -170,9 +170,25 @@ class Admin extends CI_Controller {
         $id = $this->input->post('id');
 
         if ($this->account_model->deleteById($id)) {
-            echo 'success';
+            echo $this->security->get_csrf_hash();
         } else {
-             echo 'error';
+            echo '錯誤! 請聯絡系統管理員';
+        }
+    }
+
+    /**
+     * 帳號刪除
+     */
+    public function accountOrder()
+    {
+        $this->load->model('account_model');
+        $id = $this->input->post('id');
+        $order = $this->input->post('order');
+
+        if ($this->account_model->updateOrderById($id, $order)) {
+            echo $this->security->get_csrf_hash();
+        } else {
+            echo '錯誤! 請聯絡系統管理員';
         }
     }
 }

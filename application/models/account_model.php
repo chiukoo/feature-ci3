@@ -24,9 +24,8 @@ class Account_model extends CI_Model {
 	 * @return bool true on success, false on failure
 	 */
 	public function createUser($username, $password) {
-		
-		//取得最後id
-		$last_id = $this->db->limit(1)->order_by('id', 'desc')->get(self::DB_NAME)->row('id');
+		//取得最後ordee
+		$last_id = $this->db->limit(1)->order_by('order', 'desc')->get(self::DB_NAME)->row('order');
 		$data = array(
 			'username'   => $username,
 			'password'   => $this->hash_password($password),
@@ -64,14 +63,24 @@ class Account_model extends CI_Model {
 	}
 
 	/**
+	 * update order By Id(array) order(array)
+	 * @return bool true on success, false on failure
+	 */
+	public function updateOrderById($ids, $orders) {
+		$check = true;
+		foreach ($ids as $key => $id) {
+			if (!$this->db->update(self::DB_NAME, array('order' => $orders[$key]), array('id' => $id))) {
+				$check = false;
+			}
+		}
+		return $check;
+	}
+
+	/**
 	 * delete By Id
 	 * @return bool true on success, false on failure
 	 */
 	public function deleteById($id) {
-		
-		$data = array(
-			'password'   => $this->hash_password($password),
-		);
 		return $this->db->delete(self::DB_NAME, array('id' => $id));
 	}
 

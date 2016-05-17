@@ -39,7 +39,7 @@
 			
 			<tbody class="middle-align" id="sortable">
 				<?php foreach ($account_data as $value) {?>
-					<tr data-order="<?php echo $value['order']?>">
+					<tr data-id="<?php echo $value['id']?>" data-order="<?php echo $value['order']?>">
 						<td>
 							<input type="checkbox" class="cbr">
 						</td>
@@ -86,104 +86,107 @@
 <!--sortable-->
 <script src="<?php echo base_url();?>assets/js/jquery-ui.js"></script>
 <script>
+
+//delete
+function deleteModel(id, username)
+{
+	var token = $('#token').val();
+	$('#delete .modal-body').html('<?php echo $account['sure_delete'];?> <span class="red">' + username + '</span> ?');
+	$('#delete').appendTo("body").modal('show', {backdrop: 'static'}).one('click', '#sure', function() {
+		jQuery.ajax({
+			data: {'id' : id, 'csrf_token_name' : token},
+			type: "POST",
+			url: "accountDelete",
+			success: function(newToken) {
+				$('#token').val(newToken);
+				$('#sortable tr[data-id = ' + id + ']').remove();
+			},
+	        error: function(msg){
+	            alert(msg);
+	        }
+		});
+       $('#delete').modal('hide');
+    });
+}
+
 $(function() {
+	//order
 	var fixHelper = function(e, ui) {  
-	ui.children().each(function() {  
+	ui.children().each(function() {
 		$(this).width($(this).width());  
 		});  
 		return ui;  
 	};
+
 	$("#sortable").sortable({ 
 		helper: fixHelper,
 	    update: function (event, ui) {
-	    	var id              = [];
-	    	var newOrder        = [];
-	    	var oldOrder        = [];
+	    	var newId              = [];
+	    	var getOrder        = [];
 	    	var needUpdataId    = [];
 	    	var needUpdataOrder = [];
+	    	var token           = $('#token').val();
 
 	    	$(this).find('tr').each(function(){
-	    		newOrder.push($(this).attr('data-order'));
+	    		needUpdataId.push($(this).attr('data-id'));
 	    	});
 
 	    	$('input[name=getOldData]').each(function(){
-	    		id.push($(this).attr('data-id'));
-	    		oldOrder.push($(this).attr('data-order'));
+	    		needUpdataOrder.push($(this).attr('data-order'));
 	    	});
 
-	    	//取出需要update資訊
-	    	for ($i = 0; $i < oldOrder.length; $i++) {
-	    		if (oldOrder[$i] != newOrder[$i]) {
-	    			needUpdataId.push(id[$i]);
-	    			needUpdataOrder.push(newOrder[$i]);
-	    		}
+	    	if (needUpdataId.length != 0 && needUpdataOrder.length != 0) {
+		    	$.ajax({
+					data: {'id' : needUpdataId, 'order' : needUpdataOrder, 'csrf_token_name' : token},
+					type: "POST",
+					url: "accountOrder",
+					success: function(newToken) {
+						$('#token').val(newToken);
+					},
+			        error: function(msg){
+			            alert(msg);
+			        }
+				});
 	    	}
-
+	    	
 	    	//todo update newOrder
 	    },
-	}).disableSelection();  
-});
-</script>
+	}).disableSelection();
 
-<!--data list-->				
-<script type="text/javascript">
-
-	//delete
-	function deleteModel(id, username)
-	{
-		var token = $('#token').val();
-		$('#delete .modal-body').html('<?php echo $account['sure_delete'];?> <span class="red">' + username + '</span> ?');
-		$('#delete').appendTo("body").modal('show', {backdrop: 'static'}).one('click', '#sure', function() {
-			jQuery.ajax({
-				data: {'id' : id, 'csrf_token_name' : token},
-				type: "POST",
-				url: "accountDelete",
-				success: function(msg) {
-					location.reload();
-				},
-		        error: function(msg){
-		            alert(msg);
-		        }
-			});
-           $('#delete').modal('hide');
-        });
-	}
-
-	$(document).ready(function($)
-	{
-		$("#dataList").dataTable({
-			dom: "t" + "<'row'<'col-xs-6'i><'col-xs-6'p>>",
-			aoColumns: [
-				{bSortable: false},
-				null,
-				null,
-				null,
-			],
-		});
-		
-		// Replace checkboxes when they appear
-		var $state = $("#dataList thead input[type='checkbox']");
-		
-		$("#dataList").on('draw.dt', function()
-		{
-			cbr_replace();
-			
-			$state.trigger('change');
-		});
-		
-		// Script to select all checkboxes
-		$state.on('change', function(ev)
-		{
-			var $chcks = $("#dataList tbody input[type='checkbox']");
-			
-			if($state.is(':checked'))
-			{
-				$chcks.prop('checked', true).trigger('change');
-			}
-			else
-			{
-				$chcks.prop('checked', false).trigger('change');
-			}
-		});
+	//data list
+	$("#dataList").dataTable({
+		dom: "t" + "<'row'<'col-xs-6'i><'col-xs-6'p>>",
+		aoColumns: [
+			{bSortable: false},
+			null,
+			null,
+			null,
+		],
 	});
+	
+	// Replace checkboxes when they appear
+	var $state = $("#dataList thead input[type='checkbox']");
+	
+	$("#dataList").on('draw.dt', function()
+	{
+		cbr_replace();
+		
+		$state.trigger('change');
+	});
+	
+	// Script to select all checkboxes
+	$state.on('change', function(ev)
+	{
+		var $chcks = $("#dataList tbody input[type='checkbox']");
+		
+		if($state.is(':checked'))
+		{
+			$chcks.prop('checked', true).trigger('change');
+		}
+		else
+		{
+			$chcks.prop('checked', false).trigger('change');
+		}
+	});
+});
 </script>
