@@ -132,6 +132,10 @@
 						<a href="accountList"><i class="linecons-star"></i><span class="title"><?php echo $layout['left_account_setting']; ?></span></a>
 					</li>
 
+					<li class="<?php if ($left_active == 'product') { echo 'active';}?>">
+						<a href="../product/productTypeList"><i class="linecons-star"></i><span class="title"><?php echo $layout['left_product_setting']; ?></span></a>
+					</li>
+
 					<li class="">
 						<a href="#" onclick="fileMessageUrl();">
 							<i class="linecons-cloud"></i>

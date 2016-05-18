@@ -23,6 +23,21 @@ $lang['account_list'] = array(
     'save' => 'Save',
 );
 
+$lang['product_type_list'] = array(
+    'main_title' => 'Product Type List',
+    'nav_index' => 'Index',
+    'table_list_name' => 'Name',
+    'table_list_create_dt' => 'Create Time',
+    'table_list_actions' => 'Actions',
+    'product_type_add' => 'Product Type Add',
+    'product_type_edit' => 'Edit',
+    'product_type_delete' => 'Delete',
+    'sure_delete' => 'Are you sure delete',
+    'confirm_delete' => 'Delete',
+    'close' => 'Close',
+    'save' => 'Save',
+);
+
 $lang['account_add'] = array(
     'main_title' => 'Account Add',
     'nav_index' => 'Index',
