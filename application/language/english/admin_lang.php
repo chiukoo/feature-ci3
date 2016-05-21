@@ -4,6 +4,7 @@ $lang['layout'] = array(
     'top_logout' => 'Logout',
     'left_menu' => 'index',
     'left_account_setting' => 'Account Setting',
+    'left_product_project_setting' => 'Product Project',
     'left_file_explorer' => 'File Explorer',
     'admin_title' => 'Background Systems',
 );
@@ -23,19 +24,50 @@ $lang['account_list'] = array(
     'save' => 'Save',
 );
 
+$lang['product_project_list'] = array(
+    'main_title' => 'Product Project List',
+    'nav_index' => 'Index',
+    'table_list_name' => 'Name',
+    'table_list_create_dt' => 'Create Time',
+    'table_list_actions' => 'Actions',
+    'product_add' => 'Product Project Add',
+    'product_edit' => 'Edit',
+    'product_delete' => 'Delete',
+    'sure_delete' => 'Are you sure delete',
+    'confirm_delete' => 'Delete',
+    'close' => 'Close',
+    'save' => 'Save',
+);
+
 $lang['product_type_list'] = array(
     'main_title' => 'Product Type List',
     'nav_index' => 'Index',
     'table_list_name' => 'Name',
     'table_list_create_dt' => 'Create Time',
     'table_list_actions' => 'Actions',
-    'product_type_add' => 'Product Type Add',
-    'product_type_edit' => 'Edit',
-    'product_type_delete' => 'Delete',
+    'product_add' => 'Product Type Add',
+    'product_edit' => 'Edit',
+    'product_delete' => 'Delete',
     'sure_delete' => 'Are you sure delete',
     'confirm_delete' => 'Delete',
     'close' => 'Close',
     'save' => 'Save',
+);
+
+$lang['product_project_add'] = array(
+    'main_title' => 'Product Project Add',
+    'nav_index' => 'Index',
+    'title' => 'please enter your project',
+    'add_submit' => 'Submit',
+    'add_reset' => 'Reset',
+);
+
+$lang['product_project_edit'] = array(
+    'main_title' => 'Product Project Edit',
+    'nav_index' => 'Index',
+    'title' => 'please enter your project',
+    'add_submit' => 'Submit',
+    'add_reset' => 'Reset',
 );
 
 $lang['account_add'] = array(

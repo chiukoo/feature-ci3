@@ -24,10 +24,14 @@ class Product extends CI_Controller {
             $this->lang->load($this->config->item('language_admin_file_name'), 'chinese');
         }
 
+        //取出左邊項目名稱
+        $this->load->model('product_project_model');
+
         //設定layout data
         $this->layoutData = array(
             'left_active' => 'product',
             'layout'  => $this->lang->line('layout'),
+            'project' => $this->product_project_model->getAllData(),
             'layoutToken' => $this->security->get_csrf_token_name(),
             'layoutHash' => $this->security->get_csrf_hash(),
         );
@@ -44,10 +48,161 @@ class Product extends CI_Controller {
     /**
      * 產品類型類表
      */
+    public function productProjectList()
+    {
+        //account data
+        $data = array(
+            'lang' => $this->lang->line('product_project_list'),
+            'data' => $this->product_project_model->getAllData(),
+            'token' => $this->security->get_csrf_token_name(),
+            'hash' => $this->security->get_csrf_hash(),
+        );
+
+        //layout data
+        $this->layoutData['content'] = $this->load->view('product/product_project_list', $data, true);
+        $this->load->view('admin/layout', $this->layoutData);
+    }
+
+    /**
+     * 產品類型類表新增
+     */
+    public function productProjectAdd()
+    {
+        //account data
+        $data = array(
+            'lang' => $this->lang->line('product_project_add'),
+            'token' => $this->security->get_csrf_token_name(),
+            'hash' => $this->security->get_csrf_hash()
+        );
+
+        //layout data
+        $this->layoutData['content'] = $this->load->view('product/product_project_add', $data, true);
+        $this->load->view('admin/layout', $this->layoutData);
+    }
+
+    /**
+     * 帳號新增post
+     */
+    public function productProjectAddPost()
+    {
+        $this->load->library('form_validation');
+
+        $rules = array(
+            array(
+                'field' => 'title',
+                'label' => 'Title',
+                'rules' => 'trim|required|alpha_numeric'
+            )
+        );
+
+        // set validation rules
+        $this->form_validation->set_rules($rules);
+
+        if ($this->form_validation->run() === false) {
+            echo "<script>alert('".validation_errors()."');</script>";
+            echo "<script>history.go(-1)</script>";
+        } else {
+            // set variables from the form
+            $title = $this->input->post('title');
+
+            if ($this->product_project_model->createUser($title)) {
+                redirect('product/productProjectList');
+            } else {
+                 echo "<script>alert('Please try again')</script>";
+            }
+        }
+    }
+
+    /**
+     * 刪除
+     */
+    public function productProjectDelete()
+    {
+        $id = $this->input->post('id');
+
+        if ($this->product_project_model->deleteById($id)) {
+            echo $this->security->get_csrf_hash();
+        } else {
+            echo '錯誤! 請聯絡系統管理員';
+        }
+    }
+
+    /**
+     * 排序
+     */
+    public function productProjectOrder()
+    {
+        $id = $this->input->post('id');
+        $order = $this->input->post('order');
+
+        if ($this->product_project_model->updateOrderById($id, $order)) {
+            echo $this->security->get_csrf_hash();
+        } else {
+            echo '錯誤! 請聯絡系統管理員';
+        }
+    }
+
+    /**
+     * 編輯
+     */
+    public function productProjectEdit()
+    {
+        //http url get
+        $urlData = $this->uri->uri_to_assoc(3);
+
+        //data
+        $data = array(
+            'lang' => $this->lang->line('product_project_edit'),
+            'token' => $this->security->get_csrf_token_name(),
+            'hash' => $this->security->get_csrf_hash(),
+            'userData' => $this->product_project_model->selectById($urlData['id']),
+        );
+
+        //layout data
+        $this->layoutData['content'] = $this->load->view('product/product_project_edit', $data, true);
+        $this->load->view('admin/layout', $this->layoutData);
+    }
+
+    /**
+     * 編輯post
+     */
+    public function productProjectEditPost()
+    {
+        $this->load->library('form_validation');
+
+        $rules = array(
+            array(
+                'field' => 'title',
+                'label' => 'Title',
+                'rules' => 'trim|required|alpha_numeric'
+            )
+        );
+
+        // set validation rules
+        $this->form_validation->set_rules($rules);
+
+        if ($this->form_validation->run() === false) {
+            echo "<script>alert('".validation_errors()."');</script>";
+            echo "<script>history.go(-1)</script>";
+        } else {
+            // set variables from the form
+            $id = $this->input->post('id');
+            $title = $this->input->post('title');
+
+            if ($this->product_project_model->updateFieldById($id, $title)) {
+                redirect('product/productProjectList');
+            } else {
+                 echo "<script>alert('Please try again')</script>";
+                 echo "<script>history.go(-1)</script>";
+            }
+        }
+    }
+
+    /**
+     * 產品類型類表
+     */
     public function productTypeList()
     {
-        $this->load->model('product_type_model');
-
         //account data
         $data = array(
             'lang' => $this->lang->line('product_type_list'),

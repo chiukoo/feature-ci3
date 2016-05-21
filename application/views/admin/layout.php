@@ -133,8 +133,13 @@
 					</li>
 
 					<li class="<?php if ($left_active == 'product') { echo 'active';}?>">
-						<a href="../product/productTypeList"><i class="linecons-star"></i><span class="title"><?php echo $layout['left_product_setting']; ?></span></a>
+						<a href="../product/productProjectList"><i class="linecons-star"></i><span class="title"><?php echo $layout['left_product_project_setting']; ?></span></a>
 					</li>
+					<?php foreach ($project as $projects) { ?>
+						<li>
+							<a href="../product/productTypeList/project/<?php echo $projects['id']?>"><i class="linecons-star"></i><span class="title"><?php echo $projects['title']; ?></span></a>
+						</li>
+					<?php } ?>
 
 					<li class="">
 						<a href="#" onclick="fileMessageUrl();">
