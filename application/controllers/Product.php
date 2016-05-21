@@ -5,6 +5,7 @@ class Product extends CI_Controller {
 
     private $language;
     private $layoutData;
+    private $urlData;
 
     /**
      * setting
@@ -28,9 +29,9 @@ class Product extends CI_Controller {
         $this->load->model('product_project_model');
 
         //判斷active
-        $urlData = $this->uri->uri_to_assoc(3);
+        $this->urlData = $this->uri->uri_to_assoc(3);
 
-        $active = empty($urlData) ? 'product' : $urlData['project'];
+        $active = empty($this->urlData) ? 'product' : $this->urlData['project'];
 
         //設定layout data
         $this->layoutData = array(
@@ -210,13 +211,20 @@ class Product extends CI_Controller {
     {
         $this->load->model('product_type_model');
 
-        //account data
+        //data
         $data = array(
             'lang' => $this->lang->line('product_type_list'),
             'data' => $this->product_type_model->getAllData(),
             'token' => $this->security->get_csrf_token_name(),
+            'getUrlData' => $this->urlData['project'],
             'hash' => $this->security->get_csrf_hash(),
         );
+
+        foreach ($this->layoutData['project'] as $project) {
+            if ($project['id'] == $this->urlData['project']) {
+                $data['project'] = $project['title'];
+            }
+        }
 
         //layout data
         $this->layoutData['content'] = $this->load->view('product/product_type_list', $data, true);
@@ -232,34 +240,18 @@ class Product extends CI_Controller {
         $data = array(
             'lang' => $this->lang->line('product_type_add'),
             'token' => $this->security->get_csrf_token_name(),
+            'getUrlData' => $this->urlData['project'],
             'hash' => $this->security->get_csrf_hash()
         );
 
-        //layout data
-        $this->layoutData['content'] = $this->load->view('product/account_add', $data, true);
-        $this->load->view('admin/layout', $this->layoutData);
-    }
-
-    /**
-     * 帳號編輯
-     */
-    public function productTypeEdit()
-    {
-        $this->load->model('account_model');
-
-        //http url get
-        $urlData = $this->uri->uri_to_assoc(3);
-
-        //account data
-        $accountData = array(
-            'account' => $this->lang->line('account_edit'),
-            'token' => $this->security->get_csrf_token_name(),
-            'hash' => $this->security->get_csrf_hash(),
-            'userData' => $this->account_model->selectById($urlData['id']),
-        );
+        foreach ($this->layoutData['project'] as $project) {
+            if ($project['id'] == $this->urlData['project']) {
+                $data['project'] = $project['title'];
+            }
+        }
 
         //layout data
-        $this->layoutData['content'] = $this->load->view('product/account_edit', $accountData, true);
+        $this->layoutData['content'] = $this->load->view('product/product_type_add', $data, true);
         $this->load->view('admin/layout', $this->layoutData);
     }
 
@@ -269,24 +261,29 @@ class Product extends CI_Controller {
     public function productTypeAddPost()
     {
         $this->load->library('form_validation');
-        $this->load->model('account_model');
+        $this->load->model('product_type_model');
 
-        
+        $rules = array(
+            array(
+                'field' => 'title',
+                'label' => 'Title',
+                'rules' => 'trim|required'
+            )
+        );
+
         // set validation rules
-        $this->form_validation->set_rules('username', 'Username', 'trim|required|alpha_numeric|is_unique[account.username]', array('is_unique' => 'This username already exists'));
-        $this->form_validation->set_rules('password', 'Password', 'trim|required');
-        $this->form_validation->set_rules('password_confirm', 'Confirm Password', 'trim|required|matches[password]');
+        $this->form_validation->set_rules($rules);
 
         if ($this->form_validation->run() === false) {
             echo "<script>alert('".validation_errors()."');</script>";
             echo "<script>history.go(-1)</script>";
         } else {
-            // set variables from the form
-            $username = $this->input->post('username');
-            $password = $this->input->post('password');
+            $title = $this->input->post('title');
+            $img_url = $this->input->post('img_url');
+            $getProject = $this->input->post('getProject');
 
-            if ($this->account_model->createUser($username, $password)) {
-                redirect('product/productTypeList');
+            if ($this->product_type_model->createUser($title, $img_url, $getProject)) {
+                redirect('product/productTypeList/project/'.$getProject);
             } else {
                  echo "<script>alert('Please try again')</script>";
             }
@@ -294,28 +291,62 @@ class Product extends CI_Controller {
     }
 
     /**
-     * 帳號編輯post
+     * 編輯
+     */
+    public function productTypeEdit()
+    {
+        $this->load->model('product_type_model');
+        //data
+        $data = array(
+            'lang' => $this->lang->line('product_type_edit'),
+            'token' => $this->security->get_csrf_token_name(),
+            'hash' => $this->security->get_csrf_hash(),
+            'getUrlData' => $this->urlData['project'],
+            'userData' => $this->product_type_model->selectById($this->urlData['id']),
+        );
+
+        foreach ($this->layoutData['project'] as $project) {
+            if ($project['id'] == $this->urlData['project']) {
+                $data['project'] = $project['title'];
+            }
+        }
+
+        //layout data
+        $this->layoutData['content'] = $this->load->view('product/product_type_edit', $data, true);
+        $this->load->view('admin/layout', $this->layoutData);
+    }
+
+    /**
+     * 編輯post
      */
     public function productTypeEditPost()
     {
         $this->load->library('form_validation');
-        $this->load->model('account_model');
+        $this->load->model('product_type_model');
 
-        
+        $rules = array(
+            array(
+                'field' => 'title',
+                'label' => 'Title',
+                'rules' => 'trim|required'
+            )
+        );
+
         // set validation rules
-        $this->form_validation->set_rules('password', 'Password', 'trim|required');
-        $this->form_validation->set_rules('password_confirm', 'Confirm Password', 'trim|required|matches[password]');
+        $this->form_validation->set_rules($rules);
 
         if ($this->form_validation->run() === false) {
             echo "<script>alert('".validation_errors()."');</script>";
             echo "<script>history.go(-1)</script>";
         } else {
             // set variables from the form
-            $id = $this->input->post('id');
-            $password = $this->input->post('password');
+            $id = $this->input->post('getId');
+            $title = $this->input->post('title');
+            $img_url = $this->input->post('img_url');
+            $getProject = $this->input->post('getProject');
 
-            if ($this->account_model->updatePasswordById($id, $password)) {
-                redirect('product/productTypeList');
+            if ($this->product_type_model->updateFieldById($id, $title, $img_url)) {
+                redirect('product/productTypeList/project/'.$getProject);
             } else {
                  echo "<script>alert('Please try again')</script>";
                  echo "<script>history.go(-1)</script>";
@@ -324,14 +355,14 @@ class Product extends CI_Controller {
     }
 
     /**
-     * 帳號刪除
+     * delete
      */
     public function productTypeDelete()
     {
-        $this->load->model('account_model');
+        $this->load->model('product_type_model');
         $id = $this->input->post('id');
 
-        if ($this->account_model->deleteById($id)) {
+        if ($this->product_type_model->deleteById($id)) {
             echo $this->security->get_csrf_hash();
         } else {
             echo '錯誤! 請聯絡系統管理員';
@@ -339,15 +370,15 @@ class Product extends CI_Controller {
     }
 
     /**
-     * 帳號刪除
+     * order
      */
     public function productTypeOrder()
     {
-        $this->load->model('account_model');
+        $this->load->model('product_type_model');
         $id = $this->input->post('id');
         $order = $this->input->post('order');
 
-        if ($this->account_model->updateOrderById($id, $order)) {
+        if ($this->product_type_model->updateOrderById($id, $order)) {
             echo $this->security->get_csrf_hash();
         } else {
             echo '錯誤! 請聯絡系統管理員';

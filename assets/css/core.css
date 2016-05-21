@@ -17,6 +17,10 @@
 .red{
   color:red;
 }
+.TablelistImg {
+  width: 60px;
+}
+
 .ps-container:hover .ps-scrollbar-x-rail,
 .ps-container.hover .ps-scrollbar-x-rail {
   zoom: 1;

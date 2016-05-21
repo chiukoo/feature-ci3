@@ -39,8 +39,24 @@ $lang['product_project_list'] = array(
     'save' => '確認',
 );
 
+$lang['product_project_add'] = array(
+    'main_title' => '產品項目新增',
+    'nav_index' => '首頁',
+    'title' => '輸入項目名稱',
+    'add_submit' => '送出',
+    'add_reset' => '重製',
+);
+
+$lang['product_project_edit'] = array(
+    'main_title' => '產品項目編輯',
+    'nav_index' => '首頁',
+    'title' => '輸入項目名稱',
+    'add_submit' => '送出',
+    'add_reset' => '重製',
+);
+
 $lang['product_type_list'] = array(
-    'main_title' => '產品分類列表',
+    'main_title' => '列表',
     'nav_index' => '首頁',
     'table_list_name' => '產品名稱',
     'table_list_img' => '產品圖片',
@@ -55,18 +71,24 @@ $lang['product_type_list'] = array(
     'save' => '確認',
 );
 
-$lang['product_project_add'] = array(
-    'main_title' => '產品項目新增',
+$lang['product_type_add'] = array(
+    'main_title' => '新增',
     'nav_index' => '首頁',
-    'title' => '輸入項目名稱',
+    'title' => '輸入產品名稱',
+    'images' => '新增圖片',
+    'img_url' => '圖片連結',
+    'select_img' => '選擇圖片',
     'add_submit' => '送出',
     'add_reset' => '重製',
 );
 
-$lang['product_project_edit'] = array(
-    'main_title' => '產品項目編輯',
+$lang['product_type_edit'] = array(
+    'main_title' => '編輯',
     'nav_index' => '首頁',
-    'title' => '輸入項目名稱',
+    'title' => '產品名稱編輯',
+    'images' => '編輯圖片',
+    'img_url' => '請輸入圖片連結',
+    'select_img' => '選擇圖片',
     'add_submit' => '送出',
     'add_reset' => '重製',
 );

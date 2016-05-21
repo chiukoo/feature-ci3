@@ -23,14 +23,16 @@ class Product_type_model extends CI_Model {
 	 * 
 	 * @return bool true on success, false on failure
 	 */
-	public function createUser($username, $password) {
+	public function createUser($title, $img_url, $getProject) {
 		//取得最後ordee
 		$last_id = $this->db->limit(1)->order_by('order', 'desc')->get(self::DB_NAME)->row('order');
 		$data = array(
-			'username'   => $username,
-			'password'   => $this->hash_password($password),
+			'title'   => $title,
+			'img_url'   => $img_url,
 			'create_dt'  => date('Y-m-d H:i:s'),
 			'order'      => $last_id + 1,
+			'project'    => $getProject,
+			'lang'       => $this->session->dataLang
 		);
 
 		return $this->db->insert(self::DB_NAME, $data);
@@ -48,6 +50,18 @@ class Product_type_model extends CI_Model {
 			}
 		}
 		return $check;
+	}
+
+	/**
+	 * update
+	 * @return bool true on success, false on failure
+	 */
+	public function updateFieldById($id, $title, $img_url) {
+		$data = array(
+			'title'   => $title,
+			'img_url' => $img_url,
+		);
+		return $this->db->update(self::DB_NAME, $data, array('id' => $id));
 	}
 
 	/**
@@ -73,28 +87,5 @@ class Product_type_model extends CI_Model {
 	 */
 	public function selectById($id) {
 		return $this->db->get_where(self::DB_NAME, array('id' => $id), 1)->result_array();
-	}
-
-	/**
-	 * hash_password function.
-	 * 
-	 * @access private
-	 * @param mixed $password
-	 * @return string|bool could be a string on success, or bool false on failure
-	 */
-	private function hash_password($password) {
-		return password_hash($password, PASSWORD_BCRYPT);
-	}
-	
-	/**
-	 * verify_password_hash function.
-	 * 
-	 * @access private
-	 * @param mixed $password
-	 * @param mixed $hash
-	 * @return bool
-	 */
-	private function verify_password_hash($password, $hash) {
-		return password_verify($password, $hash);
 	}
 }

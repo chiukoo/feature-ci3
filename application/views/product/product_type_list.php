@@ -1,7 +1,7 @@
 <div class="page-title">
 	
 	<div class="title-env">
-		<h1 class="title"><?php echo $lang['main_title'];?></h1>
+		<h1 class="title"><?php echo $project;?><?php echo $lang['main_title'];?></h1>
 	</div>
 	
 	<div class="breadcrumb-env">
@@ -11,7 +11,7 @@
 				<a href="index"><i class="fa-home"></i><?php echo $lang['nav_index'];?></a>
 			</li>
 			<li class="active">
-				<strong><?php echo $lang['main_title'];?></strong>
+				<strong><?php echo $project;?><?php echo $lang['main_title'];?></strong>
 			</li>
 		</ol>
 					
@@ -23,8 +23,9 @@
 <div class="panel panel-default">
 	<div class="panel-body">
 		<div style="text-align: right;">
-			<a href="productTypeAdd"><button class="btn btn-white"><?php echo $lang['product_add'];?></button></a>
+			<a href="<?php echo base_url();?>product/productTypeAdd/project/<?php echo $getUrlData;?>"><button class="btn btn-white"><?php echo $lang['product_add'];?></button></a>
 		</div>
+
 		<table class="table table-bordered table-striped" id="dataList">
 			<thead>
 				<tr>
@@ -45,9 +46,14 @@
 							<input type="checkbox" class="cbr">
 						</td>-->
 						<td><?php echo $value['title'];?></td>
+						<td>
+							<?php if (!empty($value['img_url'])) { ?>
+							<img class="TablelistImg" src="<?php echo 'http://'.$_SERVER['HTTP_HOST'].$value['img_url'];?>" alt="">
+							<?php } ?>
+						</td>
 						<td><?php echo $value['create_dt'];?></td>
 						<td>
-							<a href="accountEdit/id/<?php echo $value['id'];?>" class="btn btn-secondary btn-sm btn-icon icon-left">
+							<a href="<?php echo base_url();?>product/productTypeEdit/id/<?php echo $value['id'];?>/project/<?php echo $getUrlData;?>" class="btn btn-secondary btn-sm btn-icon icon-left">
 								<?php echo $lang['product_edit'];?>
 							</a>
 							
@@ -97,7 +103,7 @@ function deleteModel(id, username)
 		jQuery.ajax({
 			data: {'id' : id, 'csrf_token_name' : token},
 			type: "POST",
-			url: "accountDelete",
+			url: "<?php echo base_url();?>product/productTypeDelete",
 			success: function(newToken) {
 				$('#token').val(newToken);
 				$('#sortable tr[data-id = ' + id + ']').remove();
@@ -140,7 +146,7 @@ $(function() {
 		    	$.ajax({
 					data: {'id' : needUpdataId, 'order' : needUpdataOrder, 'csrf_token_name' : token},
 					type: "POST",
-					url: "accountOrder",
+					url: "<?php echo base_url();?>product/productTypeOrder",
 					success: function(newToken) {
 						$('#token').val(newToken);
 					},

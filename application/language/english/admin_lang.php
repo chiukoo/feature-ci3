@@ -39,8 +39,24 @@ $lang['product_project_list'] = array(
     'save' => 'Save',
 );
 
+$lang['product_project_add'] = array(
+    'main_title' => 'Product Project Add',
+    'nav_index' => 'Index',
+    'title' => 'please enter your project',
+    'add_submit' => 'Submit',
+    'add_reset' => 'Reset',
+);
+
+$lang['product_project_edit'] = array(
+    'main_title' => 'Product Project Edit',
+    'nav_index' => 'Index',
+    'title' => 'please enter your project',
+    'add_submit' => 'Submit',
+    'add_reset' => 'Reset',
+);
+
 $lang['product_type_list'] = array(
-    'main_title' => 'Product Type List',
+    'main_title' => 'List',
     'nav_index' => 'Index',
     'table_list_name' => 'Name',
     'table_list_img' => 'product images',
@@ -55,18 +71,24 @@ $lang['product_type_list'] = array(
     'save' => 'Save',
 );
 
-$lang['product_project_add'] = array(
-    'main_title' => 'Product Project Add',
+$lang['product_type_add'] = array(
+    'main_title' => 'Add',
     'nav_index' => 'Index',
-    'title' => 'please enter your project',
+    'title' => 'please enter your type',
+    'images' => 'Add Images',
+    'img_url' => 'please enter images url',
+    'select_img' => 'select image',
     'add_submit' => 'Submit',
     'add_reset' => 'Reset',
 );
 
-$lang['product_project_edit'] = array(
+$lang['product_type_edit'] = array(
     'main_title' => 'Product Project Edit',
     'nav_index' => 'Index',
+    'images' => 'Edit Images',
     'title' => 'please enter your project',
+    'img_url' => 'images url',
+    'select_img' => 'select image',
     'add_submit' => 'Submit',
     'add_reset' => 'Reset',
 );
