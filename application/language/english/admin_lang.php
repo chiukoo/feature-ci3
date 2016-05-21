@@ -43,6 +43,7 @@ $lang['product_type_list'] = array(
     'main_title' => 'Product Type List',
     'nav_index' => 'Index',
     'table_list_name' => 'Name',
+    'table_list_img' => 'product images',
     'table_list_create_dt' => 'Create Time',
     'table_list_actions' => 'Actions',
     'product_add' => 'Product Type Add',

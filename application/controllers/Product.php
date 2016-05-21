@@ -27,9 +27,14 @@ class Product extends CI_Controller {
         //取出左邊項目名稱
         $this->load->model('product_project_model');
 
+        //判斷active
+        $urlData = $this->uri->uri_to_assoc(3);
+
+        $active = empty($urlData) ? 'product' : $urlData['project'];
+
         //設定layout data
         $this->layoutData = array(
-            'left_active' => 'product',
+            'left_active' => $active,
             'layout'  => $this->lang->line('layout'),
             'project' => $this->product_project_model->getAllData(),
             'layoutToken' => $this->security->get_csrf_token_name(),
@@ -203,6 +208,8 @@ class Product extends CI_Controller {
      */
     public function productTypeList()
     {
+        $this->load->model('product_type_model');
+
         //account data
         $data = array(
             'lang' => $this->lang->line('product_type_list'),

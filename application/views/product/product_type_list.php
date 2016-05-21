@@ -23,15 +23,16 @@
 <div class="panel panel-default">
 	<div class="panel-body">
 		<div style="text-align: right;">
-			<a href="productTypeAdd"><button class="btn btn-white"><?php echo $lang['product_type_add'];?></button></a>
+			<a href="productTypeAdd"><button class="btn btn-white"><?php echo $lang['product_add'];?></button></a>
 		</div>
 		<table class="table table-bordered table-striped" id="dataList">
 			<thead>
 				<tr>
-					<th class="no-sorting">
+					<!--<th class="no-sorting">
 						<input type="checkbox" class="cbr">
-					</th>
+					</th>-->
 					<th><?php echo $lang['table_list_name']; ?></th>
+					<th><?php echo $lang['table_list_img']; ?></th>
 					<th><?php echo $lang['table_list_create_dt']; ?></th>
 					<th><?php echo $lang['table_list_actions']; ?></th>
 				</tr>
@@ -40,18 +41,18 @@
 			<tbody class="middle-align" id="sortable">
 				<?php foreach ($data as $value) {?>
 					<tr data-id="<?php echo $value['id']?>" data-order="<?php echo $value['order']?>">
-						<td>
+						<!--<td>
 							<input type="checkbox" class="cbr">
-						</td>
-						<td><?php echo $value['username'];?></td>
+						</td>-->
+						<td><?php echo $value['title'];?></td>
 						<td><?php echo $value['create_dt'];?></td>
 						<td>
 							<a href="accountEdit/id/<?php echo $value['id'];?>" class="btn btn-secondary btn-sm btn-icon icon-left">
-								<?php echo $lang['product_type_edit'];?>
+								<?php echo $lang['product_edit'];?>
 							</a>
 							
-							<a href="javascript:;" onclick="deleteModel('<?php echo $value['id'];?>', '<?php echo $value['username'];?>');" class="btn btn-danger btn-sm btn-icon icon-left">
-								<?php echo $lang['product_type_delete'];?>
+							<a href="javascript:;" onclick="deleteModel('<?php echo $value['id'];?>', '<?php echo $value['title'];?>');" class="btn btn-danger btn-sm btn-icon icon-left">
+								<?php echo $lang['product_delete'];?>
 							</a>
 						</td>
 					</tr>

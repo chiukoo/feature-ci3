@@ -43,6 +43,7 @@ $lang['product_type_list'] = array(
     'main_title' => '產品分類列表',
     'nav_index' => '首頁',
     'table_list_name' => '產品名稱',
+    'table_list_img' => '產品圖片',
     'table_list_create_dt' => '創立時間',
     'table_list_actions' => '功能',
     'product_add' => '產品分類新增',

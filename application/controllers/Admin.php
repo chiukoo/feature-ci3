@@ -24,10 +24,14 @@ class Admin extends CI_Controller {
             $this->lang->load($this->config->item('language_admin_file_name'), 'chinese');
         }
 
+        //取出左邊項目名稱
+        $this->load->model('product_project_model');
+
         //設定layout data
         $this->layoutData = array(
             'left_active' => 'account',
             'layout'  => $this->lang->line('layout'),
+            'project' => $this->product_project_model->getAllData(),
             'layoutToken' => $this->security->get_csrf_token_name(),
             'layoutHash' => $this->security->get_csrf_hash(),
         );

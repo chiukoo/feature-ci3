@@ -129,15 +129,15 @@
 					</li>-->
 
 					<li class="<?php if ($left_active == 'account') { echo 'active';}?>">
-						<a href="../admin/accountList"><i class="linecons-star"></i><span class="title"><?php echo $layout['left_account_setting']; ?></span></a>
+						<a href="<?php echo base_url(); ?>admin/accountList"><i class="linecons-star"></i><span class="title"><?php echo $layout['left_account_setting']; ?></span></a>
 					</li>
 
 					<li class="<?php if ($left_active == 'product') { echo 'active';}?>">
-						<a href="../product/productProjectList"><i class="linecons-star"></i><span class="title"><?php echo $layout['left_product_project_setting']; ?></span></a>
+						<a href="<?php echo base_url(); ?>product/productProjectList"><i class="linecons-star"></i><span class="title"><?php echo $layout['left_product_project_setting']; ?></span></a>
 					</li>
 					<?php foreach ($project as $projects) { ?>
-						<li>
-							<a href="../product/productTypeList/project/<?php echo $projects['id']?>"><i class="linecons-star"></i><span class="title"><?php echo $projects['title']; ?></span></a>
+						<li class="<?php if ($left_active ==  $projects['id']) { echo 'active';}?>">
+							<a href="<?php echo base_url(); ?>product/productTypeList/project/<?php echo $projects['id'];?>"><i class="linecons-star"></i><span class="title"><?php echo $projects['title']; ?></span></a>
 						</li>
 					<?php } ?>
 
