@@ -11,3 +11,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |	http://codeigniter.com/user_guide/general/hooks.html
 |
 */
+$hook['pre_system'] = array(
+	'class'    => 'allow_csrf',
+	'function' => 'allow_empty_csrf_elfinder',
+	'filename' => 'allow_empty_csrf_elfinder.php',
+	'filepath' => 'hooks',
+	'params'   => array()
+);
+
