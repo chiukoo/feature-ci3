@@ -136,7 +136,7 @@
 						<a href="<?php echo base_url(); ?>product/productProjectList"><i class="linecons-star"></i><span class="title"><?php echo $layout['left_product_project_setting']; ?></span></a>
 					</li>
 					<?php foreach ($project as $projects) { ?>
-						<li class="<?php if ($left_active ==  $projects['id']) { echo 'active';}?>">
+						<li data-id="<?php echo $projects['id'];?>" class="<?php if ($left_active ==  $projects['id']) { echo 'active';}?>">
 							<a href="<?php echo base_url(); ?>product/productTypeList/project/<?php echo $projects['id'];?>"><i class="linecons-star"></i><span class="title"><?php echo $projects['title']; ?></span></a>
 						</li>
 					<?php } ?>

@@ -214,7 +214,7 @@ class Product extends CI_Controller {
         //data
         $data = array(
             'lang' => $this->lang->line('product_type_list'),
-            'data' => $this->product_type_model->getAllData(),
+            'data' => $this->product_type_model->getAllDataByField($this->urlData['project']),
             'token' => $this->security->get_csrf_token_name(),
             'getUrlData' => $this->urlData['project'],
             'hash' => $this->security->get_csrf_hash(),

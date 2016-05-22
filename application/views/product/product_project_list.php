@@ -101,6 +101,7 @@ function deleteModel(event, id, username)
 			success: function(newToken) {
 				$('#token').val(newToken);
 				$('#sortable tr[data-id = ' + id + ']').remove();
+				$('#main-menu li[data-id = ' + id + ']').remove();
 			},
 	        error: function(msg){
 	            alert(msg);

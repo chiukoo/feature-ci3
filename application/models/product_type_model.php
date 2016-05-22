@@ -69,7 +69,11 @@ class Product_type_model extends CI_Model {
 	 * @return bool true on success, false on failure
 	 */
 	public function deleteById($id) {
-		return $this->db->delete(self::DB_NAME, array('id' => $id));
+		if ($this->db->delete('product_inner', array('type' => $id))) {
+			return $this->db->delete(self::DB_NAME, array('id' => $id));
+		} else {
+			return FALSE;
+		}
 	}
 
 	/**
@@ -79,6 +83,18 @@ class Product_type_model extends CI_Model {
 	 */
 	public function getAllData() {
 		return $this->db->order_by('order', 'asc')->get(self::DB_NAME)->result_array();
+	}
+
+	/**
+	 * get_user function.
+	 * 
+	 * @return array
+	 */
+	public function getAllDataByField($project) {
+		$where = array(
+			'project' => $project,
+		);
+		return $this->db->order_by('order', 'asc')->get_where(self::DB_NAME, $where)->result_array();
 	}
 
 	/**

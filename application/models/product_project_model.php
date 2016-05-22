@@ -63,11 +63,19 @@ class Product_project_model extends CI_Model {
 	}
 
 	/**
-	 * delete By Id
+	 * delete By Id (需也刪除 product_type and product_inner)
 	 * @return bool true on success, false on failure
 	 */
 	public function deleteById($id) {
-		return $this->db->delete(self::DB_NAME, array('id' => $id));
+		if ($this->db->delete('product_type', array('project' => $id))) {
+			if ($this->db->delete('product_inner', array('project' => $id))) {
+				return $this->db->delete(self::DB_NAME, array('id' => $id));
+			} else {
+				return FALSE;
+			}
+		} else {
+			return FALSE;
+		}
 	}
 
 	/**
