@@ -41,7 +41,7 @@
 			
 			<tbody class="middle-align" id="sortable">
 				<?php foreach ($data as $value) {?>
-					<tr data-id="<?php echo $value['id']?>" data-order="<?php echo $value['order']?>">
+					<tr onclick="window.location.href = '<?php echo base_url('product/productInnerList/project/'.$getUrlData.'/type/'.$value['id']);?>'" data-id="<?php echo $value['id']?>" data-order="<?php echo $value['order']?>">
 						<!--<td>
 							<input type="checkbox" class="cbr">
 						</td>-->
@@ -57,7 +57,7 @@
 								<?php echo $lang['product_edit'];?>
 							</a>
 							
-							<a href="javascript:;" onclick="deleteModel('<?php echo $value['id'];?>', '<?php echo $value['title'];?>');" class="btn btn-danger btn-sm btn-icon icon-left">
+							<a href="javascript:;" onclick="deleteModel(event, '<?php echo $value['id'];?>', '<?php echo $value['title'];?>');" class="btn btn-danger btn-sm btn-icon icon-left">
 								<?php echo $lang['product_delete'];?>
 							</a>
 						</td>
@@ -95,8 +95,9 @@
 <script>
 
 //delete
-function deleteModel(id, username)
+function deleteModel(event, id, username)
 {
+	event.stopPropagation();
 	var token = $('#token').val();
 	$('#delete .modal-body').html('<?php echo $lang['sure_delete'];?> <span class="red">' + username + '</span> ?');
 	$('#delete').appendTo("body").modal('show', {backdrop: 'static'}).one('click', '#sure', function() {

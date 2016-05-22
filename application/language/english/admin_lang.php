@@ -71,6 +71,22 @@ $lang['product_type_list'] = array(
     'save' => 'Save',
 );
 
+$lang['product_type_list'] = array(
+    'main_title' => 'List',
+    'nav_index' => 'Index',
+    'table_list_name' => 'Name',
+    'table_list_img' => 'product images',
+    'table_list_create_dt' => 'Create Time',
+    'table_list_actions' => 'Actions',
+    'product_add' => 'Product Inner Add',
+    'product_edit' => 'Edit',
+    'product_delete' => 'Delete',
+    'sure_delete' => 'Are you sure delete',
+    'confirm_delete' => 'Delete',
+    'close' => 'Close',
+    'save' => 'Save',
+);
+
 $lang['product_type_add'] = array(
     'main_title' => 'Add',
     'nav_index' => 'Index',
@@ -82,8 +98,30 @@ $lang['product_type_add'] = array(
     'add_reset' => 'Reset',
 );
 
+$lang['product_inner_add'] = array(
+    'main_title' => 'Add',
+    'nav_index' => 'Index',
+    'title' => 'please enter your inner',
+    'images' => 'Add Images',
+    'img_url' => 'please enter images url',
+    'select_img' => 'select image',
+    'add_submit' => 'Submit',
+    'add_reset' => 'Reset',
+);
+
 $lang['product_type_edit'] = array(
     'main_title' => 'Product Project Edit',
+    'nav_index' => 'Index',
+    'images' => 'Edit Images',
+    'title' => 'please enter your project',
+    'img_url' => 'images url',
+    'select_img' => 'select image',
+    'add_submit' => 'Submit',
+    'add_reset' => 'Reset',
+);
+
+$lang['product_inner_edit'] = array(
+    'main_title' => 'Product Inner Edit',
     'nav_index' => 'Index',
     'images' => 'Edit Images',
     'title' => 'please enter your project',

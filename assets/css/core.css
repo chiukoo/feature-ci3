@@ -20,6 +20,13 @@
 .TablelistImg {
   width: 60px;
 }
+.ui-sortable-handle {
+  cursor: pointer;
+}
+
+.ui-sortable-handle:hover td {
+  background: #E2E2E2 !important;
+}
 
 .ps-container:hover .ps-scrollbar-x-rail,
 .ps-container.hover .ps-scrollbar-x-rail {

@@ -7,8 +7,11 @@
 			<li>
 				<a href="#"><i class="fa-home"></i><?php echo $lang['nav_index'];?></a>
 			</li>
+			<li>
+				<a href="<?php echo base_url();?>product/productTypeList/project/<?php echo $getUrlData;?>"><?php echo $project;?></a>
+			</li>
 			<li class="active">
-				<strong><?php echo $project;?><?php echo $lang['main_title'];?></strong>
+				<strong><?php echo $type;?><?php echo $lang['main_title'];?></strong>
 			</li>
 		</ol>
 	</div>
@@ -18,7 +21,7 @@
 	<div class="col-sm-12">
 		<div class="panel panel-default">
 			<div class="panel-body">
-				<form role="form" class="validate" method="post" action="<?php echo base_url('product/productTypeAddPost'); ?>">
+				<form role="form" class="validate" method="post" action="<?php echo base_url('product/productInnerAddPost'); ?>">
 					<div class="form-horizontal">
 						<div class="form-group">
 							<label class="col-sm-2 control-label" ><?php echo $lang['title']?></label>
@@ -44,6 +47,7 @@
 					</div>
 					<input type="hidden" name="<?php echo $token;?>" value="<?php echo $hash;?>" />
 					<input type="hidden" name="getProject" value="<?php echo $getUrlData;?>" />
+					<input type="hidden" name="getType" value="<?php echo $getUrlType;?>" />
 				</form>
 			</div>
 		</div>

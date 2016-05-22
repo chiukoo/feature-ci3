@@ -274,7 +274,7 @@
 			$.ajax({
 				data: {'lang' : lang, 'csrf_token_name' : token},
 				type: "POST",
-				url: "changeLanguage",
+				url: "<?php echo base_url('admin/changeLanguage'); ?>",
 				success: function(msg) {
 					location.reload();
 				},

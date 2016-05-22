@@ -18,19 +18,19 @@
 	<div class="col-sm-12">
 		<div class="panel panel-default">
 			<div class="panel-body">
-				<form role="form" class="validate" method="post" action="<?php echo base_url('product/productTypeAddPost'); ?>">
+				<form role="form" class="validate" method="post" action="<?php echo base_url('product/productInnerEditPost'); ?>">
 					<div class="form-horizontal">
 						<div class="form-group">
 							<label class="col-sm-2 control-label" ><?php echo $lang['title']?></label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" name="title" data-validate="required" data-msg-required="<?php echo $lang['title'];?>" placeholder="" />
+								<input type="text" class="form-control" name="title" data-validate="required" data-msg-required="<?php echo $lang['title'];?>" value="<?php echo $userData['0']['title'];?>" />
 							</div>
 						</div>
 						<div class="form-group-separator"></div>
 						<div class="form-group">
 							<label class="col-sm-2 control-label" ><?php echo $lang['images']?></label>
 							<div class="col-sm-6">
-								<input type="text" class="form-control" id="imgUrl" name="img_url" placeholder="<?php echo $lang['img_url'];?>" readonly="readonly"/>
+								<input type="text" class="form-control" id="imgUrl" name="img_url" placeholder="<?php echo $lang['img_url'];?>" readonly="readonly" value="<?php echo $userData['0']['img_url'];?>"/>
 							</div>
 							<div class="col-sm-2">
 								<button type="button" class="btn btn-success btn-sm" onclick="BrowseServer('imgUrl');"><?php echo $lang['select_img'];?></button>
@@ -44,6 +44,8 @@
 					</div>
 					<input type="hidden" name="<?php echo $token;?>" value="<?php echo $hash;?>" />
 					<input type="hidden" name="getProject" value="<?php echo $getUrlData;?>" />
+					<input type="hidden" name="getId" value="<?php echo $userData['0']['id'];?>" />
+					<input type="hidden" name="getType" value="<?php echo $getUrlType;?>" />
 				</form>
 			</div>
 		</div>
