@@ -1,14 +1,20 @@
 <div class="page-title">
 	<div class="title-env">
-		<h1 class="title"><?php echo $project;?><?php echo $lang['main_title'];?></h1>
+		<h1 class="title"><?php echo $userData['0']['title'];?><?php echo $lang['main_title'];?></h1>
 	</div>
 	<div class="breadcrumb-env">
 		<ol class="breadcrumb bc-1">
 			<li>
 				<a href="#"><i class="fa-home"></i><?php echo $lang['nav_index'];?></a>
 			</li>
+			<li>
+				<a href="<?php echo base_url();?>product/productTypeList/project/<?php echo $getUrlData;?>"><?php echo $project;?></a>
+			</li>
+			<li>
+				<a href="<?php echo base_url();?>product/productTypeList/project/<?php echo $getUrlData;?>/type/<?php echo $getUrlType;?>"><?php echo $type;?></a>
+			</li>
 			<li class="active">
-				<strong><?php echo $project;?><?php echo $lang['main_title'];?></strong>
+				<strong><?php echo $userData['0']['title'];?><?php echo $lang['main_title'];?></strong>
 			</li>
 		</ol>
 	</div>
@@ -18,7 +24,7 @@
 	<div class="col-sm-12">
 		<div class="panel panel-default">
 			<div class="panel-body">
-				<form role="form" class="validate" method="post" action="<?php echo base_url('product/productInnerEditPost'); ?>">
+				<form role="form" class="validate" method="post" action="<?php echo base_url('product/productDetailsEditPost'); ?>">
 					<div class="form-horizontal">
 						<div class="form-group">
 							<label class="col-sm-2 control-label" ><?php echo $lang['title']?></label>
@@ -37,6 +43,20 @@
 							</div>
 						</div>
 						<div class="form-group-separator"></div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label" ><?php echo $lang['sample']?></label>
+							<div class="col-sm-10">
+								<textarea id="ckeditor01" class="ckeditor" name="content_sample" rows="10" cols="80"><?php echo $userData['0']['content_sample'];?></textarea>
+							</div>
+						</div>
+						<div class="form-group-separator"></div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label" ><?php echo $lang['details']?></label>
+							<div class="col-sm-10">
+								<textarea id="ckeditor02" class="ckeditor" name="content_details" rows="10" cols="80"><?php echo $userData['0']['content_details'];?></textarea>
+							</div>
+						</div>
+						<div class="form-group-separator"></div>
 					</div>
 					<div class="form-group col-sm-offset-2">
 						<button type="submit" class="btn btn-success"><?php echo $lang['add_submit'];?></button>
@@ -46,6 +66,7 @@
 					<input type="hidden" name="getProject" value="<?php echo $getUrlData;?>" />
 					<input type="hidden" name="getId" value="<?php echo $userData['0']['id'];?>" />
 					<input type="hidden" name="getType" value="<?php echo $getUrlType;?>" />
+					<input type="hidden" name="getInner" value="<?php echo $getUrlInner;?>" />
 				</form>
 			</div>
 		</div>

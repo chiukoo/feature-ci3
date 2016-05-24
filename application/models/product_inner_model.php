@@ -70,7 +70,11 @@ class Product_inner_model extends CI_Model {
 	 * @return bool true on success, false on failure
 	 */
 	public function deleteById($id) {
-		return $this->db->delete(self::DB_NAME, array('id' => $id));
+		if ($this->db->delete(self::DB_NAME, array('id' => $id))) {
+			return $this->db->delete('product_details', array('inner' => $id));
+		} else {
+			return FALSE;
+		}
 	}
 
 	/**

@@ -70,7 +70,11 @@ class Product_type_model extends CI_Model {
 	 */
 	public function deleteById($id) {
 		if ($this->db->delete('product_inner', array('type' => $id))) {
-			return $this->db->delete(self::DB_NAME, array('id' => $id));
+			if ($this->db->delete('product_details', array('type' => $id))) {
+				return $this->db->delete(self::DB_NAME, array('id' => $id));
+			} else {
+				return FALSE;
+			}
 		} else {
 			return FALSE;
 		}

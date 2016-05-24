@@ -59,7 +59,7 @@
 						</td>
 						<td><?php echo $value['create_dt'];?></td>
 						<td>
-							<a href="<?php echo base_url();?>product/productInnerEdit/id/<?php echo $value['id'];?>/project/<?php echo $getUrlData;?>/type/<?php echo $getUrlType;?>" class="btn btn-secondary btn-sm btn-icon icon-left">
+							<a href="<?php echo base_url();?>product/productDetailsEdit/id/<?php echo $value['id'];?>/project/<?php echo $getUrlData;?>/type/<?php echo $getUrlType;?>/inner/<?php echo $getUrlInner;?>" class="btn btn-secondary btn-sm btn-icon icon-left">
 								<?php echo $lang['product_edit'];?>
 							</a>
 							
@@ -110,7 +110,7 @@ function deleteModel(event, id, username)
 		jQuery.ajax({
 			data: {'id' : id, 'csrf_token_name' : token},
 			type: "POST",
-			url: "<?php echo base_url();?>product/productInnerDelete",
+			url: "<?php echo base_url();?>product/productDetailsDelete",
 			success: function(newToken) {
 				$('#token').val(newToken);
 				$('#sortable tr[data-id = ' + id + ']').remove();
@@ -153,7 +153,7 @@ $(function() {
 		    	$.ajax({
 					data: {'id' : needUpdataId, 'order' : needUpdataOrder, 'csrf_token_name' : token},
 					type: "POST",
-					url: "<?php echo base_url();?>product/productInnerOrder",
+					url: "<?php echo base_url();?>product/productDetailsOrder",
 					success: function(newToken) {
 						$('#token').val(newToken);
 					},

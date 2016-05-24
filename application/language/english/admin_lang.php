@@ -124,7 +124,8 @@ $lang['product_details_add'] = array(
     'main_title' => 'Add',
     'nav_index' => 'Index',
     'title' => 'please enter your details',
-    'right_ck' => 'please enter right content',
+    'sample' => 'please enter product sample',
+    'details' => 'please enter product details',
     'images' => 'Add Images',
     'img_url' => 'please enter images url',
     'select_img' => 'select image',
@@ -132,6 +133,18 @@ $lang['product_details_add'] = array(
     'add_reset' => 'Reset',
 );
 
+$lang['product_details_edit'] = array(
+    'main_title' => 'Edit',
+    'nav_index' => 'Index',
+    'title' => 'please enter your details',
+    'sample' => 'please enter product sample',
+    'details' => 'please enter product details',
+    'images' => 'Edit Images',
+    'img_url' => 'please enter images url',
+    'select_img' => 'select image',
+    'add_submit' => 'Submit',
+    'add_reset' => 'Reset',
+);
 $lang['product_type_edit'] = array(
     'main_title' => 'Product Project Edit',
     'nav_index' => 'Index',

@@ -118,8 +118,22 @@ $lang['product_details_add'] = array(
     'main_title' => '新增',
     'nav_index' => '首頁',
     'title' => '輸入產品細項名稱',
-    'right_ck' => '輸入右側',
+    'sample' => '輸入產品簡述',
+    'details' => '輸入產品詳細敘述',
     'images' => '新增圖片',
+    'img_url' => '圖片連結',
+    'select_img' => '選擇圖片',
+    'add_submit' => '送出',
+    'add_reset' => '重製',
+);
+
+$lang['product_details_edit'] = array(
+    'main_title' => '編輯',
+    'nav_index' => '首頁',
+    'title' => '輸入產品細項名稱',
+    'sample' => '輸入產品簡述',
+    'details' => '輸入產品詳細敘述',
+    'images' => '編輯圖片',
     'img_url' => '圖片連結',
     'select_img' => '選擇圖片',
     'add_submit' => '送出',

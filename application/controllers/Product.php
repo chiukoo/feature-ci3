@@ -614,11 +614,14 @@ class Product extends CI_Controller {
         } else {
             $title = $this->input->post('title');
             $img_url = $this->input->post('img_url');
+            $content_sample  = $this->input->post('content_sample');
+            $content_details = $this->input->post('content_details');
             $getProject = $this->input->post('getProject');
             $getType = $this->input->post('getType');
+            $getInner = $this->input->post('getInner');
 
-            if ($this->product_details_model->createUser($title, $img_url, $getProject, $getType)) {
-                redirect('product/productInnerList/project/'.$getProject.'/type/'.$getType);
+            if ($this->product_details_model->createUser($title, $content_sample, $content_details, $img_url, $getProject, $getType, $getInner)) {
+                redirect('product/productDetailsList/project/'.$getProject.'/type/'.$getType.'/inner/'.$getInner);
             } else {
                  echo "<script>alert('Please try again')</script>";
             }
@@ -632,28 +635,20 @@ class Product extends CI_Controller {
     {
         //data
         $data = array(
-            'lang' => $this->lang->line('product_inner_edit'),
+            'lang' => $this->lang->line('product_details_edit'),
             'token' => $this->security->get_csrf_token_name(),
             'hash' => $this->security->get_csrf_hash(),
             'getUrlData' => $this->urlData['project'],
             'getUrlType' => $this->urlData['type'],
+            'getUrlInner' => $this->urlData['inner'],
             'userData' => $this->product_details_model->selectById($this->urlData['id']),
+            'project' => $this->product_project_model->getFieldById('title', $this->urlData['project']),
+            'type' => $this->product_type_model->getFieldById('title', $this->urlData['type']),
+            'inner' => $this->product_inner_model->getFieldById('title', $this->urlData['inner']),
         );
 
-        foreach ($this->layoutData['project'] as $project) {
-            if ($project['id'] == $this->urlData['project']) {
-                $data['project'] = $project['title'];
-            }
-        }
-
-        foreach ($this->layoutData['type'] as $type) {
-            if ($type['id'] == $this->urlData['type']) {
-                $data['type'] = $type['title'];
-            }
-        }
-
         //layout data
-        $this->layoutData['content'] = $this->load->view('product/product_inner_edit', $data, true);
+        $this->layoutData['content'] = $this->load->view('product/product_details_edit', $data, true);
         $this->load->view('admin/layout', $this->layoutData);
     }
 
@@ -683,11 +678,14 @@ class Product extends CI_Controller {
             $id = $this->input->post('getId');
             $title = $this->input->post('title');
             $img_url = $this->input->post('img_url');
+            $content_sample  = $this->input->post('content_sample');
+            $content_details = $this->input->post('content_details');
             $getProject = $this->input->post('getProject');
             $getType = $this->input->post('getType');
+            $getInner = $this->input->post('getInner');
 
-            if ($this->product_details_model->updateFieldById($id, $title, $img_url)) {
-                redirect('product/productInnerList/project/'.$getProject.'/type/'.$getType);
+            if ($this->product_details_model->updateFieldById($id, $title, $content_sample, $content_details, $img_url, $getProject, $getType, $getInner)) {
+                redirect('product/productDetailsList/project/'.$getProject.'/type/'.$getType.'/inner/'.$getInner);
             } else {
                  echo "<script>alert('Please try again')</script>";
                  echo "<script>history.go(-1)</script>";

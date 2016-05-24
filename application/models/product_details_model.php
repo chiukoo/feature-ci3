@@ -23,17 +23,20 @@ class Product_details_model extends CI_Model {
 	 * 
 	 * @return bool true on success, false on failure
 	 */
-	public function createUser($title, $img_url, $getProject, $getType) {
+	public function createUser($title, $content_sample, $content_details, $img_url, $getProject, $getType, $getInner) {
 		//取得最後ordee
 		$last_id = $this->db->limit(1)->order_by('order', 'desc')->get(self::DB_NAME)->row('order');
 		$data = array(
-			'title'      => $title,
-			'img_url'    => $img_url,
-			'create_dt'  => date('Y-m-d H:i:s'),
-			'order'      => $last_id + 1,
-			'project'    => $getProject,
-			'type'       => $getType,
-			'lang'       => $this->session->dataLang
+			'title'           => $title,
+			'img_url'         => $img_url,
+			'create_dt'  	  => date('Y-m-d H:i:s'),
+			'order'           => $last_id + 1,
+			'content_sample'  => $content_sample,
+			'content_details' => $content_details,
+			'project'    	  => $getProject,
+			'type'       	  => $getType,
+			'inner'           => $getInner,
+			'lang'            => $this->session->dataLang
 		);
 
 		return $this->db->insert(self::DB_NAME, $data);
@@ -57,10 +60,15 @@ class Product_details_model extends CI_Model {
 	 * update
 	 * @return bool true on success, false on failure
 	 */
-	public function updateFieldById($id, $title, $img_url) {
+	public function updateFieldById($id, $title, $content_sample, $content_details, $img_url, $getProject, $getType, $getInner) {
 		$data = array(
 			'title'   => $title,
-			'img_url' => $img_url,
+			'content_sample'   => $content_sample,
+			'content_details'   => $content_details,
+			'img_url'   => $img_url,
+			'project' => $getProject,
+			'type' => $getType,
+			'inner' => $getInner,
 		);
 		return $this->db->update(self::DB_NAME, $data, array('id' => $id));
 	}

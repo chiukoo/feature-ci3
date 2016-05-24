@@ -12,7 +12,7 @@
 				<a href="<?php echo base_url();?>product/productTypeList/project/<?php echo $getUrlData;?>"><?php echo $project;?></a>
 			</li>
 			<li>
-				<a href="<?php echo base_url();?>product/productTypeList/project/<?php echo $getUrlData;?>/type/<?php echo $getUrlType;?>"><?php echo $type;?></a>
+				<a href="<?php echo base_url();?>product/productInnerList/project/<?php echo $getUrlData;?>/type/<?php echo $getUrlType;?>"><?php echo $type;?></a>
 			</li>
 			<li class="active">
 				<strong><?php echo $inner;?><?php echo $lang['main_title'];?></strong>
@@ -26,7 +26,7 @@
 	<div class="col-sm-12">
 		<div class="panel panel-default">
 			<div class="panel-body">
-				<form role="form" class="validate" method="post" action="<?php echo base_url('product/productInnerAddPost'); ?>">
+				<form role="form" class="validate" method="post" action="<?php echo base_url('product/productDetailsAddPost'); ?>">
 					<div class="form-horizontal">
 						<div class="form-group">
 							<label class="col-sm-2 control-label" ><?php echo $lang['title']?></label>
@@ -46,9 +46,16 @@
 						</div>
 						<div class="form-group-separator"></div>
 						<div class="form-group">
-							<label class="col-sm-2 control-label" ><?php echo $lang['right_ck']?></label>
+							<label class="col-sm-2 control-label" ><?php echo $lang['sample']?></label>
 							<div class="col-sm-10">
-								<textarea id="tes1" class="ckeditor" rows="10" cols="80"></textarea>
+								<textarea id="ckeditor01" class="ckeditor" name="content_sample" rows="10" cols="80"></textarea>
+							</div>
+						</div>
+						<div class="form-group-separator"></div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label" ><?php echo $lang['details']?></label>
+							<div class="col-sm-10">
+								<textarea id="ckeditor02" class="ckeditor" name="content_details" rows="10" cols="80"></textarea>
 							</div>
 						</div>
 						<div class="form-group-separator"></div>
@@ -60,6 +67,7 @@
 					<input type="hidden" name="<?php echo $token;?>" value="<?php echo $hash;?>" />
 					<input type="hidden" name="getProject" value="<?php echo $getUrlData;?>" />
 					<input type="hidden" name="getType" value="<?php echo $getUrlType;?>" />
+					<input type="hidden" name="getInner" value="<?php echo $getUrlInner;?>" />
 				</form>
 			</div>
 		</div>
