@@ -43,6 +43,38 @@ INSERT INTO `account` VALUES (6,'admin','$2y$10$EFefNlSXHJqD8.Hv78KSv.uJsoaxJuKs
 UNLOCK TABLES;
 
 --
+-- Table structure for table `product_details`
+--
+
+DROP TABLE IF EXISTS `product_details`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `product_details` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `content_sample` text CHARACTER SET utf8 NOT NULL,
+  `content_details` text CHARACTER SET utf8 NOT NULL,
+  `img_url` varchar(200) CHARACTER SET utf8 NOT NULL,
+  `create_dt` datetime NOT NULL,
+  `order` int(5) NOT NULL,
+  `project` int(5) DEFAULT NULL,
+  `type` int(11) DEFAULT NULL,
+  `inner` int(5) DEFAULT NULL,
+  `lang` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `product_details`
+--
+
+LOCK TABLES `product_details` WRITE;
+/*!40000 ALTER TABLE `product_details` DISABLE KEYS */;
+/*!40000 ALTER TABLE `product_details` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `product_inner`
 --
 
@@ -59,7 +91,7 @@ CREATE TABLE `product_inner` (
   `type` int(5) NOT NULL,
   `img_url` varchar(200) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -68,7 +100,7 @@ CREATE TABLE `product_inner` (
 
 LOCK TABLES `product_inner` WRITE;
 /*!40000 ALTER TABLE `product_inner` DISABLE KEYS */;
-INSERT INTO `product_inner` VALUES (6,'aa','ch','2016-05-22 21:08:16',1,3,5,'/feature-ci3/assets/filemanager/userfiles/img/2.JPG'),(14,'123','ch','2016-05-22 22:13:37',2,3,5,'');
+INSERT INTO `product_inner` VALUES (14,'123','ch','2016-05-22 22:13:37',2,3,5,''),(15,'inner1','ch','2016-05-23 21:12:40',1,4,12,'/feature-ci3/assets/filemanager/userfiles/img/1462809525818.jpg'),(16,'inner3','ch','2016-05-23 21:24:38',2,4,13,''),(17,'ggg','ch','2016-05-24 20:18:54',3,3,5,'/feature-ci3/assets/filemanager/userfiles/img/W_Motors_Lykan_HyperSport.jpg'),(18,'sdasdasd','ch','2016-05-24 20:19:57',4,3,5,'/feature-ci3/assets/filemanager/userfiles/img/W_Motors_Lykan_HyperSport.jpg');
 /*!40000 ALTER TABLE `product_inner` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -137,4 +169,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-05-23 20:54:23
+-- Dump completed on 2016-05-25  0:02:34
