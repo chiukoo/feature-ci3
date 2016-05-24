@@ -82,7 +82,7 @@ class Product_type_model extends CI_Model {
 	 * @return array
 	 */
 	public function getAllData() {
-		return $this->db->order_by('order', 'asc')->get(self::DB_NAME)->result_array();
+		return $this->db->order_by('order', 'asc')->get_where(self::DB_NAME, array('lang' => $this->session->dataLang))->result_array();
 	}
 
 	/**
@@ -93,6 +93,7 @@ class Product_type_model extends CI_Model {
 	public function getAllDataByField($project) {
 		$where = array(
 			'project' => $project,
+			'lang'    => $this->session->dataLang
 		);
 		return $this->db->order_by('order', 'asc')->get_where(self::DB_NAME, $where)->result_array();
 	}
@@ -103,5 +104,14 @@ class Product_type_model extends CI_Model {
 	 */
 	public function selectById($id) {
 		return $this->db->get_where(self::DB_NAME, array('id' => $id), 1)->result_array();
+	}
+
+	/**
+	 * get field (string) by id
+	 * @return array
+	 */
+	public function getFieldById($field, $id) {
+		$result = $this->db->select($field)->get_where(self::DB_NAME, array('id' => $id), 1)->result_array();
+		return $result[0][$field];
 	}
 }

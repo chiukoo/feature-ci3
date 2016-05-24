@@ -266,6 +266,9 @@
 
 	<!-- JavaScripts initializations and stuff -->
 	<script src="<?php echo base_url(); ?>assets/js/xenon-custom.js"></script>
+
+	<!--ckeditor-->
+	<script src="<?php echo base_url('assets/ckeditor/ckeditor.js'); ?>"></script>
 	<script type="text/javascript">
 
 		$('#changeLanguage').change(function() {

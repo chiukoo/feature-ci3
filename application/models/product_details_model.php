@@ -1,9 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Product_inner_model extends CI_Model {
+class Product_details_model extends CI_Model {
 
-	const DB_NAME = 'product_inner';
+	const DB_NAME = 'product_details';
 
 	/**
 	 * __construct function.
@@ -87,10 +87,11 @@ class Product_inner_model extends CI_Model {
 	 * 
 	 * @return array
 	 */
-	public function getAllDataByField($project, $type) {
+	public function getAllDataByField($project, $type, $inner) {
 		$where = array(
 			'project' => $project,
 			'type'    => $type,
+			'inner'   => $inner,
 			'lang'    => $this->session->dataLang
 		);
 		return $this->db->order_by('order', 'asc')->get_where(self::DB_NAME, $where)->result_array();

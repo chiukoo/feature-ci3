@@ -71,7 +71,7 @@ $lang['product_type_list'] = array(
     'save' => 'Save',
 );
 
-$lang['product_type_list'] = array(
+$lang['product_inner_list'] = array(
     'main_title' => 'List',
     'nav_index' => 'Index',
     'table_list_name' => 'Name',
@@ -98,10 +98,33 @@ $lang['product_type_add'] = array(
     'add_reset' => 'Reset',
 );
 
+$lang['product_type_add'] = array(
+    'main_title' => 'Add',
+    'nav_index' => 'Index',
+    'title' => 'please enter your type',
+    'images' => 'Add Images',
+    'img_url' => 'please enter images url',
+    'select_img' => 'select image',
+    'add_submit' => 'Submit',
+    'add_reset' => 'Reset',
+);
+
 $lang['product_inner_add'] = array(
     'main_title' => 'Add',
     'nav_index' => 'Index',
     'title' => 'please enter your inner',
+    'images' => 'Add Images',
+    'img_url' => 'please enter images url',
+    'select_img' => 'select image',
+    'add_submit' => 'Submit',
+    'add_reset' => 'Reset',
+);
+
+$lang['product_details_add'] = array(
+    'main_title' => 'Add',
+    'nav_index' => 'Index',
+    'title' => 'please enter your details',
+    'right_ck' => 'please enter right content',
     'images' => 'Add Images',
     'img_url' => 'please enter images url',
     'select_img' => 'select image',

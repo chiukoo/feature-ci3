@@ -87,11 +87,38 @@ $lang['product_inner_list'] = array(
     'save' => '確認',
 );
 
+$lang['product_details_list'] = array(
+    'main_title' => '列表',
+    'nav_index' => '首頁',
+    'table_list_name' => '產品細項名稱',
+    'table_list_img' => '產品細項圖片',
+    'table_list_create_dt' => '創立時間',
+    'table_list_actions' => '功能',
+    'product_add' => '產品細項新增',
+    'product_edit' => '編輯',
+    'product_delete' => '刪除',
+    'sure_delete' => '確定要刪除',
+    'confirm_delete' => '刪除確認',
+    'close' => '關閉',
+    'save' => '確認',
+);
 
 $lang['product_inner_add'] = array(
     'main_title' => '新增',
     'nav_index' => '首頁',
     'title' => '輸入產品內容名稱',
+    'images' => '新增圖片',
+    'img_url' => '圖片連結',
+    'select_img' => '選擇圖片',
+    'add_submit' => '送出',
+    'add_reset' => '重製',
+);
+
+$lang['product_details_add'] = array(
+    'main_title' => '新增',
+    'nav_index' => '首頁',
+    'title' => '輸入產品細項名稱',
+    'right_ck' => '輸入右側',
     'images' => '新增圖片',
     'img_url' => '圖片連結',
     'select_img' => '選擇圖片',
