@@ -1,0 +1,60 @@
+*, *:before, *:after {
+    @include box-sizing;
+}
+
+html, body {
+    height: 100%;
+    font-family: $font-family;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: font-size(base);
+    color: brand-gray(base);
+}
+
+a {
+    color: #000;
+    cursor: pointer;
+    @include transition(all .3s ease);
+}
+
+.wrapper {
+	width: 100%;
+}
+.container {
+	.con {
+		&-group {
+            @include clearfix;
+            padding: 2rem;
+		}
+	}
+    .pro-overview, .news-main, .about-main {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+        flex: 1;
+    }
+}
+@include MQ(sm) {
+    .container {
+        .con-group {
+            @include display-flex;
+        }
+    }
+}
+@include MQ(md) {
+    .container {
+        .con-group {
+            @include max-w;
+        }
+    }
+    .products, .news, .about {
+        .container {
+            @include display-flex;
+            @include max-w;
+        }
+    }
+}

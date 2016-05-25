@@ -1,0 +1,38 @@
+.form {
+	//- input, select
+	.form-group {
+		position: relative;
+		@include squish(0.5);
+		//- 錯誤
+		&.error {
+		}
+		//- 正確
+		&.correct {
+		}
+	}
+	.form {
+		&-btn {
+			position: absolute;
+			right: 0;
+			a {
+				@include inline-center;
+				@include sq-size($form-h);
+				@include hover {
+					color: $brand-base;
+				}
+			}
+		}
+		&-input, &-select {
+			@include size(100%, $form-h);
+			color: brand-gray(200);
+			border: 1px solid brand-gray(500);
+			background-color: brand-gray(700);
+			@include border-radius(5px);
+			padding: 5px;
+			&:focus {
+				outline: 0;
+				border-color: $brand-base;
+			}
+		}
+	}
+}

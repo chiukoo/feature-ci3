@@ -1,0 +1,7 @@
+@mixin color-list {
+	@each $label, $map in $brand-colors {
+		&-#{$label} {
+			background-color: #{$map};
+		}
+	}
+}

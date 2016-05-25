@@ -1,0 +1,56 @@
+.news {
+	&-main {
+		padding-top: 2rem;
+		.news-list {
+			padding-left: 1rem;
+			padding-bottom: 1rem;
+		}
+	}
+	&-list {
+		padding-top: 1rem;
+		padding-right: 1rem;
+		.news-list-ttl {
+			font-weight: bold;
+			border-width: 3px;
+			padding-bottom: 1rem;
+		}
+		.td {
+			@include center-between;
+		}
+		li {
+			position: relative;
+			border-bottom: 1px solid brand-gray(500);
+			&:nth-child(even) {
+				background-color: brand-gray(700);
+			}
+			> a {
+				padding: 0.8rem 1rem;
+				&:before {
+					content: '\f105';
+					position: absolute;
+					left: 0;
+					font-family: Fonticon;
+					color: $brand-base;
+					padding-right: 5px;
+				}
+				@include hover {
+					color: $brand-base;
+				}
+			}
+			.news {
+				&-label {
+					flex: 1;
+					overflow: hidden;
+					text-overflow: ellipsis;
+				}
+				&-date {
+					width: 80px;
+					text-align: center;
+				}
+			}
+		}
+	}
+	&-content {
+		padding: 1rem;
+	}
+}

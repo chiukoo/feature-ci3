@@ -1,0 +1,40 @@
+//- colors
+$brand-colors: (
+	'base': rgb(27,168,202)
+)!default;
+@function brand-colors($key) {
+	@return map-get($brand-colors, $key);
+}
+$brand-base: map-get($brand-colors, base);
+//- color:nth($brand-base,2)
+
+$brand-gray: (
+	base: rgb(51,51,51),   //- #333333
+	100: rgb(64,64,64),    //- #404040
+	200: rgb(153,153,153), //- #999999
+	300: rgb(200,200,200), //- #c8c8c8
+	400: rgb(227,227,227), //- #e3e3e3
+	500: rgb(238,238,238), //- #eeeeee
+	600: rgb(243,243,243), //- #f3f3f3
+	700: rgb(251,251,251), //- #fbfbfb
+)!default;
+@function brand-gray($key) {
+	@return map-get($brand-gray, $key);
+}
+
+//- fonts
+$font-family: "Helvetica Neue", Helvetica, Arial, '微軟正黑體', 'Microsoft JhengHei' , sans-serif !default;
+
+$font-size: (
+	"base": 1.3rem,
+	"sm": 1.4rem,
+	"md": 1.6rem,
+	"lg": 1.8rem,
+)!default;
+@function font-size($key: base) {
+	@return map-get($font-size, $key);
+}
+
+$max-w: 960px;
+$form-h: 32px;
+$height: 52px;

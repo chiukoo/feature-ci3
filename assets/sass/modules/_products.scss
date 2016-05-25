@@ -1,0 +1,203 @@
+.pro {
+	&-slider {
+		.pro-slider-ttl,
+		.pro-slider-nav > .list-ul {
+			display: none;
+		}
+	}
+	&-header {
+		@include clearfix;
+		padding: 1rem;
+		.pro-ttl {
+			float: left;
+			font-family: 'Noto Sans TC', sans-serif;
+			padding: 1rem 0;
+			&:before {
+				content: '';
+				display: block;
+				@include size(20px, 3px);
+				background: $brand-base;
+				position: relative;
+				top: -.8rem;
+			}
+		}
+		.breadcrumbs {
+			float: right;
+			padding: 1rem 0;
+		}
+		&:after {
+			content: '';
+			display: block;
+			height: 10px;
+			background: inline-image("line_bg.png");
+		}
+	}
+	&-list {
+		padding-bottom: 3rem;
+		> ul {
+			@include clearfix;
+		}
+	}
+	&-item {
+		a {
+			display: block;
+			text-align: center;
+			padding: 2rem;
+			@include hover {
+				color: $brand-base;
+			}
+		}
+		.pro {
+			&-img {
+				text-align: center;
+			}
+			&-ttl {
+				padding-top: 1rem;
+				text-align: center;
+				.h1 {
+					font-size: 1.3rem;
+				}
+				.h2 {
+					font-size: 1.2rem;
+					color: brand-gray(200);
+				}
+			}
+		}
+	}
+}
+//- 產品頁面
+.products {
+	.pro {
+		&-overview {
+			padding-top: 2rem;
+		}
+		&-item {
+			@include gallery(6 of 12);
+		}
+		//- 詳細頁面
+		&-dtl {
+			padding: 0 1rem;
+			.pro {
+				&-img {
+					max-width: 300px;
+					@include center;
+					padding: 2rem;
+				}
+				&-ttl {
+					font-family: 'Noto Sans TC', sans-serif;
+					font-size: 1.6rem;
+					font-weight: bold;
+					letter-spacing: 1px;
+					padding-bottom: 1rem;
+				}
+				&-description {
+					> ul {
+						li {
+							display: -webkit-box;
+							display: -moz-box;
+							display: -ms-flexbox;
+							@include display-flex;
+							@include align-items(center);
+							@include justify-content(flex-start);
+							border-bottom: 1px dashed brand-gray(400);
+							padding: .5rem 1rem;
+							&:nth-child(even) {
+								background-color: brand-gray(700);
+							}
+							.des {
+								&-ttl {
+									width: 100px
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+@include MQ(tablet) {
+    .pro {
+		&-slider {
+			.list-select {
+				position: relative;
+				border-bottom: 1px solid brand-gray(500);
+				&:after {
+					content: '\f0d7';
+					@include centering;
+					@include sq-size($height);
+					position: absolute;
+					top: 0;
+					right: 0;
+					font-family: Fonticon;
+				}
+				select {
+					@include size(100%, $height);
+					background-color: brand-gray(700);
+					border: 0;
+					border-bottom: 1px solid #fff;
+				}
+			}
+		}
+	}
+}
+@include MQ(sm) {
+	.pro {
+		&-slider {
+			.list-select {
+				display: none;
+			}
+			.list-ul {
+				padding-top: 1rem;
+				> li {
+					border-bottom: 1px solid brand-gray(500);
+					> a {
+						display: block;
+						padding: 0.5rem 2px;
+						&:before {
+							content: '\f138';
+							font-family: Fonticon;
+							color: brand-gray(400);
+							padding-right: 10px;
+						}
+					}
+					@include hover {
+						> a,
+						> a:before {
+							color: brand-colors('base');
+						}
+					}
+				}
+			}
+		}
+		&-dtl-inner {
+			@include center-between;
+		}
+		&-img, &-description {
+			flex: 1;
+		}
+		&-description {
+			padding: 1rem;
+		}
+	}
+	.products {
+		.pro {
+			&-item {
+				@include gallery(4 of 12);
+			}
+		}
+	}
+}
+@include MQ(md) {
+	.pro {
+		&-slider {
+			.pro-slider-ttl,
+			.pro-slider-nav > .list-ul {
+				display: block;
+			}
+			width: 200px;
+			min-height: 500px;
+			padding: 3rem 1rem 1rem;
+		}
+	}
+}

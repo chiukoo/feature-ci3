@@ -1,0 +1,95 @@
+.nav {
+	&-menu {
+		> li {
+			> a {
+				display: block;
+				font-size: 1.5rem;
+				font-weight: bold;
+				padding: 1rem;
+			}
+			&:hover {
+				.subNav {
+					max-height: 1000px;
+					position: absolute;
+					z-index: 1030;
+				}
+			}
+		}
+	}
+}
+@include MQ(tablet) {
+	.nav {
+		position: relative;
+		&-menu {
+			max-height: 0;
+			overflow: hidden;
+			@include transition(max-height .3s ease);
+			li {
+				> a {
+					display: block;
+					padding: 0.6rem;
+				}
+				@include hover {
+					background-color: $brand-base;
+					> a {
+						color: #fff;
+					}
+				}
+			}
+			.subNav {
+				display: none;
+			}
+		}
+		&.is-active {
+			.nav {
+				&-menu {
+					max-height: 1000px;
+				}
+			}
+		}
+	}
+	.header {
+		.search {
+			position: absolute;
+			top: 6px;
+			right: 0;
+		}
+	}
+}
+@include MQ(md) {
+	.nav {
+		&-menu {
+			@include center-between;
+			@include max-w;
+			> li {
+				position: relative;
+				flex: 1;
+				text-align: center;
+				cursor: pointer;
+				.subNav {
+					max-height: 0;
+					overflow: hidden;
+					width: 100%;
+					background-color: #fff;
+					border-radius: 0 0 5px 5px;
+					box-shadow: 0 0 5px brand-gray(200);
+					ul {
+						@include ptd(1rem);
+					}
+					li {
+						a {
+							display: block;
+							font-size: 1.5rem;
+							font-weight: bold;
+							padding: 0.5rem;
+							@include hover {
+								color: #fff;
+								background-color: $brand-base;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

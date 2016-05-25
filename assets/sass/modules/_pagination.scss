@@ -1,0 +1,9 @@
+.pagination {
+	> ul {
+		display: table;
+		@include center;
+		> li {
+			display: inline-block;
+		}
+	}
+}

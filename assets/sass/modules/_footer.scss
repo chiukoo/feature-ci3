@@ -1,0 +1,39 @@
+.footer {
+	.foo {
+		&-nav-menu {
+			display: none;
+		}
+		&-keyman {
+			color: brand-gray(300);
+			text-align: center;
+			padding: 1rem;
+		}
+	}
+	.copyright {
+		text-align: center;
+		color: brand-gray(200);
+		padding: 1rem;
+	}
+}
+@include MQ(md) {
+	.footer {
+		.foo {
+			&-content {
+				@include center-between;
+				@include max-w;
+			}
+			&-nav-menu {
+				@include centering;
+				li {
+					> a {
+						display: block;
+						padding: 1rem;
+						@include hover {
+							color: $brand-base;
+						}
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,21 @@
+.breadcrumbs {
+	> li {
+		display: inline-block;
+		+ li {
+			&:before {
+				content: ">";
+				padding: 0 5px;
+				font-family: Consolas;
+				color: brand-gray(200);;
+			}
+		}
+		> a {
+			color: brand-gray(200);
+		}
+		&.is-active {
+			> a {
+				color: $brand-base;
+			}
+		}
+	}
+}

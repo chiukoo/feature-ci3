@@ -1,0 +1,215 @@
+.header {
+	&-bar {
+		background-color: brand-gray(600);
+	}
+	&-inner {
+		@include clearfix;
+		@include max-w;
+		padding: 8px 1rem;
+	}
+	&-group {
+		height: 70px;
+	}
+}
+.nav {
+	border-top: 3px solid brand-gray(400);
+	border-bottom: 1px solid brand-gray(400);
+	background-color: brand-gray(700);
+	&:before {
+		border-bottom: 1px solid brand-gray(500);
+	}
+	&-menu {
+		> li {
+			> a {
+				border-bottom: 2px solid brand-gray(700);
+			}
+			@include hover {
+				a {
+					border-color: $brand-base;
+				}
+			}
+		}
+	}
+}
+
+//- 首頁
+.application {
+	&-ttl {
+		border-bottom: 1px dotted brand-gray(300);
+		padding-bottom: 1rem;
+		.h1, .h2 {
+			display: inline-block;
+		}
+		.h1 {
+			font-family: 'Hammersmith One', sans-serif;
+			font-weight: bold;
+			font-size: 2.8rem;
+			text-transform: uppercase;
+			color: #555;
+		}
+		.h2 {
+			font-size: 1.5rem;
+			font-weight: bold;
+			padding-left: 10px;
+		}
+	}
+	&-con {
+		padding: 2rem 1rem;
+		font-weight: bold;
+		> p + p {
+			padding-top: 1rem;
+		}
+	}
+	&-list {
+		li {
+			@include gallery(4 of 12);
+			text-align: center;
+			border: 2px solid brand-gray(500);
+			@include ptd(0.5rem);
+			.h1 {
+				font-size: 1.5rem;
+			}
+			.h2 {
+				font-size: 1rem;
+				color: brand-gray(200);
+			}
+		}
+	}
+}
+.home {
+	&-ttl {
+		.ch {
+			font-size: 1.3rem;
+			font-weight: bold;
+		}
+		.en {
+			font-size: 1rem;
+			color: brand-gray(200);
+			&:before {
+				content: '/ ';
+			}
+		}
+	}
+	&-news,
+	&-pro {
+		min-height: 230px;
+	}
+	&-new {
+		.news-list {
+			padding-bottom: 2rem;
+			li > a {
+				padding: 5px 3px 5px 1rem;
+			}
+		}
+	}
+	&-pro {
+		position: relative;
+		.bx-viewport {
+			z-index: 1030;
+			@include pad(3rem);
+		}
+		.bx-pager-item {
+			display: none;
+		}
+		.bx-controls-direction {
+			position: absolute;
+			top: 0;
+			left: 0;
+			@include sq-size(100%);
+			> a {
+				@include inline-center;
+				height: 100%;
+				font-size: 0;
+				position: absolute;
+				z-index: 1031;
+				&:before {
+					font-family: Fonticon;
+					font-size: 2.8rem;
+					color: brand-gray(200);
+				}
+				&.bx-prev {
+					&:before {
+						content: '\f053';
+					}
+				}
+				&.bx-next {
+					right: 0;
+					&:before {
+						content: '\f054';
+					}
+				}
+				@include hover {
+					&:before {
+						color: $brand-base;
+					}
+				}
+			}
+		}
+		.pro-img {
+			max-width: 130px;
+			@include center;
+		}
+	}
+}
+.location {
+	width: 100%;
+	padding: 2rem;
+	&-inner {
+		max-width: $max-w - 20px;
+		@include center;
+	}
+	&-list {
+		@include clearfix;
+		padding-top: 2rem;
+		> li {
+			position: relative;
+			padding-bottom: 2rem;
+			> ol {
+				position: relative;
+				padding-top: 1rem;
+				> li {
+					padding-left: 1.6rem;
+					line-height: 1.6;
+					&:before {
+						position: absolute;
+						left: 0;
+						font-family: Fonticon;
+						color: brand-gray(300);
+						padding-right: 5px;
+					}
+					&.addr {
+						&:before {
+							content: '\f041';
+						}
+					}
+					&.tel {
+						&:before {
+							content: '\f095';
+						}
+					}
+					&.fax {
+						&:before {
+							content: '\f1ac';
+						}
+					}
+					&.mail {
+						&:before {
+							content: '\f0e0';
+						}
+					}
+					&.user {
+						&:before {
+							content: '\f007';
+						}
+					}
+				}
+			}
+		}
+	}
+	&-ttl {
+		font-family: 'Noto Sans TC', sans-serif;
+		font-size: 1.6rem;
+		font-weight: bold;
+		letter-spacing: 1px;
+	}
+}

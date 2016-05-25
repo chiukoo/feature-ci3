@@ -1,0 +1,4 @@
+@mixin ptd($key) {
+	padding-top: $key;
+	padding-bottom: $key;
+}

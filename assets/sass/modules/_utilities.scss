@@ -1,0 +1,61 @@
+.pull {
+	&-right {
+		float: right;
+	}
+}
+.btn {
+	&-back {
+		text-align: center;
+		padding: 3rem;
+		> a {
+			display: inline-block;
+			color: brand-gray(100);
+			border: 1px solid brand-gray(500);
+			@include border-radius(30px);
+			padding: 0.6rem 2rem;
+			&:before {
+				content: '\f112';
+				font-family:  Fonticon;
+				padding-right: 10px;
+			}
+			@include hover {
+				color: #fff;
+				background-color: brand-colors('base');
+			}
+		}
+	}
+}
+.text {
+	&-base {
+		color: brand-colors('base');
+	}
+}
+
+.bg {
+	&-white {
+		background-color: #fff;
+	}
+	&-gray {
+		background-color: brand-gray(600);
+	}
+}
+
+//- padding
+.p {
+	@for $i from 1 through 2 {
+		&t#{$i} {
+			padding-top: $i + rem !important;
+		}
+		&b#{$i} {
+			padding-bottom: $i + rem !important;
+		}
+	}
+	@for $i from 1 through 2 {
+		&d#{$i} {
+			padding: $i + rem !important;
+		}
+	}
+	&ad {
+		@include pad(.5);
+	}
+}
