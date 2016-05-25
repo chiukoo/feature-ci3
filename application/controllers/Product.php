@@ -619,8 +619,9 @@ class Product extends CI_Controller {
             $getProject = $this->input->post('getProject');
             $getType = $this->input->post('getType');
             $getInner = $this->input->post('getInner');
+            $getBanner = !is_null($this->input->post('index_s_banner')) ? $this->input->post('index_s_banner') : 0;
 
-            if ($this->product_details_model->createUser($title, $content_sample, $content_details, $img_url, $getProject, $getType, $getInner)) {
+            if ($this->product_details_model->createUser($title, $content_sample, $content_details, $img_url, $getBanner, $getProject, $getType, $getInner)) {
                 redirect('product/productDetailsList/project/'.$getProject.'/type/'.$getType.'/inner/'.$getInner);
             } else {
                  echo "<script>alert('Please try again')</script>";
@@ -683,8 +684,9 @@ class Product extends CI_Controller {
             $getProject = $this->input->post('getProject');
             $getType = $this->input->post('getType');
             $getInner = $this->input->post('getInner');
+            $getBanner = !is_null($this->input->post('index_s_banner')) ? $this->input->post('index_s_banner') : 0;
 
-            if ($this->product_details_model->updateFieldById($id, $title, $content_sample, $content_details, $img_url, $getProject, $getType, $getInner)) {
+            if ($this->product_details_model->updateFieldById($id, $title, $content_sample, $content_details, $img_url, $getBanner, $getProject, $getType, $getInner)) {
                 redirect('product/productDetailsList/project/'.$getProject.'/type/'.$getType.'/inner/'.$getInner);
             } else {
                  echo "<script>alert('Please try again')</script>";

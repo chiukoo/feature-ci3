@@ -44,7 +44,7 @@
 					<!-- logo -->
 					<div class="logo">
 						<a href="" class="logo-expanded">
-							<img src="<?php echo base_url(); ?>assets/images/logo.png" width="80" alt="" />
+							<img src="<?php echo base_url(); ?>assets/images/admin/logo.png" width="" alt="" />
 						</a>
 					</div>
 					

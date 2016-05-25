@@ -46,6 +46,16 @@
 						</div>
 						<div class="form-group-separator"></div>
 						<div class="form-group">
+							<label class="col-sm-2 control-label" ><?php echo $lang['index_s_banner']?></label>
+							<div class="col-sm-10">
+								<label>
+									<input type="checkbox" name="index_s_banner" value="1">
+									<?php echo $lang['yes'];?>
+								</label>
+							</div>
+						</div>
+						<div class="form-group-separator"></div>
+						<div class="form-group">
 							<label class="col-sm-2 control-label" ><?php echo $lang['sample']?></label>
 							<div class="col-sm-10">
 								<textarea id="ckeditor01" class="ckeditor" name="content_sample" rows="10" cols="80"></textarea>

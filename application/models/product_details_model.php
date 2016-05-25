@@ -23,7 +23,7 @@ class Product_details_model extends CI_Model {
 	 * 
 	 * @return bool true on success, false on failure
 	 */
-	public function createUser($title, $content_sample, $content_details, $img_url, $getProject, $getType, $getInner) {
+	public function createUser($title, $content_sample, $content_details, $img_url, $getBanner, $getProject, $getType, $getInner) {
 		//取得最後ordee
 		$last_id = $this->db->limit(1)->order_by('order', 'desc')->get(self::DB_NAME)->row('order');
 		$data = array(
@@ -33,6 +33,7 @@ class Product_details_model extends CI_Model {
 			'order'           => $last_id + 1,
 			'content_sample'  => $content_sample,
 			'content_details' => $content_details,
+			'index_s_banner'  => $getBanner,
 			'project'    	  => $getProject,
 			'type'       	  => $getType,
 			'inner'           => $getInner,
@@ -60,12 +61,13 @@ class Product_details_model extends CI_Model {
 	 * update
 	 * @return bool true on success, false on failure
 	 */
-	public function updateFieldById($id, $title, $content_sample, $content_details, $img_url, $getProject, $getType, $getInner) {
+	public function updateFieldById($id, $title, $content_sample, $content_details, $img_url, $getBanner, $getProject, $getType, $getInner) {
 		$data = array(
 			'title'   => $title,
 			'content_sample'   => $content_sample,
 			'content_details'   => $content_details,
 			'img_url'   => $img_url,
+			'index_s_banner'   => $getBanner,
 			'project' => $getProject,
 			'type' => $getType,
 			'inner' => $getInner,
