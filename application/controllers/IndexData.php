@@ -30,13 +30,14 @@ class IndexData extends CI_Controller {
         //判斷active
         $this->urlData = $this->uri->uri_to_assoc(3);
 
-        $active = empty($this->urlData) ? 'indexData' : $this->urlData['indexData'];
+        //取出左邊項目名稱
+        $this->load->model('product_project_model');        
 
         //設定layout data
         $this->layoutData = array(
-            'left_active' => $active,
+            'left_active' => 'indexData',
             'layout'  => $this->lang->line('layout'),
-            'project' => $this->index_data_model->getAllData(),
+            'project' => $this->product_project_model->getAllData(),
             'layoutToken' => $this->security->get_csrf_token_name(),
             'layoutHash' => $this->security->get_csrf_hash(),
         );
@@ -81,7 +82,7 @@ class IndexData extends CI_Controller {
         );
 
         //layout data
-        $this->layoutData['content'] = $this->load->view('product/index_data_add', $data, true);
+        $this->layoutData['content'] = $this->load->view('indexData/index_data_add', $data, true);
         $this->load->view('admin/layout', $this->layoutData);
     }
 
@@ -94,7 +95,7 @@ class IndexData extends CI_Controller {
 
         $rules = array(
             array(
-                'field' => 'title',
+                'field' => 'img_url',
                 'label' => 'Title',
                 'rules' => 'trim|required'
             )
@@ -108,10 +109,10 @@ class IndexData extends CI_Controller {
             echo "<script>history.go(-1)</script>";
         } else {
             // set variables from the form
-            $title = $this->input->post('title');
+            $imgUrl = $this->input->post('img_url');
 
-            if ($this->index_data_model->createUser($title)) {
-                redirect('product/indexDataList');
+            if ($this->index_data_model->createUser($imgUrl)) {
+                redirect('indexData/indexDataList');
             } else {
                  echo "<script>alert('Please try again')</script>";
             }
@@ -164,7 +165,7 @@ class IndexData extends CI_Controller {
         );
 
         //layout data
-        $this->layoutData['content'] = $this->load->view('product/index_data_edit', $data, true);
+        $this->layoutData['content'] = $this->load->view('indexData/index_data_edit', $data, true);
         $this->load->view('admin/layout', $this->layoutData);
     }
 
@@ -177,9 +178,9 @@ class IndexData extends CI_Controller {
 
         $rules = array(
             array(
-                'field' => 'title',
+                'field' => 'img_url',
                 'label' => 'Title',
-                'rules' => 'trim|required|alpha_numeric'
+                'rules' => 'trim|required'
             )
         );
 
@@ -192,10 +193,10 @@ class IndexData extends CI_Controller {
         } else {
             // set variables from the form
             $id = $this->input->post('id');
-            $title = $this->input->post('title');
+            $imgUrl = $this->input->post('img_url');
 
-            if ($this->index_data_model->updateFieldById($id, $title)) {
-                redirect('product/indexDataList');
+            if ($this->index_data_model->updateFieldById($id, $imgUrl)) {
+                redirect('indexData/indexDataList');
             } else {
                  echo "<script>alert('Please try again')</script>";
                  echo "<script>history.go(-1)</script>";

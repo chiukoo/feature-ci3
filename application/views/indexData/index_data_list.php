@@ -23,7 +23,7 @@
 <div class="panel panel-default">
 	<div class="panel-body">
 		<div style="text-align: right;">
-			<a href="indexDataAdd"><button class="btn btn-white"><?php echo $lang['add'];?></button></a>
+			<a href="<?php echo base_url();?>indexData/indexDataAdd"><button class="btn btn-white"><?php echo $lang['add'];?></button></a>
 		</div>
 		<table class="table table-bordered table-striped" id="dataList">
 			<thead>
@@ -43,14 +43,18 @@
 						<!--<td>
 							<input type="checkbox" class="cbr">
 						</td>-->
-						<td><?php echo $value['title'];?></td>
+						<td>
+							<?php if (!empty($value['img_url'])) { ?>
+							<img class="TablelistImg" src="<?php echo 'http://'.$_SERVER['HTTP_HOST'].$value['img_url'];?>" alt="">
+							<?php } ?>
+						</td>
 						<td><?php echo $value['create_dt'];?></td>
 						<td>
 							<a href="indexDataEdit/id/<?php echo $value['id'];?>" class="btn btn-secondary btn-sm btn-icon icon-left">
 								<?php echo $lang['edit'];?>
 							</a>
 							
-							<a href="javascript:;" onclick="deleteModel(event, '<?php echo $value['id'];?>', '<?php echo $value['title'];?>');" class="btn btn-danger btn-sm btn-icon icon-left">
+							<a href="javascript:;" onclick="deleteModel(event, '<?php echo $value['id'];?>', '');" class="btn btn-danger btn-sm btn-icon icon-left">
 								<?php echo $lang['delete'];?>
 							</a>
 						</td>
@@ -90,14 +94,14 @@
 //delete
 function deleteModel(event, id, username)
 {
-	event.stopPropagation();
+	event.preventDefault();
 	var token = $('#token').val();
 	$('#delete .modal-body').html('<?php echo $lang['sure_delete'];?> <span class="red">' + username + '</span> ?');
-	$('#delete').appendTo("body").modal('show', {backdrop: 'static'}).one('click', '#sure', function() {
+	$('#delete').appendTo("body").off().modal('show', {backdrop: 'static', keyboard: false}).one('click', '#sure', function() {
 		jQuery.ajax({
 			data: {'id' : id, 'csrf_token_name' : token},
 			type: "POST",
-			url: "productProjectDelete",
+			url: "indexDataDelete",
 			success: function(newToken) {
 				$('#token').val(newToken);
 				$('#sortable tr[data-id = ' + id + ']').remove();
@@ -107,7 +111,7 @@ function deleteModel(event, id, username)
 	            alert(msg);
 	        }
 		});
-       $('#delete').modal('hide');
+		$('#delete').modal('hide');
     });
 }
 
@@ -141,7 +145,7 @@ $(function() {
 		    	$.ajax({
 					data: {'id' : needUpdataId, 'order' : needUpdataOrder, 'csrf_token_name' : token},
 					type: "POST",
-					url: "productProjectOrder",
+					url: "indexDataOrder",
 					success: function(newToken) {
 						$('#token').val(newToken);
 					},

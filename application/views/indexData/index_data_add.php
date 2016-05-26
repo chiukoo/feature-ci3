@@ -21,9 +21,9 @@
 				<form role="form" class="validate" method="post" action="<?php echo base_url('indexData/indexDataAddPost'); ?>">
 					<div class="form-horizontal">
 						<div class="form-group">
-							<label class="col-sm-2 control-label" ><?php echo $lang['images']?></label>
+							<label class="col-sm-2 control-label" ><?php echo $lang['title']?></label>
 							<div class="col-sm-6">
-								<input type="text" class="form-control" id="imgUrl" name="img_url" placeholder="<?php echo $lang['img_url'];?>" readonly="readonly"/>
+								<input type="text" class="form-control" id="imgUrl" name="img_url" placeholder="<?php echo $lang['title'];?>" readonly="readonly"/>
 							</div>
 							<div class="col-sm-2">
 								<button type="button" class="btn btn-success btn-sm" onclick="BrowseServer('imgUrl');"><?php echo $lang['select_img'];?></button>

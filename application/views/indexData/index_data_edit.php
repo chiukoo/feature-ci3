@@ -18,12 +18,15 @@
 	<div class="col-sm-12">
 		<div class="panel panel-default">
 			<div class="panel-body">
-				<form role="form" class="validate" method="post" action="<?php echo base_url('product/productProjectEditPost'); ?>">
+				<form role="form" class="validate" method="post" action="<?php echo base_url('indexData/indexDataEditPost'); ?>">
 					<div class="form-horizontal">
 						<div class="form-group">
 							<label class="col-sm-2 control-label" ><?php echo $lang['title']?></label>
-							<div class="col-sm-10">
-								<input type="text" class="form-control" name="title" data-validate="required" data-msg-required="<?php echo $lang['title'];?>" value="<?php echo $userData['0']['title'];?>"/>
+							<div class="col-sm-6">
+								<input type="text" class="form-control" id="imgUrl" name="img_url" placeholder="<?php echo $lang['title'];?>" readonly="readonly" value=<?php echo $userData[0]['img_url'];?>/>
+							</div>
+							<div class="col-sm-2">
+								<button type="button" class="btn btn-success btn-sm" onclick="BrowseServer('imgUrl');"><?php echo $lang['select_img'];?></button>
 							</div>
 						</div>
 						<div class="form-group-separator"></div>

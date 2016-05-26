@@ -106,7 +106,7 @@ function deleteModel(event, id, username)
 	event.stopPropagation();
 	var token = $('#token').val();
 	$('#delete .modal-body').html('<?php echo $lang['sure_delete'];?> <span class="red">' + username + '</span> ?');
-	$('#delete').appendTo("body").modal('show', {backdrop: 'static'}).one('click', '#sure', function() {
+	$('#delete').appendTo("body").off().modal('show', {backdrop: 'static'}).one('click', '#sure', function() {
 		jQuery.ajax({
 			data: {'id' : id, 'csrf_token_name' : token},
 			type: "POST",

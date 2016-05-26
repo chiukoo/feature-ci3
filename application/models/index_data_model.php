@@ -23,11 +23,11 @@ class Index_data_model extends CI_Model {
 	 * 
 	 * @return bool true on success, false on failure
 	 */
-	public function createUser($title) {
+	public function createUser($imgUrl) {
 		//取得最後order
 		$last_id = $this->db->limit(1)->order_by('order', 'desc')->get(self::DB_NAME)->row('order');
 		$data = array(
-			'title'      => $title,
+			'img_url'      => $imgUrl,
 			'create_dt'  => date('Y-m-d H:i:s'),
 			'order'      => $last_id + 1,
 			'lang'       => $this->session->dataLang
@@ -54,9 +54,9 @@ class Index_data_model extends CI_Model {
 	 * update Password By Id
 	 * @return bool true on success, false on failure
 	 */
-	public function updateFieldById($id, $title) {
+	public function updateFieldById($id, $imgUrl) {
 		$data = array(
-			'title'   => $title,
+			'img_url'   => $imgUrl,
 		);
 
 		return $this->db->update(self::DB_NAME, $data, array('id' => $id));

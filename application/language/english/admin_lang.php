@@ -63,6 +63,24 @@ $lang['product_project_add'] = array(
     'add_reset' => 'Reset',
 );
 
+$lang['index_data_add'] = array(
+    'main_title' => 'Index Banner Add',
+    'nav_index' => 'Index',
+    'title' => 'please select your Index Banner',
+    'select_img' => 'select image',
+    'add_submit' => 'Submit',
+    'add_reset' => 'Reset',
+);
+
+$lang['index_data_add'] = array(
+    'main_title' => 'Index Banner Edit',
+    'nav_index' => 'Index',
+    'title' => 'please select your Index Banner',
+    'select_img' => 'select image',
+    'add_submit' => 'Submit',
+    'add_reset' => 'Reset',
+);
+
 $lang['product_project_edit'] = array(
     'main_title' => 'Product Project Edit',
     'nav_index' => 'Index',

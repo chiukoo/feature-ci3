@@ -55,6 +55,24 @@ $lang['index_data_list'] = array(
     'save' => '確認',
 );
 
+$lang['index_data_add'] = array(
+    'main_title' => '輪播圖新增',
+    'nav_index' => '首頁',
+    'title' => '選擇輪播圖',
+    'select_img' => '選擇圖片',
+    'add_submit' => '送出',
+    'add_reset' => '重製',
+);
+
+$lang['index_data_edit'] = array(
+    'main_title' => '輪播圖編輯',
+    'nav_index' => '首頁',
+    'title' => '選擇輪播圖',
+    'select_img' => '選擇圖片',
+    'add_submit' => '送出',
+    'add_reset' => '重製',
+);
+
 $lang['product_project_add'] = array(
     'main_title' => '產品項目新增',
     'nav_index' => '首頁',
