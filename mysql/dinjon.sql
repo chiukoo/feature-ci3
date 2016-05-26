@@ -51,12 +51,12 @@ DROP TABLE IF EXISTS `index_data`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `index_data` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `img_url` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
+  `img_url` varchar(200) CHARACTER SET utf8 NOT NULL,
   `create_dt` datetime DEFAULT NULL,
   `order` int(5) NOT NULL,
   `lang` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -65,7 +65,34 @@ CREATE TABLE `index_data` (
 
 LOCK TABLES `index_data` WRITE;
 /*!40000 ALTER TABLE `index_data` DISABLE KEYS */;
+INSERT INTO `index_data` VALUES (43,'/feature-ci3/assets/filemanager/userfiles/img/2.JPG','2016-05-26 22:19:29',1,'ch');
 /*!40000 ALTER TABLE `index_data` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `index_other`
+--
+
+DROP TABLE IF EXISTS `index_other`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `index_other` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `youtube` varchar(150) COLLATE utf8_unicode_ci NOT NULL,
+  `create_dt` datetime NOT NULL,
+  `lang` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `index_other`
+--
+
+LOCK TABLES `index_other` WRITE;
+/*!40000 ALTER TABLE `index_other` DISABLE KEYS */;
+INSERT INTO `index_other` VALUES (1,'zzzz','0000-00-00 00:00:00','ch');
+/*!40000 ALTER TABLE `index_other` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -99,7 +126,6 @@ CREATE TABLE `product_details` (
 
 LOCK TABLES `product_details` WRITE;
 /*!40000 ALTER TABLE `product_details` DISABLE KEYS */;
-INSERT INTO `product_details` VALUES (6,'gbgbgbg','<p>aaaa</p>\r\n','<p>bbb</p>\r\n','','2016-05-26 16:38:45',1,3,5,14,'ch',1,0);
 /*!40000 ALTER TABLE `product_details` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -129,7 +155,6 @@ CREATE TABLE `product_inner` (
 
 LOCK TABLES `product_inner` WRITE;
 /*!40000 ALTER TABLE `product_inner` DISABLE KEYS */;
-INSERT INTO `product_inner` VALUES (14,'123','ch','2016-05-22 22:13:37',2,3,5,''),(15,'inner1','ch','2016-05-23 21:12:40',1,4,12,'/feature-ci3/assets/filemanager/userfiles/img/1462809525818.jpg'),(16,'inner3','ch','2016-05-23 21:24:38',2,4,13,''),(17,'ggg','ch','2016-05-24 20:18:54',3,3,5,'/feature-ci3/assets/filemanager/userfiles/img/W_Motors_Lykan_HyperSport.jpg'),(18,'sdasdasd','ch','2016-05-24 20:19:57',4,3,5,'/feature-ci3/assets/filemanager/userfiles/img/W_Motors_Lykan_HyperSport.jpg');
 /*!40000 ALTER TABLE `product_inner` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -185,7 +210,6 @@ CREATE TABLE `product_type` (
 
 LOCK TABLES `product_type` WRITE;
 /*!40000 ALTER TABLE `product_type` DISABLE KEYS */;
-INSERT INTO `product_type` VALUES (5,'dddsada','ch','2016-05-21 21:51:17',4,3,'/feature-ci3/assets/filemanager/userfiles/img/2.JPG'),(11,'aaazz','ch','2016-05-22 22:15:03',5,3,'');
 /*!40000 ALTER TABLE `product_type` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -198,4 +222,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-05-26 17:52:58
+-- Dump completed on 2016-05-26 23:24:56

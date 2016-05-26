@@ -130,7 +130,9 @@
 					<li class="<?php if ($left_active == 'indexData') { echo 'active';}?>">
 						<a href="<?php echo base_url(); ?>indexData/indexDataList"><i class="linecons-star"></i><span class="title"><?php echo $layout['left_index_data_setting']; ?></span></a>
 					</li>
-
+					<li class="<?php if ($left_active == 'indexOther') { echo 'active';}?>">
+						<a href="<?php echo base_url(); ?>indexOther/indexOtherEdit"><i class="linecons-star"></i><span class="title"><?php echo $layout['left_index_other_add_setting']; ?></span></a>
+					</li>
 					<li class="<?php if ($left_active == 'account') { echo 'active';}?>">
 						<a href="<?php echo base_url(); ?>admin/accountList"><i class="linecons-star"></i><span class="title"><?php echo $layout['left_account_setting']; ?></span></a>
 					</li>

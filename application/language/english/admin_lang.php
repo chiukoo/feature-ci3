@@ -4,6 +4,7 @@ $lang['layout'] = array(
     'top_logout' => 'Logout',
     'left_menu' => 'index',
     'left_account_setting' => 'Account Setting',
+    'left_index_other_add_setting' => 'Index Youtube',
     'left_index_data_setting' => 'index banner',
     'left_product_project_setting' => 'Product Project',
     'left_file_explorer' => 'File Explorer',
@@ -59,6 +60,14 @@ $lang['product_project_add'] = array(
     'main_title' => 'Product Project Add',
     'nav_index' => 'Index',
     'title' => 'please enter your project',
+    'add_submit' => 'Submit',
+    'add_reset' => 'Reset',
+);
+
+$lang['index_other_edit'] = array(
+    'main_title' => 'Index Youtube',
+    'nav_index' => 'Index',
+    'youtube' => 'please enter youtube url',
     'add_submit' => 'Submit',
     'add_reset' => 'Reset',
 );

@@ -4,6 +4,7 @@ $lang['layout'] = array(
     'top_logout' => '登出',
     'left_menu' => '首頁',
     'left_account_setting' => '帳號設定',
+    'left_index_other_add_setting' => '首頁影音',
     'left_index_data_setting' => '首頁輪播圖',
     'left_product_project_setting' => '產品項目新增',
     'left_file_explorer' => '檔案總管',
@@ -60,6 +61,14 @@ $lang['index_data_add'] = array(
     'nav_index' => '首頁',
     'title' => '選擇輪播圖',
     'select_img' => '選擇圖片',
+    'add_submit' => '送出',
+    'add_reset' => '重製',
+);
+
+$lang['index_other_edit'] = array(
+    'main_title' => '首頁影音',
+    'nav_index' => '首頁',
+    'youtube' => '輸入影音網址',
     'add_submit' => '送出',
     'add_reset' => '重製',
 );
