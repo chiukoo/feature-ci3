@@ -59,10 +59,11 @@ class Login extends CI_Controller {
                 $this->session->set_userdata('upload_image_file_manager', true);
                 $this->session->set_userdata('username', $username);
                 $this->session->set_userdata('isLogin', true);
+                $this->session->set_userdata('systemLevel', $this->account_model->checkLevel($username));
 
                 //設定預設中文版
                 $this->session->set_userdata('dataLang', 'ch');
-                redirect('admin/accountList');
+                redirect('indexData/indexDataList');
             } else {
                 echo "<script>alert('帳號或密碼錯誤');</script>";
                 echo "<script>history.go(-1)</script>";

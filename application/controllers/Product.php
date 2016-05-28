@@ -33,7 +33,11 @@ class Product extends CI_Controller {
         //判斷active
         $this->urlData = $this->uri->uri_to_assoc(3);
 
-        $active = empty($this->urlData) ? 'product' : $this->urlData['project'];
+        if (isset($this->urlData['project'])) {
+            $active = $this->urlData['project'];
+        } else {
+            $active = 'product';
+        }
 
         //設定layout data
         $this->layoutData = array(
@@ -58,6 +62,10 @@ class Product extends CI_Controller {
      */
     public function productProjectList()
     {
+        if (!$this->session->systemLevel) {
+            redirect('admin/accountList');
+        }
+
         //account data
         $data = array(
             'lang' => $this->lang->line('product_project_list'),
@@ -76,6 +84,10 @@ class Product extends CI_Controller {
      */
     public function productProjectAdd()
     {
+        if (!$this->session->systemLevel) {
+            redirect('admin/accountList');
+        }
+
         //account data
         $data = array(
             'lang' => $this->lang->line('product_project_add'),
@@ -93,6 +105,9 @@ class Product extends CI_Controller {
      */
     public function productProjectAddPost()
     {
+        if (!$this->session->systemLevel) {
+            redirect('admin/accountList');
+        }
         $this->load->library('form_validation');
 
         $rules = array(
@@ -126,6 +141,9 @@ class Product extends CI_Controller {
      */
     public function productProjectDelete()
     {
+        if (!$this->session->systemLevel) {
+            redirect('admin/accountList');
+        }
         $id = $this->input->post('id');
 
         if ($this->product_project_model->deleteById($id)) {
@@ -140,6 +158,9 @@ class Product extends CI_Controller {
      */
     public function productProjectOrder()
     {
+        if (!$this->session->systemLevel) {
+            redirect('admin/accountList');
+        }
         $id = $this->input->post('id');
         $order = $this->input->post('order');
 
@@ -155,6 +176,9 @@ class Product extends CI_Controller {
      */
     public function productProjectEdit()
     {
+        if (!$this->session->systemLevel) {
+            redirect('admin/accountList');
+        }
         //http url get
         $urlData = $this->uri->uri_to_assoc(3);
 
@@ -176,13 +200,16 @@ class Product extends CI_Controller {
      */
     public function productProjectEditPost()
     {
+        if (!$this->session->systemLevel) {
+            redirect('admin/accountList');
+        }
         $this->load->library('form_validation');
 
         $rules = array(
             array(
                 'field' => 'title',
                 'label' => 'Title',
-                'rules' => 'trim|required|alpha_numeric'
+                'rules' => 'trim|required'
             )
         );
 

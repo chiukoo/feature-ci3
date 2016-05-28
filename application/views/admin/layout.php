@@ -133,20 +133,20 @@
 					<li class="<?php if ($left_active == 'indexOther') { echo 'active';}?>">
 						<a href="<?php echo base_url(); ?>indexOther/indexOtherEdit"><i class="linecons-star"></i><span class="title"><?php echo $layout['left_index_other_add_setting']; ?></span></a>
 					</li>
-					<li class="<?php if ($left_active == 'account') { echo 'active';}?>">
-						<a href="<?php echo base_url(); ?>admin/accountList"><i class="linecons-star"></i><span class="title"><?php echo $layout['left_account_setting']; ?></span></a>
-					</li>
-
-					<li class="<?php if ($left_active == 'product') { echo 'active';}?>">
-						<a href="<?php echo base_url(); ?>product/productProjectList"><i class="linecons-star"></i><span class="title"><?php echo $layout['left_product_project_setting']; ?></span></a>
-					</li>
+					<?php if ($this->session->systemLevel) { ?>
+						<li class="<?php if ($left_active == 'product') { echo 'active';}?>">
+							<a href="<?php echo base_url(); ?>product/productProjectList"><i class="linecons-star"></i><span class="title"><?php echo $layout['left_product_project_setting']; ?></span></a>
+						</li>
+					<?php }?>
 					<?php foreach ($project as $projects) { ?>
 						<li data-id="<?php echo $projects['id'];?>" class="<?php if ($left_active ==  $projects['id']) { echo 'active';}?>">
 							<a href="<?php echo base_url(); ?>product/productTypeList/project/<?php echo $projects['id'];?>"><i class="linecons-star"></i><span class="title"><?php echo $projects['title']; ?></span></a>
 						</li>
 					<?php } ?>
-
-					<li class="">
+					<li class="<?php if ($left_active == 'account') { echo 'active';}?>">
+						<a href="<?php echo base_url(); ?>admin/accountList"><i class="linecons-star"></i><span class="title"><?php echo $layout['left_account_setting']; ?></span></a>
+					</li>
+					<li>
 						<a href="#" onclick="fileMessageUrl();">
 							<i class="linecons-cloud"></i>
 							<span class="label label-purple pull-right hidden-collapsed">File Upload</span>

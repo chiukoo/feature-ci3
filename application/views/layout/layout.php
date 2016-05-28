@@ -4,8 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-        <title></title>
-
+        <title><?php echo $layout['title'];?></title>
         <meta name="title" content="">
         <meta name="description" content="">
         <meta name="keywords" content="" >
@@ -24,61 +23,136 @@
     </head>
     <body>
 		<!--layout-->
+		<div id="index" class="wrapper index">
+				<header class="header">
+			<div class="header-bar">
+				<div class="header-inner">
+					<div class="btn-facebook">
+						<a href="">
+							<img src="<?php echo base_url();?>assets/images/web/fb.png">
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="header-group">
+				<div class="logo">
+					<a href="index.php"><img src="<?php echo base_url();?>assets/images/web/logo.png" title=""></a>
+				</div>
+				<div class="search">
+					<div class="form">
+						<div class="form-group">
+							<div class="form-btn">
+								<a href="">
+									<i class="fa fa-search"></i>
+								</a>
+							</div>
+							<input type="search" class="form-input" placeholder="請輸入關鍵字">
+						</div>
+					</div>
+				</div>
+				<div class="header-btn">
+					<a href="#" id="btn-nav" class="fa fa-bars" aria-hidden="true"></a>
+				</div>
+			</div>
+		</header>
+		<!-- /.header -->
+		<nav id="nav" class="nav">
+            <ul class="nav-menu">
+                <li class="is-active"><a href="<?php echo base_url();?>"><?php echo $layout['index'];?></a></li>
+                <li><a href=""><?php echo $layout['about'];?></a></li>
+                <?php foreach($project as $projects) { ?>
+                	<?php if ($projects['title'] == '產品介紹') {?>
+	                <li>
+	                    <a href=""><?php echo $projects['title'];?></a>
+	                    <div class="subNav">
+	                        <ul>
+	                        	<?php foreach($type as $types) { ?>
+	                        		<?php if ($projects['id'] == $types['project']) { ?>
+	                            		<li><a href=""><?php echo $types['title'];?></a></li>
+	                            	<?php } ?>
+	                            <?php } ?>
+	                        </ul>
+	                    </div>
+	                </li>
+                	<?php } ?>
+                <?php } ?>
+                <li><a href=""><?php echo $layout['news'];?></a></li>
+                <?php foreach($project as $projects) { ?>
+                	<?php if ($projects['title'] != '產品介紹') {?>
+	                <li>
+	                    <a href=""><?php echo $projects['title'];?></a>
+	                    <div class="subNav">
+	                        <ul>
+	                        	<?php foreach($type as $types) { ?>
+	                        		<?php if ($projects['id'] == $types['project']) { ?>
+	                            		<li><a href=""><?php echo $types['title'];?></a></li>
+	                            	<?php } ?>
+	                            <?php } ?>
+	                        </ul>
+	                    </div>
+	                </li>
+                	<?php } ?>
+                <?php } ?>
+                <li><a href=""><?php echo $layout['contact'];?></a></li>
+            </ul>
+        </nav>
+        <!-- /.nav -->
 		<?php echo $content;?>
+		</div>
 
 		<section class="location bg-gray">
 			<div class="location-inner">
 				<div class="home-ttl">
-					<span class="ch">銷售據點</span>
+					<span class="ch"><?php echo $layout['location']?></span>
 					<span class="en">LOCATION</span>
 				</div>
 				<ul class="location-list">
 					<li>
 						<div class="location-ttl">
-							<span class="text-base">台</span>中區
+							<span class="text-base"><?php echo $layout['tai'];?></span><?php echo $layout['mid'];?>
 						</div>
 						<ol>
-							<li class="addr">台中市西屯區成都路219-2號</li>
-							<li class="tel">04-23126982</li>
-							<li class="fax">04-23126926</li>
-							<li class="mail">aircomfy@gmail.com</li>
-							<li class="user">曾先生</li>
+							<li class="addr"><?php echo $layout['address'];?></li>
+							<li class="tel"><?php echo $layout['tel'];?></li>
+							<li class="fax"><?php echo $layout['fax'];?></li>
+							<li class="mail"><?php echo $layout['mail'];?></li>
+							<li class="user"><?php echo $layout['user'];?></li>
 						</ol>
 					</li>
 					<li>
 						<div class="location-ttl">
-							<span class="text-base">新</span>北區
+							<span class="text-base"><?php echo $layout['new'];?></span><?php echo $layout['north'];?>
 						</div>
 						<ol>
-							<li class="addr">新北市新店區安民街121巷10號</li>
-							<li class="tel">02-22121502</li>
+							<li class="addr"><?php echo $layout['address2']?></li>
+							<li class="tel"><?php echo $layout['tel2']?></li>
 						</ol>
 					</li>
 					<li>
 						<div class="location-ttl">
-							<span class="text-base">桃</span>園區
+							<span class="text-base"><?php echo $layout['tao'];?></span><?php echo $layout['un'];?>
 						</div>
 						<ol>
-							<li class="addr">桃園市八德市高城二街10巷26號</li>
-							<li class="tel">03-3605817</li>
+							<li class="addr"><?php echo $layout['address3'];?></li>
+							<li class="tel"><?php echo $layout['tel3'];?></li>
 						</ol>
 					</li>
 					<li>
 						<div class="location-ttl">
-							<span class="text-base">台</span>南區
+							<span class="text-base"><?php echo $layout['tai'];?></span><?php echo $layout['south'];?>
 						</div>
 						<ol>
-							<li class="addr">台南市安南區郡安路五段178巷12號</li>
+							<li class="addr"><?php echo $layout['address4'];?></li>
 							<li class="tel">06-3580073</li>
 						</ol>
 					</li>
 					<li>
 						<div class="location-ttl">
-							<span class="text-base">高</span>雄區
+							<span class="text-base"><?php echo $layout['kao'];?></span><?php echo $layout['shiung'];?>
 						</div>
 						<ol>
-							<li class="addr">高雄市三民區鼎中路762巷105號</li>
-							<li class="tel">07-3108313</li>
+							<li class="addr"><?php echo $layout['address5'];?></li>
+							<li class="tel"><?php echo $layout['tel4'];?></li>
 						</ol>
 					</li>
 				</ul>
@@ -88,11 +162,11 @@
 	    	<div class="foo-content">
 	    		<nav class="foo-nav">
 					<ul class="foo-nav-menu">
-						<li><a href="index.php">首頁</a></li>
-						<li><a href="about.php">關於我們</a></li>
-						<li><a href="products.php">產品介紹</a></li>
-						<li><a href="news.php">最新消息</a></li>
-						<li><a href="contact.php">聯絡我們</a></li>
+						<li><a href="index.php"><?php echo $layout['index'];?></a></li>
+						<li><a href="about.php"><?php echo $layout['about'];?></a></li>
+						<li><a href="products.php"><?php echo $layout['products'];?></a></li>
+						<li><a href="news.php"><?php echo $layout['news'];?></a></li>
+						<li><a href="contact.php"><?php echo $layout['contact'];?></a></li>
 					</ul>
 				</nav>
 				<div class="copyright">
@@ -100,7 +174,7 @@
 				</div>
 	    	</div>
 	    	<div class="foo-keyman">
-	    		抽風機 排風扇 排風機 冷風機 工業用風扇 工業風扇 散熱風扇 抽風扇 通風設備 水冷扇
+	    		<?php echo $layout['keyman'];?>
 	    	</div>
 	    </footer>
 	    <!-- /.footer -->

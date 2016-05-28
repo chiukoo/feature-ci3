@@ -75,15 +75,17 @@ $lang['index_other_edit'] = array(
 $lang['index_data_add'] = array(
     'main_title' => 'Index Banner Add',
     'nav_index' => 'Index',
+    'img_size' => 'image size (1920 × 450px)',
     'title' => 'please select your Index Banner',
     'select_img' => 'select image',
     'add_submit' => 'Submit',
     'add_reset' => 'Reset',
 );
 
-$lang['index_data_add'] = array(
+$lang['index_data_edit'] = array(
     'main_title' => 'Index Banner Edit',
     'nav_index' => 'Index',
+    'img_size' => 'image size (1920 × 450px)',
     'title' => 'please select your Index Banner',
     'select_img' => 'select image',
     'add_submit' => 'Submit',

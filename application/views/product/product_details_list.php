@@ -54,7 +54,7 @@
 						<td><?php echo $value['title'];?></td>
 						<td>
 							<?php if (!empty($value['img_url'])) { ?>
-							<img class="TablelistImg" src="<?php echo 'http://'.$_SERVER['HTTP_HOST'].$value['img_url'];?>" alt="">
+							<img class="TablelistImg" src="<?php echo 'http://'.$_SERVER['HTTP_HOST'].$value['img_url'];?>">
 							<?php } ?>
 						</td>
 						<td><?php echo $value['create_dt'];?></td>

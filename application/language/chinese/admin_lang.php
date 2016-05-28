@@ -60,6 +60,7 @@ $lang['index_data_add'] = array(
     'main_title' => '輪播圖新增',
     'nav_index' => '首頁',
     'title' => '選擇輪播圖',
+    'img_size' => '建議尺寸 (1920 × 450px)',
     'select_img' => '選擇圖片',
     'add_submit' => '送出',
     'add_reset' => '重製',
@@ -78,6 +79,7 @@ $lang['index_data_edit'] = array(
     'nav_index' => '首頁',
     'title' => '選擇輪播圖',
     'select_img' => '選擇圖片',
+    'img_size' => '建議尺寸 (1920 × 450px)',
     'add_submit' => '送出',
     'add_reset' => '重製',
 );

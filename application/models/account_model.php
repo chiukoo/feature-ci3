@@ -51,6 +51,15 @@ class Account_model extends CI_Model {
 	}
 
 	/**
+	 * get level
+	 *
+	 * @return 1 or 0
+	 */
+	public function checkLevel($username) {
+		return $this->db->get_where(self::DB_NAME, array('username' => $username), 1)->result()[0]->level;
+	}
+
+	/**
 	 * update Password By Id
 	 * @return bool true on success, false on failure
 	 */

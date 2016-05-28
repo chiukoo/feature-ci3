@@ -29,6 +29,12 @@
 								<button type="button" class="btn btn-success btn-sm" onclick="BrowseServer('imgUrl');"><?php echo $lang['select_img'];?></button>
 							</div>
 						</div>
+						<div class="form-group">
+							<label class="col-sm-2 control-label" ></label>
+							<div class="col-sm-10">
+								<?php echo $lang['img_size']; ?>
+							</div>
+						</div>
 						<div class="form-group-separator"></div>
 					</div>
 					<div class="form-group col-sm-offset-2">

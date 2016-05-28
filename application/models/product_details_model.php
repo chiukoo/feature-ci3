@@ -123,4 +123,12 @@ class Product_details_model extends CI_Model {
 		$result = $this->db->select($field)->get_where(self::DB_NAME, array('id' => $id), 1)->result_array();
 		return $result[0][$field];
 	}
+
+	/**
+	 * 取得首頁小輪播圖
+	 * @return array
+	 */
+	public function getIndexSbanner() {
+		return $this->db->select()->get_where(self::DB_NAME, array('index_s_banner' => 1))->result_array();
+	}
 }
