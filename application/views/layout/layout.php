@@ -162,11 +162,24 @@
 	    	<div class="foo-content">
 	    		<nav class="foo-nav">
 					<ul class="foo-nav-menu">
-						<li><a href="index.php"><?php echo $layout['index'];?></a></li>
-						<li><a href="about.php"><?php echo $layout['about'];?></a></li>
-						<li><a href="products.php"><?php echo $layout['products'];?></a></li>
-						<li><a href="news.php"><?php echo $layout['news'];?></a></li>
-						<li><a href="contact.php"><?php echo $layout['contact'];?></a></li>
+		              <li class="is-active"><a href="<?php echo base_url();?>"><?php echo $layout['index'];?></a></li>
+		                <li><a href=""><?php echo $layout['about'];?></a></li>
+		                <?php foreach($layoutProject as $projects) { ?>
+		                	<?php if ($projects['title'] == '產品介紹') {?>
+			                <li>
+			                    <a href="<?php echo base_url();?>indexProduct/index/project/<?php echo $projects['id'];?>"><?php echo $projects['title'];?></a>
+			                </li>
+		                	<?php } ?>
+		                <?php } ?>
+		                <li><a href=""><?php echo $layout['news'];?></a></li>
+		                <?php foreach($layoutProject as $projects) { ?>
+		                	<?php if ($projects['title'] != '產品介紹') {?>
+			                <li>
+			                    <a href="<?php echo base_url();?>indexProduct/index/project/<?php echo $projects['id'];?>"><?php echo $projects['title'];?></a>
+			                </li>
+		                	<?php } ?>
+		                <?php } ?>
+		                <li><a href=""><?php echo $layout['contact'];?></a></li>
 					</ul>
 				</nav>
 				<div class="copyright">

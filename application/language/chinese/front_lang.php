@@ -1,6 +1,6 @@
 <?php
 $lang['layout'] = array(
-	'title' => 'name',
+	'title' => '鼎津節能通風設備有限公司',
 	'location' => '銷售據點',
 	'mid' => '中區',
 	'tai' => '台',
