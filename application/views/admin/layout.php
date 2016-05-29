@@ -205,7 +205,7 @@
 								</a>
 							</li>
 							<li class="last">
-								<a href="../login/logout">
+								<a href="<?php echo base_url(); ?>login/logout">
 									<i class="fa-lock"></i>
 									Logout
 								</a>
