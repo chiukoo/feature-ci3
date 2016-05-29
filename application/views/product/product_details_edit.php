@@ -76,7 +76,6 @@
 					<input type="hidden" name="getProject" value="<?php echo $getUrlData;?>" />
 					<input type="hidden" name="getId" value="<?php echo $userData['0']['id'];?>" />
 					<input type="hidden" name="getType" value="<?php echo $getUrlType;?>" />
-					<input type="hidden" name="getInner" value="<?php echo $getUrlInner;?>" />
 				</form>
 			</div>
 		</div>

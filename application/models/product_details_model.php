@@ -23,7 +23,7 @@ class Product_details_model extends CI_Model {
 	 * 
 	 * @return bool true on success, false on failure
 	 */
-	public function createUser($title, $content_sample, $content_details, $img_url, $getBanner, $getProject, $getType, $getInner) {
+	public function createUser($title, $content_sample, $content_details, $img_url, $getBanner, $getProject, $getType) {
 		//取得最後ordee
 		$last_id = $this->db->limit(1)->order_by('order', 'desc')->get(self::DB_NAME)->row('order');
 		$data = array(
@@ -36,7 +36,6 @@ class Product_details_model extends CI_Model {
 			'index_s_banner'  => $getBanner,
 			'project'    	  => $getProject,
 			'type'       	  => $getType,
-			'inner'           => $getInner,
 			'lang'            => $this->session->dataLang
 		);
 
@@ -61,7 +60,7 @@ class Product_details_model extends CI_Model {
 	 * update
 	 * @return bool true on success, false on failure
 	 */
-	public function updateFieldById($id, $title, $content_sample, $content_details, $img_url, $getBanner, $getProject, $getType, $getInner) {
+	public function updateFieldById($id, $title, $content_sample, $content_details, $img_url, $getBanner, $getProject, $getType) {
 		$data = array(
 			'title'   => $title,
 			'content_sample'   => $content_sample,
@@ -70,7 +69,6 @@ class Product_details_model extends CI_Model {
 			'index_s_banner'   => $getBanner,
 			'project' => $getProject,
 			'type' => $getType,
-			'inner' => $getInner,
 		);
 		return $this->db->update(self::DB_NAME, $data, array('id' => $id));
 	}
@@ -97,11 +95,10 @@ class Product_details_model extends CI_Model {
 	 * 
 	 * @return array
 	 */
-	public function getAllDataByField($project, $type, $inner) {
+	public function getAllDataByField($project, $type) {
 		$where = array(
 			'project' => $project,
 			'type'    => $type,
-			'inner'   => $inner,
 			'lang'    => $this->session->dataLang
 		);
 		return $this->db->order_by('order', 'asc')->get_where(self::DB_NAME, $where)->result_array();

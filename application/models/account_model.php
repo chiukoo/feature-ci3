@@ -99,7 +99,11 @@ class Account_model extends CI_Model {
 	 * @return array
 	 */
 	public function getAllData() {
-		return $this->db->order_by('order', 'asc')->get(self::DB_NAME)->result_array();
+		if (!$this->session->systemLevel) {
+			return $this->db->order_by('order', 'asc')->get_where(self::DB_NAME, array('level' => 0))->result_array();
+		} else {
+			return $this->db->order_by('order', 'asc')->get(self::DB_NAME)->result_array();
+		}
 	}
 
 	/**

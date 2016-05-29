@@ -23,7 +23,7 @@
     </head>
     <body>
 		<!--layout-->
-		<div id="index" class="wrapper index">
+		<div class="wrapper <?php echo $outClass;?>">
 				<header class="header">
 			<div class="header-bar">
 				<div class="header-inner">
@@ -60,15 +60,15 @@
             <ul class="nav-menu">
                 <li class="is-active"><a href="<?php echo base_url();?>"><?php echo $layout['index'];?></a></li>
                 <li><a href=""><?php echo $layout['about'];?></a></li>
-                <?php foreach($project as $projects) { ?>
+                <?php foreach($layoutProject as $projects) { ?>
                 	<?php if ($projects['title'] == '產品介紹') {?>
 	                <li>
-	                    <a href=""><?php echo $projects['title'];?></a>
+	                    <a href="<?php echo base_url();?>indexProduct/index/project/<?php echo $projects['id'];?>"><?php echo $projects['title'];?></a>
 	                    <div class="subNav">
 	                        <ul>
-	                        	<?php foreach($type as $types) { ?>
+	                        	<?php foreach($layoutType as $types) { ?>
 	                        		<?php if ($projects['id'] == $types['project']) { ?>
-	                            		<li><a href=""><?php echo $types['title'];?></a></li>
+	                            		<li><a href="<?php echo base_url();?>indexProduct/productList/project/<?php echo $projects['id'];?>/type/<?php echo $types['id'];?>"><?php echo $types['title'];?></a></li>
 	                            	<?php } ?>
 	                            <?php } ?>
 	                        </ul>
@@ -77,15 +77,15 @@
                 	<?php } ?>
                 <?php } ?>
                 <li><a href=""><?php echo $layout['news'];?></a></li>
-                <?php foreach($project as $projects) { ?>
+                <?php foreach($layoutProject as $projects) { ?>
                 	<?php if ($projects['title'] != '產品介紹') {?>
 	                <li>
-	                    <a href=""><?php echo $projects['title'];?></a>
+	                    <a href="<?php echo base_url();?>indexProduct/index/project/<?php echo $projects['id'];?>"><?php echo $projects['title'];?></a>
 	                    <div class="subNav">
 	                        <ul>
-	                        	<?php foreach($type as $types) { ?>
+	                        	<?php foreach($layoutType as $types) { ?>
 	                        		<?php if ($projects['id'] == $types['project']) { ?>
-	                            		<li><a href=""><?php echo $types['title'];?></a></li>
+	                            		<li><a href="<?php echo base_url();?>indexProduct/productList/project/<?php echo $projects['id'];?>/type/<?php echo $types['id'];?>"><?php echo $types['title'];?></a></li>
 	                            	<?php } ?>
 	                            <?php } ?>
 	                        </ul>

@@ -1,6 +1,6 @@
 <div class="page-title">
 	<div class="title-env">
-		<h1 class="title"><?php echo $inner;?><?php echo $lang['main_title'];?></h1>
+		<h1 class="title"><?php echo $type;?><?php echo $lang['main_title'];?></h1>
 	</div>
 	<div class="breadcrumb-env">
 		
@@ -11,11 +11,8 @@
 			<li>
 				<a href="<?php echo base_url();?>product/productTypeList/project/<?php echo $getUrlData;?>"><?php echo $project;?></a>
 			</li>
-			<li>
-				<a href="<?php echo base_url();?>product/productInnerList/project/<?php echo $getUrlData;?>/type/<?php echo $getUrlType;?>"><?php echo $type;?></a>
-			</li>
 			<li class="active">
-				<strong><?php echo $inner;?><?php echo $lang['main_title'];?></strong>
+				<strong><?php echo $type;?><?php echo $lang['main_title'];?></strong>
 			</li>
 		</ol>
 					
@@ -77,7 +74,6 @@
 					<input type="hidden" name="<?php echo $token;?>" value="<?php echo $hash;?>" />
 					<input type="hidden" name="getProject" value="<?php echo $getUrlData;?>" />
 					<input type="hidden" name="getType" value="<?php echo $getUrlType;?>" />
-					<input type="hidden" name="getInner" value="<?php echo $getUrlInner;?>" />
 				</form>
 			</div>
 		</div>

@@ -53,19 +53,19 @@
 							<ul class="news-list">
 								<li>
 									<a href="" class="td">
-										<div class="news-label">123123123123123123123123123123123123123123123123123123123</div>
+										<div class="news-label">測試標題</div>
 										<div class="news-date">2016-10-10</div>
 									</a>
 								</li>
 								<li>
 									<a href="" class="td">
-										<div class="news-label">123</div>
+										<div class="news-label">測試標題</div>
 										<div class="news-date">2016-10-09</div>
 									</a>
 								</li>
 								<li>
 									<a href="" class="td">
-										<div class="news-label">321</div>
+										<div class="news-label">測試標題</div>
 										<div class="news-date">2016-10-08</div>
 									</a>
 								</li>

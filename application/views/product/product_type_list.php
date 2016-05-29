@@ -41,7 +41,7 @@
 			
 			<tbody class="middle-align" id="sortable">
 				<?php foreach ($data as $value) {?>
-					<tr onclick="window.location.href = '<?php echo base_url('product/productInnerList/project/'.$getUrlData.'/type/'.$value['id']);?>'" data-id="<?php echo $value['id']?>" data-order="<?php echo $value['order']?>">
+					<tr onclick="window.location.href = '<?php echo base_url('product/productDetailsList/project/'.$getUrlData.'/type/'.$value['id']);?>'" data-id="<?php echo $value['id']?>" data-order="<?php echo $value['order']?>">
 						<!--<td>
 							<input type="checkbox" class="cbr">
 						</td>-->

@@ -19,8 +19,11 @@ class Index extends CI_Controller {
 
         //設定layout data
         $this->layoutData = array(
+            'outClass' => 'index',
             'layout'  => $this->lang->line('layout'),
             'layoutToken' => $this->security->get_csrf_token_name(),
+            'layoutProject' => $this->product_project_model->getAllData(),
+            'layoutType' => $this->product_type_model->getAllData(),
             'layoutHash' => $this->security->get_csrf_hash(),
         );
     }
@@ -32,8 +35,6 @@ class Index extends CI_Controller {
         //account data
         $data = array(
             'lang' => $this->lang->line('index'),
-            'project' => $this->product_project_model->getAllData(),
-            'type' => $this->product_type_model->getAllData(),
             'indexData' => $this->index_data_model->getAllData(),
             'youtube' => $this->index_other_model->selectById(1),
             's_banner' => $this->product_details_model->getIndexSbanner(),

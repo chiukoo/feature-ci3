@@ -1,7 +1,7 @@
 <div class="page-title">
 	
 	<div class="title-env">
-		<h1 class="title"><?php echo $inner;?><?php echo $lang['main_title'];?></h1>
+		<h1 class="title"><?php echo $type;?><?php echo $lang['main_title'];?></h1>
 	</div>
 	
 	<div class="breadcrumb-env">
@@ -17,7 +17,7 @@
 				<a href="<?php echo base_url();?>product/productTypeList/project/<?php echo $getUrlData;?>/type/<?php echo $getUrlType;?>"><?php echo $type;?></a>
 			</li>
 			<li class="active">
-				<strong><?php echo $inner;?><?php echo $lang['main_title'];?></strong>
+				<strong><?php echo $type;?><?php echo $lang['main_title'];?></strong>
 			</li>
 		</ol>
 					
@@ -29,7 +29,7 @@
 <div class="panel panel-default">
 	<div class="panel-body">
 		<div style="text-align: right;">
-			<a href="<?php echo base_url();?>product/productDetailsAdd/project/<?php echo $getUrlData;?>/type/<?php echo $getUrlType;?>/inner/<?php echo $getUrlInner;?>"><button class="btn btn-white"><?php echo $lang['product_add'];?></button></a>
+			<a href="<?php echo base_url();?>product/productDetailsAdd/project/<?php echo $getUrlData;?>/type/<?php echo $getUrlType;?>"><button class="btn btn-white"><?php echo $lang['product_add'];?></button></a>
 		</div>
 
 		<table class="table table-bordered table-striped" id="dataList">
@@ -59,7 +59,7 @@
 						</td>
 						<td><?php echo $value['create_dt'];?></td>
 						<td>
-							<a href="<?php echo base_url();?>product/productDetailsEdit/id/<?php echo $value['id'];?>/project/<?php echo $getUrlData;?>/type/<?php echo $getUrlType;?>/inner/<?php echo $getUrlInner;?>" class="btn btn-secondary btn-sm btn-icon icon-left">
+							<a href="<?php echo base_url();?>product/productDetailsEdit/id/<?php echo $value['id'];?>/project/<?php echo $getUrlData;?>/type/<?php echo $getUrlType;?>" class="btn btn-secondary btn-sm btn-icon icon-left">
 								<?php echo $lang['product_edit'];?>
 							</a>
 							

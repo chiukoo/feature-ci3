@@ -27,7 +27,6 @@ class Product extends CI_Controller {
 
         $this->load->model('product_project_model');
         $this->load->model('product_type_model');
-        $this->load->model('product_inner_model');
         $this->load->model('product_details_model');
 
         //判斷active
@@ -393,184 +392,6 @@ class Product extends CI_Controller {
     }
 
     /**
-     * 產品內容類表
-     */
-    public function productInnerList()
-    {
-        //data
-        $data = array(
-            'lang' => $this->lang->line('product_inner_list'),
-            'data' => $this->product_inner_model->getAllDataByField($this->urlData['project'], $this->urlData['type']),
-            'token' => $this->security->get_csrf_token_name(),
-            'getUrlData' => $this->urlData['project'],
-            'getUrlType' => $this->urlData['type'],
-            'hash' => $this->security->get_csrf_hash(),
-            'project' => $this->product_project_model->getFieldById('title', $this->urlData['project']),
-            'type' => $this->product_type_model->getFieldById('title', $this->urlData['type']),
-        );
-
-        //layout data
-        $this->layoutData['content'] = $this->load->view('product/product_inner_list', $data, true);
-        $this->load->view('admin/layout', $this->layoutData);
-    }
-
-    /**
-     * 產品類型類表新增
-     */
-    public function productInnerAdd()
-    {
-        //account data
-        $data = array(
-            'lang' => $this->lang->line('product_inner_add'),
-            'token' => $this->security->get_csrf_token_name(),
-            'getUrlData' => $this->urlData['project'],
-            'getUrlType' => $this->urlData['type'],
-            'hash' => $this->security->get_csrf_hash(),
-            'project' => $this->product_project_model->getFieldById('title', $this->urlData['project']),
-            'type' => $this->product_type_model->getFieldById('title', $this->urlData['type']),
-        );
-
-        //layout data
-        $this->layoutData['content'] = $this->load->view('product/product_inner_add', $data, true);
-        $this->load->view('admin/layout', $this->layoutData);
-    }
-
-    /**
-     * 帳號新增post
-     */
-    public function productInnerAddPost()
-    {
-        $this->load->library('form_validation');
-
-        $rules = array(
-            array(
-                'field' => 'title',
-                'label' => 'Title',
-                'rules' => 'trim|required'
-            )
-        );
-
-        // set validation rules
-        $this->form_validation->set_rules($rules);
-
-        if ($this->form_validation->run() === false) {
-            echo "<script>alert('".validation_errors()."');</script>";
-            echo "<script>history.go(-1)</script>";
-        } else {
-            $title = $this->input->post('title');
-            $img_url = $this->input->post('img_url');
-            $getProject = $this->input->post('getProject');
-            $getType = $this->input->post('getType');
-
-            if ($this->product_inner_model->createUser($title, $img_url, $getProject, $getType)) {
-                redirect('product/productInnerList/project/'.$getProject.'/type/'.$getType);
-            } else {
-                 echo "<script>alert('Please try again')</script>";
-            }
-        }
-    }
-
-    /**
-     * 編輯
-     */
-    public function productInnerEdit()
-    {
-        //data
-        $data = array(
-            'lang' => $this->lang->line('product_inner_edit'),
-            'token' => $this->security->get_csrf_token_name(),
-            'hash' => $this->security->get_csrf_hash(),
-            'getUrlData' => $this->urlData['project'],
-            'getUrlType' => $this->urlData['type'],
-            'userData' => $this->product_inner_model->selectById($this->urlData['id']),
-        );
-
-        foreach ($this->layoutData['project'] as $project) {
-            if ($project['id'] == $this->urlData['project']) {
-                $data['project'] = $project['title'];
-            }
-        }
-
-        foreach ($this->layoutData['type'] as $type) {
-            if ($type['id'] == $this->urlData['type']) {
-                $data['type'] = $type['title'];
-            }
-        }
-
-        //layout data
-        $this->layoutData['content'] = $this->load->view('product/product_inner_edit', $data, true);
-        $this->load->view('admin/layout', $this->layoutData);
-    }
-
-    /**
-     * 編輯post
-     */
-    public function productInnerEditPost()
-    {
-        $this->load->library('form_validation');
-
-        $rules = array(
-            array(
-                'field' => 'title',
-                'label' => 'Title',
-                'rules' => 'trim|required'
-            )
-        );
-
-        // set validation rules
-        $this->form_validation->set_rules($rules);
-
-        if ($this->form_validation->run() === false) {
-            echo "<script>alert('".validation_errors()."');</script>";
-            echo "<script>history.go(-1)</script>";
-        } else {
-            // set variables from the form
-            $id = $this->input->post('getId');
-            $title = $this->input->post('title');
-            $img_url = $this->input->post('img_url');
-            $getProject = $this->input->post('getProject');
-            $getType = $this->input->post('getType');
-
-            if ($this->product_inner_model->updateFieldById($id, $title, $img_url)) {
-                redirect('product/productInnerList/project/'.$getProject.'/type/'.$getType);
-            } else {
-                 echo "<script>alert('Please try again')</script>";
-                 echo "<script>history.go(-1)</script>";
-            }
-        }
-    }
-
-    /**
-     * delete
-     */
-    public function productInnerDelete()
-    {
-        $id = $this->input->post('id');
-
-        if ($this->product_inner_model->deleteById($id)) {
-            echo $this->security->get_csrf_hash();
-        } else {
-            echo '錯誤! 請聯絡系統管理員';
-        }
-    }
-
-    /**
-     * order
-     */
-    public function productInnerOrder()
-    {
-        $id = $this->input->post('id');
-        $order = $this->input->post('order');
-
-        if ($this->product_inner_model->updateOrderById($id, $order)) {
-            echo $this->security->get_csrf_hash();
-        } else {
-            echo '錯誤! 請聯絡系統管理員';
-        }
-    }
-
-
-    /**
      * 列表
      */
     public function productDetailsList()
@@ -578,15 +399,13 @@ class Product extends CI_Controller {
         //data
         $data = array(
             'lang' => $this->lang->line('product_details_list'),
-            'data' => $this->product_details_model->getAllDataByField($this->urlData['project'], $this->urlData['type'], $this->urlData['inner']),
+            'data' => $this->product_details_model->getAllDataByField($this->urlData['project'], $this->urlData['type']),
             'token' => $this->security->get_csrf_token_name(),
             'getUrlData' => $this->urlData['project'],
             'getUrlType' => $this->urlData['type'],
-            'getUrlInner' => $this->urlData['inner'],
             'hash' => $this->security->get_csrf_hash(),
             'project' => $this->product_project_model->getFieldById('title', $this->urlData['project']),
             'type' => $this->product_type_model->getFieldById('title', $this->urlData['type']),
-            'inner' => $this->product_inner_model->getFieldById('title', $this->urlData['inner']),
         );
 
         //layout data
@@ -605,11 +424,9 @@ class Product extends CI_Controller {
             'token' => $this->security->get_csrf_token_name(),
             'getUrlData' => $this->urlData['project'],
             'getUrlType' => $this->urlData['type'],
-            'getUrlInner' => $this->urlData['inner'],
             'hash' => $this->security->get_csrf_hash(),
             'project' => $this->product_project_model->getFieldById('title', $this->urlData['project']),
             'type' => $this->product_type_model->getFieldById('title', $this->urlData['type']),
-            'inner' => $this->product_inner_model->getFieldById('title', $this->urlData['inner']),
         );
 
         //layout data
@@ -645,11 +462,10 @@ class Product extends CI_Controller {
             $content_details = $this->input->post('content_details');
             $getProject = $this->input->post('getProject');
             $getType = $this->input->post('getType');
-            $getInner = $this->input->post('getInner');
             $getBanner = !is_null($this->input->post('index_s_banner')) ? $this->input->post('index_s_banner') : 0;
 
-            if ($this->product_details_model->createUser($title, $content_sample, $content_details, $img_url, $getBanner, $getProject, $getType, $getInner)) {
-                redirect('product/productDetailsList/project/'.$getProject.'/type/'.$getType.'/inner/'.$getInner);
+            if ($this->product_details_model->createUser($title, $content_sample, $content_details, $img_url, $getBanner, $getProject, $getType)) {
+                redirect('product/productDetailsList/project/'.$getProject.'/type/'.$getType);
             } else {
                  echo "<script>alert('Please try again')</script>";
             }
@@ -668,11 +484,9 @@ class Product extends CI_Controller {
             'hash' => $this->security->get_csrf_hash(),
             'getUrlData' => $this->urlData['project'],
             'getUrlType' => $this->urlData['type'],
-            'getUrlInner' => $this->urlData['inner'],
             'userData' => $this->product_details_model->selectById($this->urlData['id']),
             'project' => $this->product_project_model->getFieldById('title', $this->urlData['project']),
             'type' => $this->product_type_model->getFieldById('title', $this->urlData['type']),
-            'inner' => $this->product_inner_model->getFieldById('title', $this->urlData['inner']),
         );
 
         //layout data
@@ -710,11 +524,10 @@ class Product extends CI_Controller {
             $content_details = $this->input->post('content_details');
             $getProject = $this->input->post('getProject');
             $getType = $this->input->post('getType');
-            $getInner = $this->input->post('getInner');
             $getBanner = !is_null($this->input->post('index_s_banner')) ? $this->input->post('index_s_banner') : 0;
 
-            if ($this->product_details_model->updateFieldById($id, $title, $content_sample, $content_details, $img_url, $getBanner, $getProject, $getType, $getInner)) {
-                redirect('product/productDetailsList/project/'.$getProject.'/type/'.$getType.'/inner/'.$getInner);
+            if ($this->product_details_model->updateFieldById($id, $title, $content_sample, $content_details, $img_url, $getBanner, $getProject, $getType)) {
+                redirect('product/productDetailsList/project/'.$getProject.'/type/'.$getType);
             } else {
                  echo "<script>alert('Please try again')</script>";
                  echo "<script>history.go(-1)</script>";
