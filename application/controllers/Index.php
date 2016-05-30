@@ -17,6 +17,11 @@ class Index extends CI_Controller {
         $this->load->model('product_project_model');
         $this->load->model('product_type_model');
 
+        //設定預設中文版
+        if (!isset($this->session->dataLang)) {
+            $this->session->set_userdata('dataLang', 'ch');
+        }
+
         //設定layout data
         $this->layoutData = array(
             'outClass' => 'index',

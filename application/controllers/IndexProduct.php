@@ -22,6 +22,11 @@ class IndexProduct extends CI_Controller {
         //取得url data
         $this->urlData = $this->uri->uri_to_assoc(3);
 
+        //設定預設中文版
+        if (!isset($this->session->dataLang)) {
+            $this->session->set_userdata('dataLang', 'ch');
+        }
+
         //設定layout data
         $this->layoutData = array(
             'outClass' => 'products',
