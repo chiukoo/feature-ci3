@@ -11,7 +11,8 @@ class Product_type_model extends CI_Model {
 	 * @access public
 	 * @return void
 	 */
-	public function __construct() {
+	public function __construct()
+	{
 		
 		parent::__construct();
 		$this->load->database();
@@ -23,7 +24,8 @@ class Product_type_model extends CI_Model {
 	 * 
 	 * @return bool true on success, false on failure
 	 */
-	public function createUser($title, $img_url, $getProject) {
+	public function createUser($title, $img_url, $getProject)
+	{
 		//取得最後ordee
 		$last_id = $this->db->limit(1)->order_by('order', 'desc')->get(self::DB_NAME)->row('order');
 		$data = array(
@@ -42,7 +44,8 @@ class Product_type_model extends CI_Model {
 	 * update order By Id(array) order(array)
 	 * @return bool true on success, false on failure
 	 */
-	public function updateOrderById($ids, $orders) {
+	public function updateOrderById($ids, $orders)
+	{
 		$check = true;
 		foreach ($ids as $key => $id) {
 			if (!$this->db->update(self::DB_NAME, array('order' => $orders[$key]), array('id' => $id))) {
@@ -56,7 +59,8 @@ class Product_type_model extends CI_Model {
 	 * update
 	 * @return bool true on success, false on failure
 	 */
-	public function updateFieldById($id, $title, $img_url) {
+	public function updateFieldById($id, $title, $img_url)
+	{
 		$data = array(
 			'title'   => $title,
 			'img_url' => $img_url,
@@ -68,7 +72,8 @@ class Product_type_model extends CI_Model {
 	 * delete By Id
 	 * @return bool true on success, false on failure
 	 */
-	public function deleteById($id) {
+	public function deleteById($id)
+	{
 		if ($this->db->delete('product_inner', array('type' => $id))) {
 			if ($this->db->delete('product_details', array('type' => $id))) {
 				return $this->db->delete(self::DB_NAME, array('id' => $id));
@@ -85,7 +90,8 @@ class Product_type_model extends CI_Model {
 	 * 
 	 * @return array
 	 */
-	public function getAllData() {
+	public function getAllData()
+	{
 		return $this->db->order_by('order', 'asc')->get_where(self::DB_NAME, array('lang' => $this->session->dataLang))->result_array();
 	}
 
@@ -94,7 +100,8 @@ class Product_type_model extends CI_Model {
 	 * 
 	 * @return array
 	 */
-	public function getAllDataByField($project) {
+	public function getAllDataByField($project)
+	{
 		$where = array(
 			'project' => $project,
 			'lang'    => $this->session->dataLang
@@ -106,7 +113,8 @@ class Product_type_model extends CI_Model {
 	 * get_user by id.
 	 * @return array
 	 */
-	public function selectById($id) {
+	public function selectById($id)
+	{
 		return $this->db->get_where(self::DB_NAME, array('id' => $id), 1)->result_array();
 	}
 
@@ -114,7 +122,8 @@ class Product_type_model extends CI_Model {
 	 * get field (string) by id
 	 * @return array
 	 */
-	public function getFieldById($field, $id) {
+	public function getFieldById($field, $id)
+	{
 		$result = $this->db->select($field)->get_where(self::DB_NAME, array('id' => $id), 1)->result_array();
 		return $result[0][$field];
 	}

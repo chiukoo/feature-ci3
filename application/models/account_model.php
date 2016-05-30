@@ -11,7 +11,8 @@ class Account_model extends CI_Model {
 	 * @access public
 	 * @return void
 	 */
-	public function __construct() {
+	public function __construct()
+	{
 		
 		parent::__construct();
 		$this->load->database();
@@ -23,12 +24,13 @@ class Account_model extends CI_Model {
 	 * 
 	 * @return bool true on success, false on failure
 	 */
-	public function createUser($username, $password) {
+	public function createUser($username, $password)
+	{
 		//取得最後ordee
 		$last_id = $this->db->limit(1)->order_by('order', 'desc')->get(self::DB_NAME)->row('order');
 		$data = array(
 			'username'   => $username,
-			'password'   => $this->hash_password($password),
+			'password'   => base64_encode($password),
 			'create_dt'  => date('Y-m-d H:i:s'),
 			'order'      => $last_id + 1,
 		);
@@ -41,13 +43,15 @@ class Account_model extends CI_Model {
 	 *
 	 * @return bool true on success, false on failure
 	 */
-	public function checkUser($username, $password) {
+	public function checkUser($username, $password)
+	{
 		$this->db->select('password');
 		$this->db->from(self::DB_NAME);
 		$this->db->where('username', $username);
 		$hash = $this->db->get()->row('password');
 
-		return $this->verify_password_hash($password, $hash);
+
+		return (base64_decode($hash) == $password) ? 1 : 0;
 	}
 
 	/**
@@ -55,17 +59,20 @@ class Account_model extends CI_Model {
 	 *
 	 * @return 1 or 0
 	 */
-	public function checkLevel($username) {
-		return $this->db->get_where(self::DB_NAME, array('username' => $username), 1)->result()[0]->level;
+	public function checkLevel($username)
+	{
+		$result = $this->db->get_where(self::DB_NAME, array('username' => $username), 1)->result_array();
+		return $result[0]['level'];
 	}
 
 	/**
 	 * update Password By Id
 	 * @return bool true on success, false on failure
 	 */
-	public function updatePasswordById($id, $password) {
+	public function updatePasswordById($id, $password)
+	{
 		$data = array(
-			'password'   => $this->hash_password($password),
+			'password'   => base64_encode($password),
 		);
 
 		return $this->db->update(self::DB_NAME, $data, array('id' => $id));
@@ -75,7 +82,8 @@ class Account_model extends CI_Model {
 	 * update order By Id(array) order(array)
 	 * @return bool true on success, false on failure
 	 */
-	public function updateOrderById($ids, $orders) {
+	public function updateOrderById($ids, $orders)
+	{
 		$check = true;
 		foreach ($ids as $key => $id) {
 			if (!$this->db->update(self::DB_NAME, array('order' => $orders[$key]), array('id' => $id))) {
@@ -89,7 +97,8 @@ class Account_model extends CI_Model {
 	 * delete By Id
 	 * @return bool true on success, false on failure
 	 */
-	public function deleteById($id) {
+	public function deleteById($id)
+	{
 		return $this->db->delete(self::DB_NAME, array('id' => $id));
 	}
 
@@ -98,7 +107,8 @@ class Account_model extends CI_Model {
 	 * 
 	 * @return array
 	 */
-	public function getAllData() {
+	public function getAllData()
+	{
 		if (!$this->session->systemLevel) {
 			return $this->db->order_by('order', 'asc')->get_where(self::DB_NAME, array('level' => 0))->result_array();
 		} else {
@@ -110,30 +120,8 @@ class Account_model extends CI_Model {
 	 * get_user by id.
 	 * @return array
 	 */
-	public function selectById($id) {
+	public function selectById($id)
+	{
 		return $this->db->get_where(self::DB_NAME, array('id' => $id), 1)->result_array();
-	}
-
-	/**
-	 * hash_password function.
-	 * 
-	 * @access private
-	 * @param mixed $password
-	 * @return string|bool could be a string on success, or bool false on failure
-	 */
-	private function hash_password($password) {
-		return password_hash($password, PASSWORD_BCRYPT);
-	}
-	
-	/**
-	 * verify_password_hash function.
-	 * 
-	 * @access private
-	 * @param mixed $password
-	 * @param mixed $hash
-	 * @return bool
-	 */
-	private function verify_password_hash($password, $hash) {
-		return password_verify($password, $hash);
 	}
 }

@@ -11,7 +11,8 @@ class Index_other_model extends CI_Model {
 	 * @access public
 	 * @return void
 	 */
-	public function __construct() {
+	public function __construct()
+	{
 		
 		parent::__construct();
 		$this->load->database();
@@ -23,7 +24,8 @@ class Index_other_model extends CI_Model {
 	 * 
 	 * @return bool true on success, false on failure
 	 */
-	public function createUser($imgUrl) {
+	public function createUser($imgUrl)
+	{
 		//取得最後order
 		$last_id = $this->db->limit(1)->order_by('order', 'desc')->get(self::DB_NAME)->row('order');
 		$data = array(
@@ -40,7 +42,8 @@ class Index_other_model extends CI_Model {
 	 * update order By Id(array) order(array)
 	 * @return bool true on success, false on failure
 	 */
-	public function updateOrderById($ids, $orders) {
+	public function updateOrderById($ids, $orders)
+	{
 		$check = true;
 		foreach ($ids as $key => $id) {
 			if (!$this->db->update(self::DB_NAME, array('order' => $orders[$key]), array('id' => $id))) {
@@ -54,7 +57,8 @@ class Index_other_model extends CI_Model {
 	 * update Password By Id
 	 * @return bool true on success, false on failure
 	 */
-	public function updateFieldById($id, $youtube) {
+	public function updateFieldById($id, $youtube)
+	{
 		$data = array(
 			'youtube'   => $youtube,
 		);
@@ -66,7 +70,8 @@ class Index_other_model extends CI_Model {
 	 * delete By Id (需也刪除 product_type and product_inner)
 	 * @return bool true on success, false on failure
 	 */
-	public function deleteById($id) {
+	public function deleteById($id)
+	{
 		if ($this->db->delete('product_type', array('project' => $id))) {
 			if ($this->db->delete('product_inner', array('project' => $id))) {
 				if ($this->db->delete('product_details', array('project' => $id))) {
@@ -87,14 +92,16 @@ class Index_other_model extends CI_Model {
 	 * 
 	 * @return array
 	 */
-	public function getAllData() {
+	public function getAllData()
+	{
 		return $this->db->order_by('order', 'asc')->get_where(self::DB_NAME, array('lang' => $this->session->dataLang))->result_array();
 	}
 
 	/**
 	 * @return array
 	 */
-	public function selectById($id) {
+	public function selectById($id)
+	{
 		return $this->db->get_where(self::DB_NAME, array('id' => $id), 1)->result_array();
 	}
 
@@ -102,7 +109,8 @@ class Index_other_model extends CI_Model {
 	 * get field (string) by id
 	 * @return array
 	 */
-	public function getFieldById($field, $id) {
+	public function getFieldById($field, $id)
+	{
 		$result = $this->db->select($field)->get_where(self::DB_NAME, array('id' => $id), 1)->result_array();
 		return $result[0][$field];
 	}

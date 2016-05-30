@@ -11,7 +11,8 @@ class Product_details_model extends CI_Model {
 	 * @access public
 	 * @return void
 	 */
-	public function __construct() {
+	public function __construct()
+	{
 		
 		parent::__construct();
 		$this->load->database();
@@ -23,7 +24,8 @@ class Product_details_model extends CI_Model {
 	 * 
 	 * @return bool true on success, false on failure
 	 */
-	public function createUser($title, $content_sample, $content_details, $img_url, $getBanner, $getProject, $getType) {
+	public function createUser($title, $content_sample, $content_details, $img_url, $getBanner, $getProject, $getType)
+	{
 		//取得最後ordee
 		$last_id = $this->db->limit(1)->order_by('order', 'desc')->get(self::DB_NAME)->row('order');
 		$data = array(
@@ -46,7 +48,8 @@ class Product_details_model extends CI_Model {
 	 * update order By Id(array) order(array)
 	 * @return bool true on success, false on failure
 	 */
-	public function updateOrderById($ids, $orders) {
+	public function updateOrderById($ids, $orders)
+	{
 		$check = true;
 		foreach ($ids as $key => $id) {
 			if (!$this->db->update(self::DB_NAME, array('order' => $orders[$key]), array('id' => $id))) {
@@ -60,7 +63,8 @@ class Product_details_model extends CI_Model {
 	 * update
 	 * @return bool true on success, false on failure
 	 */
-	public function updateFieldById($id, $title, $content_sample, $content_details, $img_url, $getBanner, $getProject, $getType) {
+	public function updateFieldById($id, $title, $content_sample, $content_details, $img_url, $getBanner, $getProject, $getType)
+	{
 		$data = array(
 			'title'   => $title,
 			'content_sample'   => $content_sample,
@@ -77,7 +81,8 @@ class Product_details_model extends CI_Model {
 	 * delete By Id
 	 * @return bool true on success, false on failure
 	 */
-	public function deleteById($id) {
+	public function deleteById($id)
+	{
 		return $this->db->delete(self::DB_NAME, array('id' => $id));
 	}
 
@@ -86,7 +91,8 @@ class Product_details_model extends CI_Model {
 	 * 
 	 * @return array
 	 */
-	public function getAllData() {
+	public function getAllData()
+	{
 		return $this->db->order_by('order', 'asc')->get_where(self::DB_NAME, array('lang' => $this->session->dataLang))->result_array();
 	}
 
@@ -95,7 +101,8 @@ class Product_details_model extends CI_Model {
 	 * 
 	 * @return array
 	 */
-	public function getAllDataByField($project, $type) {
+	public function getAllDataByField($project, $type)
+	{
 		$where = array(
 			'project' => $project,
 			'type'    => $type,
@@ -108,7 +115,8 @@ class Product_details_model extends CI_Model {
 	 * get_user by id.
 	 * @return array
 	 */
-	public function selectById($id) {
+	public function selectById($id)
+	{
 		return $this->db->get_where(self::DB_NAME, array('id' => $id), 1)->result_array();
 	}
 
@@ -116,7 +124,8 @@ class Product_details_model extends CI_Model {
 	 * get field (string) by id
 	 * @return array
 	 */
-	public function getFieldById($field, $id) {
+	public function getFieldById($field, $id)
+	{
 		$result = $this->db->select($field)->get_where(self::DB_NAME, array('id' => $id), 1)->result_array();
 		return $result[0][$field];
 	}
@@ -125,7 +134,8 @@ class Product_details_model extends CI_Model {
 	 * 取得首頁小輪播圖
 	 * @return array
 	 */
-	public function getIndexSbanner() {
+	public function getIndexSbanner()
+	{
 		return $this->db->select()->get_where(self::DB_NAME, array('index_s_banner' => 1))->result_array();
 	}
 }
