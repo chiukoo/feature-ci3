@@ -39,7 +39,6 @@ class Index extends CI_Controller {
         $this->load->model('product_details_model');
         //account data
         $data = array(
-            'lang' => $this->lang->line('index'),
             'indexData' => $this->index_data_model->getAllData(),
             'youtube' => $this->index_other_model->selectById(1),
             's_banner' => $this->product_details_model->getIndexSbanner(),
