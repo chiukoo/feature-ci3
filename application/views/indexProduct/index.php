@@ -26,7 +26,7 @@
 									<div class="pro-img">
 										<img class="" src="<?php echo 'http://'.$_SERVER['HTTP_HOST'].$type['img_url'];?>">
 									</div>
-									<div class="pro-ttl">產品分類1</div>
+									<div class="pro-ttl"><?php echo $type['title'];?></div>
 								</a>
 							</li>
 						<?php } ?>
