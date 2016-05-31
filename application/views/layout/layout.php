@@ -36,7 +36,7 @@
 			</div>
 			<div class="header-group">
 				<div class="logo">
-					<a href="index.php"><img src="<?php echo base_url();?>assets/images/web/logo.png" title=""></a>
+					<a href="<?php echo base_url();?>"><img src="<?php echo base_url();?>assets/images/web/logo.png" title=""></a>
 				</div>
 				<div class="search">
 					<div class="form">
