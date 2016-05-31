@@ -23,7 +23,7 @@
 						<div class="form-group">
 							<label class="col-sm-2 control-label" ><?php echo $lang['title']?></label>
 							<div class="col-sm-10">
-								<input type="text" class="form-control" name="title" data-validate="required" data-msg-required="<?php echo $lang['title'];?>" value="<?php echo htmlentities($userData['0']['title']);?>" />
+								<input type="text" class="form-control" name="title" data-validate="required" data-msg-required="<?php echo $lang['title'];?>" value="<?php echo htmlspecialchars($userData['0']['title']);?>" />
 							</div>
 						</div>
 						<div class="form-group-separator"></div>
