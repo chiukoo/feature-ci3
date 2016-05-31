@@ -35,12 +35,28 @@ class Filemanager {
 	public function __construct($extraConfig = '') {
 		
 		// getting default config file
-		$content = file_get_contents("../../scripts/filemanager.config.js.default");
+		$content = file_get_contents("../../scripts/filemanager.config.default.json");
 		$config_default = json_decode($content, true);
 		
 		// getting user config file
-		$content = file_get_contents("../../scripts/filemanager.config.js");
+		if(isset($_REQUEST['config'])) {
+			$this->getvar('config');
+			if (file_exists("../../scripts/" . $_REQUEST['config'])) {
+				$this->__log('Loading ' . basename($this->get['config']) . ' config file.');
+				$content = file_get_contents("../../scripts/" . basename($this->get['config']));
+			} else {
+				$this->__log($this->get['config'] . ' config file does not exists.');
+				$this->error("Given config file (".basename($this->get['config']).") does not exist !");
+			}
+		}	else {
+			$content = file_get_contents("../../scripts/filemanager.config.json");
+		}
 		$config = json_decode($content, true);
+		
+		setlocale(LC_ALL, 'en_US.UTF-8'); // this would fix bug on encoding https://github.com/simogeo/Filemanager/issues/474#issuecomment-214781921 @todo make this dynamic with config json file
+		
+		// Prevent following bug https://github.com/simogeo/Filemanager/issues/398
+		$config_default['security']['uploadRestrictions'] = array();
 		
 		if(!$config) {
 			$this->error("Error parsing the settings file! Please check your JSON syntax.");
@@ -105,6 +121,9 @@ class Filemanager {
 	// $extraconfig should be formatted as json config array.
 	public function setup($extraconfig) {
 
+		// Prevent following bug https://github.com/simogeo/Filemanager/issues/398
+		$config_default['security']['uploadRestrictions'] = array();
+		
 		$this->config = array_replace_recursive($this->config, $extraconfig);
 			
 	}
@@ -126,7 +145,8 @@ class Filemanager {
 		}
 		
 		// necessary for retrieving path when set dynamically with $fm->setFileRoot() method
-		$this->dynamic_fileroot = str_replace($_SERVER['DOCUMENT_ROOT'], '', $this->doc_root);
+		// https://github.com/simogeo/Filemanager/issues/258 @todo to explore deeper
+		$this->dynamic_fileroot = str_replace("//","/",str_replace($_SERVER['DOCUMENT_ROOT'], '', $this->doc_root));
 		$this->path_to_files = $this->doc_root;
 		$this->separator = basename($this->doc_root);
 		
@@ -387,10 +407,12 @@ class Filemanager {
 		}
 		$tmp = explode('/',$this->get['old']);
 		$filename = $tmp[(sizeof($tmp)-1)];
-		$path = str_replace('/' . $filename,'',$this->get['old']);
 
-		$new_file = $this->getFullPath($path . '/' . $this->get['new']). $suffix;
+		$newPath = str_replace('/' . $filename, '', $this->get['old']);
+		$newName = $this->cleanString($this->get['new'], array('.', '-'));
+
 		$old_file = $this->getFullPath($this->get['old']) . $suffix;
+		$new_file = $this->getFullPath($newPath . '/' . $newName). $suffix;
 
 		if(!$this->has_permission('rename') || !$this->is_valid_path($old_file)) {
 			$this->error("No way.");
@@ -413,29 +435,39 @@ class Filemanager {
 
 		$this->__log(__METHOD__ . ' - renaming '. $old_file. ' to ' . $new_file);
 
-		if(file_exists ($new_file)) {
-			if($suffix=='/' && is_dir($new_file)) {
-				$this->error(sprintf($this->lang('DIRECTORY_ALREADY_EXISTS'),$this->get['new']));
+		if(file_exists($new_file)) {
+			if($suffix == '/' && is_dir($new_file)) {
+				$this->error(sprintf($this->lang('DIRECTORY_ALREADY_EXISTS'), $newName));
 			}
-			if($suffix=='' && is_file($new_file)) {
-				$this->error(sprintf($this->lang('FILE_ALREADY_EXISTS'),$this->get['new']));
+			if($suffix == '' && is_file($new_file)) {
+				$this->error(sprintf($this->lang('FILE_ALREADY_EXISTS'), $newName));
 			}
 		}
 
 		if(!rename($old_file,$new_file)) {
 			if(is_dir($old_file)) {
-				$this->error(sprintf($this->lang('ERROR_RENAMING_DIRECTORY'),$filename,$this->get['new']));
+				$this->error(sprintf($this->lang('ERROR_RENAMING_DIRECTORY'), $filename, $newName));
 			} else {
-				$this->error(sprintf($this->lang('ERROR_RENAMING_FILE'),$filename,$this->get['new']));
+				$this->error(sprintf($this->lang('ERROR_RENAMING_FILE'), $filename, $newName));
 			}
-		}
+        	} else {
+            		// For image only - rename thumbnail if original image was successfully renamed
+            		if(!is_dir($new_file) && $this->is_image($new_file)) {
+                		$new_thumbnail = $this->get_thumbnail_path($new_file);
+                		$old_thumbnail = $this->get_thumbnail_path($old_file);
+                		if(file_exists($old_thumbnail)) {
+                    			rename($old_thumbnail, $new_thumbnail);
+                		}
+            		}
+        	}
+        	
 		$array = array(
-				'Error'=>"",
-				'Code'=>0,
-				'Old Path'=>$this->formatPath($this->get['old'].$suffix),
-				'Old Name'=>$filename,
-				'New Path'=>$this->formatPath($path . '/' . $this->get['new'].$suffix),
-				'New Name'=>$this->get['new']
+			'Error' => "",
+			'Code' => 0,
+			'Old Path' => $this->formatPath($this->get['old'] . $suffix),
+			'Old Name' => $filename,
+			'New Path' => $this->formatPath($newPath . '/' . $newName . $suffix),
+			'New Name' => $newName
 		);
 		return $array;
 	}
@@ -906,6 +938,9 @@ class Filemanager {
 	public function preview($thumbnail) {
 			
 		$current_path = $this->getFullPath();
+		
+		if(!$this->is_valid_path($current_path)) $this->error("No way.");
+		
 			
 		if(isset($this->get['path']) && file_exists($current_path)) {
 			
@@ -1171,10 +1206,20 @@ private function is_valid_path($path) {
 	
 	// return $this->startsWith($givenpath, $rootpath);
 	
-	$this->__log('substr path_to_files : ' . substr(realpath($path) . DIRECTORY_SEPARATOR, 0, strlen($this->path_to_files)));
-	$this->__log('path_to_files : ' . realpath($this->path_to_files) . DIRECTORY_SEPARATOR);
-	
-	return substr(realpath($path) . DIRECTORY_SEPARATOR, 0, strlen($this->path_to_files)) == (realpath($this->path_to_files) . DIRECTORY_SEPARATOR);
+	// handle better symlinks & network path
+	$patt = array('/\\\\+/','/\/+/');
+	$repl = array('\\\\','/');
+
+	$substrpath = substr(realpath($path) . DIRECTORY_SEPARATOR, 0, strlen($this->path_to_files)) . DIRECTORY_SEPARATOR;
+	$substrpath = preg_replace($patt,$repl,$substrpath); // removing double slash
+
+	$rpath = realpath($this->path_to_files)  . DIRECTORY_SEPARATOR;
+	$rpath = preg_replace($patt,$repl,$rpath); // removing double slash
+
+	$this->__log('substr path : ' . $substrpath);
+	$this->__log('real path : ' . $rpath);
+
+  return ($substrpath == $rpath);
 	
 	
 }
@@ -1276,6 +1321,13 @@ private function cleanString($string, $allowed = array()) {
 		$cleaned = preg_replace('/[_]+/', '_', $clean); // remove double underscore
 		
 	}
+	
+	// prevent bug https://github.com/simogeo/Filemanager/issues/474
+	$path_parts = pathinfo($cleaned);
+	if(empty($path_parts['filename'])) {
+		$path_parts['filename'] = "unsupportedCharsReplacement";
+		$cleaned = $path_parts['filename'] . '.' . $path_parts['extension'] ;
+	}
 	return $cleaned;
 }
 
@@ -1328,8 +1380,8 @@ private function get_thumbnail($path) {
 	
 	// echo $thumbnail_fullpath.'<br>';
 	
-	// if thumbnail does not exist we generate it
-	if(!file_exists($thumbnail_fullpath)) {
+	// if thumbnail does not exist we generate it or cacheThumbnail is set to false
+	if(!file_exists($thumbnail_fullpath) || $this->config['options']['cacheThumbnails'] == false) {
 		
 		// create folder if it does not exist
 		if(!file_exists(dirname($thumbnail_fullpath))) {
@@ -1383,8 +1435,16 @@ private function loadLanguageFile() {
 		$stream =file_get_contents($this->root. 'scripts/languages/'.$lang.'.js');
 		$this->language = json_decode($stream, true);
 	} else {
-		$stream =file_get_contents($this->root. 'scripts/languages/'.$lang.'.js');
-		$this->language = json_decode($stream, true);
+		$l = substr($lang,0,2); // we try with 2 chars language file
+		if(file_exists($this->root. 'scripts/languages/'.$l.'.js')) {
+			$stream =file_get_contents($this->root. 'scripts/languages/'.$l.'.js');
+			$this->language = json_decode($stream, true);
+		} else {
+			// we include default language file
+			$stream =file_get_contents($this->root. 'scripts/languages/'.$this->config['options']['culture'].'.js');
+			$this->language = json_decode($stream, true);
+		}
+		
 	}
 }
 
