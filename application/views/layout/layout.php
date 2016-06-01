@@ -76,7 +76,7 @@
 	                </li>
                 	<?php } ?>
                 <?php } ?>
-                <li><a href=""><?php echo $layout['news'];?></a></li>
+                <li class="<?php if ($outClass == 'news') { echo 'is-active'; };?>"><a href="<?php echo base_url();?>news"><?php echo $layout['news'];?></a></li>
                 <?php foreach($layoutProject as $projects) { ?>
                 	<?php if ($projects['title'] != '產品介紹') {?>
 	                <li class="<?php if ($layoutProjectId == $projects['id']) {echo 'is-active';}?>">
