@@ -93,7 +93,7 @@
 	                </li>
                 	<?php } ?>
                 <?php } ?>
-                <li><a href=""><?php echo $layout['contact'];?></a></li>
+                <li><a href="<?php echo base_url();?>contact"><?php echo $layout['contact'];?></a></li>
             </ul>
         </nav>
         <!-- /.nav -->
