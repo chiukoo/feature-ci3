@@ -58,11 +58,11 @@
 		<!-- /.header -->
 		<nav id="nav" class="nav">
             <ul class="nav-menu">
-                <li class="is-active"><a href="<?php echo base_url();?>"><?php echo $layout['index'];?></a></li>
-                <li><a href=""><?php echo $layout['about'];?></a></li>
+                <li class="<?php if ($outClass == 'index') { echo 'is-active'; };?>"><a href="<?php echo base_url();?>"><?php echo $layout['index'];?></a></li>
+                <li><a href="<?php if ($outClass == 'products') { echo 'is-active'; };?>"><?php echo $layout['about'];?></a></li>
                 <?php foreach($layoutProject as $projects) { ?>
                 	<?php if ($projects['title'] == '產品介紹') {?>
-	                <li>
+	                <li class="<?php if ($layoutProjectId == $projects['id']) {echo 'is-active';}?>">
 	                    <a href="<?php echo base_url();?>indexProduct/index/project/<?php echo $projects['id'];?>"><?php echo $projects['title'];?></a>
 	                    <div class="subNav">
 	                        <ul>
@@ -79,7 +79,7 @@
                 <li><a href=""><?php echo $layout['news'];?></a></li>
                 <?php foreach($layoutProject as $projects) { ?>
                 	<?php if ($projects['title'] != '產品介紹') {?>
-	                <li>
+	                <li class="<?php if ($layoutProjectId == $projects['id']) {echo 'is-active';}?>">
 	                    <a href="<?php echo base_url();?>indexProduct/index/project/<?php echo $projects['id'];?>"><?php echo $projects['title'];?></a>
 	                    <div class="subNav">
 	                        <ul>

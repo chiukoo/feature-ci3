@@ -3,6 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Contact extends CI_Controller {
     private $layoutData;
+    private $urlData;
     /**
      * setting
      */
@@ -25,6 +26,7 @@ class Contact extends CI_Controller {
         //設定layout data
         $this->layoutData = array(
             'outClass' => 'contact',
+            'layoutProjectId' => $this->urlData['project'],
             'layout'  => $this->lang->line('layout'),
             'layoutToken' => $this->security->get_csrf_token_name(),
             'layoutProject' => $this->product_project_model->getAllData(),

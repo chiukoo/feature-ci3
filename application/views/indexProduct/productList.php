@@ -34,6 +34,9 @@
 						<?php } ?>
 					</ul>
 				</div>
+				<div class="btn-back">
+					<a onclick="history.go(-1);">回上一頁</a>
+				</div>
 				<!-- <nav class="pagination">
 					<ul>
 						<li class="is-acitve"><a href="#">1</a></li>

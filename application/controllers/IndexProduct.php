@@ -30,6 +30,7 @@ class IndexProduct extends CI_Controller {
         //設定layout data
         $this->layoutData = array(
             'outClass' => 'products',
+            'layoutProjectId' => $this->urlData['project'],
             'layout'  => $this->lang->line('layout'),
             'layoutToken' => $this->security->get_csrf_token_name(),
             'layoutProject' => $this->product_project_model->getAllData(),
