@@ -1,4 +1,8 @@
-
+		<div class="slider">
+			<div class="slider-inner">
+				<img src="<?php echo base_url();?>assets/images/web/not-use/pro-banner.jpg" alt="">
+			</div>
+		</div>
 		<div class="container">
 			<aside class="pro-slider">
 				<h2 class="pro-slider-ttl"><img src="<?php echo base_url();?>assets/images/web/pro-ttl.jpg" alt=""></h2>

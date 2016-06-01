@@ -132,7 +132,7 @@ DROP TABLE IF EXISTS `product_details`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `product_details` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `content_sample` text CHARACTER SET utf8 NOT NULL,
   `content_details` text CHARACTER SET utf8 NOT NULL,
   `img_url` varchar(200) CHARACTER SET utf8 NOT NULL,
