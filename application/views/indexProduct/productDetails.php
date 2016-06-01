@@ -16,11 +16,11 @@
 						<li><a href="<?php echo base_url();?>">首頁</a></li>
 						<li><a href="<?php echo base_url();?>indexProduct/index/project/<?php echo $project;?>"><?php echo $projectName;?></a></li>
 						<li class="is-active"><a href="<?php echo base_url();?>indexProduct/productList/project/<?php echo $project;?>/type/<?php echo $type;?>"><?php echo $typeName;?></a></li>
-						<li class="is-active"><a href="#">產品類別1</a></li>
+						<li class="is-active"><a href="#"><?php echo $detailsData[0]['title'];?></a></li>
 					</ol>
 				</header>
 				<div class="pro-dtl">
-					<div class="pro-ttl">塑鋼系列 42"七葉直結式風機</div>
+					<div class="pro-ttl"><?php echo $detailsData[0]['title'];?></div>
 					<div class="pro-dtl-inner">
 						<div class="pro-img">
 							<img class="" src="<?php echo 'http://'.$_SERVER['HTTP_HOST'].$detailsData[0]['img_url'];?>">
