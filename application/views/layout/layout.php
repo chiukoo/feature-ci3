@@ -59,7 +59,7 @@
 		<nav id="nav" class="nav">
             <ul class="nav-menu">
                 <li class="<?php if ($outClass == 'index') { echo 'is-active'; };?>"><a href="<?php echo base_url();?>"><?php echo $layout['index'];?></a></li>
-                <li><a href="<?php if ($outClass == 'products') { echo 'is-active'; };?>"><?php echo $layout['about'];?></a></li>
+                <li class="<?php if ($outClass == 'about') { echo 'is-active'; };?>"><a href="<?php echo base_url();?>about"><?php echo $layout['about'];?></a></li>
                 <?php foreach($layoutProject as $projects) { ?>
                 	<?php if ($projects['title'] == '產品介紹') {?>
 	                <li class="<?php if ($layoutProjectId == $projects['id']) {echo 'is-active';}?>">

@@ -47,8 +47,6 @@ class IndexProduct extends CI_Controller {
             'project' => $this->urlData['project'],
             'projectName' => $this->product_project_model->getFieldById('title', $this->urlData['project']),
             'typeData' => $this->product_type_model->getAllDataByField($this->urlData['project']),
-            'token' => $this->security->get_csrf_token_name(),
-            'hash' => $this->security->get_csrf_hash(),
         );
 
         //layout data
