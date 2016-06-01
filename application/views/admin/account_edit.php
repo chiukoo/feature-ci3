@@ -5,7 +5,7 @@
 	<div class="breadcrumb-env">
 		<ol class="breadcrumb bc-1">
 			<li>
-				<a href="index"><i class="fa-home"></i><?php echo $account['nav_index'];?></a>
+				<a href="<?php echo base_url('indexData/indexDataList'); ?>"><i class="fa-home"></i><?php echo $account['nav_index'];?></a>
 			</li>
 			<li class="active">
 				<strong><?php echo $account['main_title'];?></strong>

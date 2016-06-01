@@ -300,7 +300,8 @@
 		var urlobj;
 		$('.ckeditor').each(function(){
 		    CKEDITOR.replace($(this).attr('id') ,{
-				filebrowserImageBrowseUrl : '<?php echo base_url('assets/filemanager/index.html');?>'
+				filebrowserImageBrowseUrl : '<?php echo base_url('assets/filemanager/index.html');?>',
+				height: '300px',
 			});
 		});
 

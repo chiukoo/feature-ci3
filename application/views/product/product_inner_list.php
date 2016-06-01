@@ -8,7 +8,7 @@
 		
 		<ol class="breadcrumb bc-1">
 			<li>
-				<a href="#"><i class="fa-home"></i><?php echo $lang['nav_index'];?></a>
+				<a href="<?php echo base_url('indexData/indexDataList'); ?>"><i class="fa-home"></i><?php echo $lang['nav_index'];?></a>
 			</li>
 			<li>
 				<a href="<?php echo base_url();?>product/productTypeList/project/<?php echo $getUrlData;?>"><?php echo $project;?></a>
