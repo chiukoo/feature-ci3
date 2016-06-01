@@ -29,7 +29,7 @@
 							<?php echo $detailsData[0]['content_sample'];?>
 						</div>
 					</div>
-					<div class="content-details">
+					<div class="pro-descriptions">
 						<?php echo $detailsData[0]['content_details'];?>
 					</div>
 					<div class="btn-back">

@@ -1,0 +1,46 @@
+.contact {
+	.container {
+		@include flex-wrap(wrap);
+		@include ptd(1rem);
+	}
+	&-content {
+		padding: 1rem;
+		font-family: 'Noto Sans TC', sans-serif;
+		font-size: font-size(sm);
+	}
+	.contact-form {
+		width: 100%;
+		max-width: 500px;
+		@include center;
+		.form {
+			&-mandatory, &-group {
+				padding-bottom: 1rem;
+			}
+			&-mandatory {
+				@include pre(.5);
+			}
+			&-label {
+				position: relative;
+				display: inline-block;
+				vertical-align: top;
+				width: 19%;
+				padding-left: 1rem;
+				padding-bottom: 0.5rem;
+				span {
+					position: absolute;
+					top: 5px;
+					left: 0;
+				}
+			}
+			&-input, &-textarea {
+				width: 100%;
+			}
+			&-code {
+				width: 100px !important;
+			}
+			&-button {
+				text-align: right;
+			}
+		}
+	}
+}

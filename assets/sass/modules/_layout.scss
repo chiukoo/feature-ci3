@@ -51,7 +51,7 @@ a {
             @include max-w;
         }
     }
-    .products, .news, .about {
+    .products, .news, .about, .contact {
         .container {
             @include display-flex;
             @include max-w;

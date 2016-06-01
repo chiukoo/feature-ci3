@@ -24,10 +24,25 @@
 			}
 		}
 	}
+	&-submit {
+		display: inline-block;
+		color: brand-gray(100);
+		color: #fff;
+		background-color: brand-colors('base');
+		border: 1px solid brand-gray(500);
+		@include border-radius(30px);
+		padding: 0.6rem 5rem;
+		@include hover {
+			background-color: darken(brand-colors('base'), 5%);
+		}
+	}
 }
 .text {
 	&-base {
 		color: brand-colors('base');
+	}
+	&-red {
+		color: red;
 	}
 }
 
