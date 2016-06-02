@@ -15,10 +15,11 @@
 					<div class="pro-ttl">OVERVIEW</div>
 					<ol class="breadcrumbs">
 						<li><a href="<?php echo base_url();?>">首頁</a></li>
-						<li class="is-active"><a href="#"></a></li>
+						<li class="is-active"><a href="#">關於我們</a></li>
 					</ol>
 				</header>
 				<div class="pro-list">
+					<?php echo $userData[0]['content'];?>
 				</div>
 			</section>
 		</div>
