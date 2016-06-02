@@ -34,12 +34,18 @@ class IndexNews extends CI_Controller {
             'layoutHash' => $this->security->get_csrf_hash(),
         );
     }
+
 	public function index()
 	{
         $this->load->model('config_model');
+        $this->load->model('index_data_model');
+        $this->load->model('news_model');
+
         //data
         $data = array(
             'project' => config_model::PRODUCT_ID,
+            'indexData' => $this->index_data_model->getAllData(),
+            'newsData' => $this->news_model->getAllData(),
             'projectName' => $this->product_project_model->getFieldById('title', config_model::PRODUCT_ID),
             'typeData' => $this->product_type_model->getAllDataByField(config_model::PRODUCT_ID),
         );
@@ -48,4 +54,27 @@ class IndexNews extends CI_Controller {
         $this->layoutData['content'] = $this->load->view('indexNews/index', $data, true);
 		$this->load->view('layout/layout', $this->layoutData);
 	}
+
+    public function details()
+    {
+        $this->load->model('config_model');
+        $this->load->model('index_data_model');
+        $this->load->model('news_model');
+
+        $urlData = $this->uri->uri_to_assoc(3);
+
+        //data
+        $data = array(
+            'project' => config_model::PRODUCT_ID,
+            'indexData' => $this->index_data_model->getAllData(),
+            'newsData' => $this->news_model->selectById($urlData['id']),
+            'projectName' => $this->product_project_model->getFieldById('title', config_model::PRODUCT_ID),
+            'typeData' => $this->product_type_model->getAllDataByField(config_model::PRODUCT_ID),
+        );
+
+        //layout data
+        $this->layoutData['content'] = $this->load->view('indexNews/details', $data, true);
+        $this->load->view('layout/layout', $this->layoutData);
+    }
+
 }

@@ -1,14 +1,4 @@
 
-
-		<div class="slider">
-			<ul class="slider-list">
-			<?php foreach ($indexData as $data) { ?>
-				<li><img class="" src="<?php echo 'http://'.$_SERVER['HTTP_HOST'].$data['img_url'];?>"></li>
-			<?php } ?>
-			</ul>
-		</div>
-		<!-- /.slider -->
-
 		<div class="container">
 			<div class="con-group">
 				<section class="application">
@@ -48,27 +38,21 @@
 								<span class="en">NEWS</span>
 							</div>
 							<div class="news-btn">
-								<a href="">more</a>
+								<a href="<?php echo base_url();?>indexNews">more</a>
 							</div>
 							<ul class="news-list">
+								<li class="news-list-ttl td">
+									<div class="news-label">標題</div>
+									<div class="news-date">日期</div>
+								</li>
+								<?php foreach ($newsData as $data) { ?>
 								<li>
-									<a href="" class="td">
-										<div class="news-label">測試標題</div>
-										<div class="news-date">2016-10-10</div>
+									<a href="indexNews/details/id/<?php echo $data['id'];?>" class="td">
+										<div class="news-label"><?php echo $data['title'];?></div>
+										<div class="news-date"><?php echo date('Y-m-d', strtotime($data['create_dt']));?></div>
 									</a>
 								</li>
-								<li>
-									<a href="" class="td">
-										<div class="news-label">測試標題</div>
-										<div class="news-date">2016-10-09</div>
-									</a>
-								</li>
-								<li>
-									<a href="" class="td">
-										<div class="news-label">測試標題</div>
-										<div class="news-date">2016-10-08</div>
-									</a>
-								</li>
+								<?php } ?>
 							</ul>
 							<ul class="contact-list">
 								<li><img src="<?php echo base_url();?>assets/images/web/icon_qrcode.jpg"></li>
@@ -85,7 +69,7 @@
 						<ul class="home-pro-list">
 						<?php foreach ($s_banner as $banner) { ?>
 							<li class="pro-item">
-								<a href="#">
+								<a href="<?php echo base_url();?>indexProduct/productDetails/project/<?php echo $banner['project']?>/type/<?php echo $banner['type']?>/details/<?php echo $banner['id'];?>">
 									<div class="pro-img">
 										<img class="" src="<?php echo 'http://'.$_SERVER['HTTP_HOST'].$banner['img_url'];?>">
 									</div>

@@ -97,6 +97,18 @@
             </ul>
         </nav>
         <!-- /.nav -->
+        
+		<?php if ($outClass != 'contact') { ?>
+		<div class="slider">
+			<ul class="slider-list">
+			<?php foreach ($indexData as $data) { ?>
+				<li><img class="" src="<?php echo 'http://'.$_SERVER['HTTP_HOST'].$data['img_url'];?>"></li>
+			<?php } ?>
+			</ul>
+		</div>
+		<!-- /.slider -->
+		<?php } ?>
+
 		<?php echo $content;?>
 		</div>
 
@@ -162,8 +174,8 @@
 	    	<div class="foo-content">
 	    		<nav class="foo-nav">
 					<ul class="foo-nav-menu">
-		              <li class="is-active"><a href="<?php echo base_url();?>"><?php echo $layout['index'];?></a></li>
-		                <li><a href=""><?php echo $layout['about'];?></a></li>
+		              	<li class="is-active"><a href="<?php echo base_url();?>"><?php echo $layout['index'];?></a></li>
+		                <li><a href="<?php echo base_url();?>about"><?php echo $layout['about'];?></a></li>
 		                <?php foreach($layoutProject as $projects) { ?>
 		                	<?php if ($projects['title'] == '產品介紹') {?>
 			                <li>
@@ -171,7 +183,7 @@
 			                </li>
 		                	<?php } ?>
 		                <?php } ?>
-		                <li><a href=""><?php echo $layout['news'];?></a></li>
+		                <li><a href="<?php echo base_url();?>indexNews"><?php echo $layout['news'];?></a></li>
 		                <?php foreach($layoutProject as $projects) { ?>
 		                	<?php if ($projects['title'] != '產品介紹') {?>
 			                <li>
@@ -179,11 +191,11 @@
 			                </li>
 		                	<?php } ?>
 		                <?php } ?>
-		                <li><a href=""><?php echo $layout['contact'];?></a></li>
+		                <li><a href="<?php echo base_url();?>contact"><?php echo $layout['contact'];?></a></li>
 					</ul>
 				</nav>
 				<div class="copyright">
-					Copyright © <a href=""></a> all right  reserved.
+					Copyright © <a href="www.aircomfy.com">aircomfy.com</a> all right  reserved.
 				</div>
 	    	</div>
 	    	<div class="foo-keyman">

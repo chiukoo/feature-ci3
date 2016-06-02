@@ -88,6 +88,15 @@ class News_model extends CI_Model {
 	}
 
 	/**
+	 * get_user function.
+	 * 
+	 * @return array
+	 */
+	public function getAllDataLimit($limit)
+	{
+		return $this->db->order_by('order', 'desc')->get_where(self::DB_NAME, array('lang' => $this->session->dataLang), $limit)->result_array();
+	}
+	/**
 	 * @return array
 	 */
 	public function selectById($id)

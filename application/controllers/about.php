@@ -38,9 +38,11 @@ class About extends CI_Controller {
 	{
         $this->load->model('config_model');
         $this->load->model('index_about_model');
+        $this->load->model('index_data_model');
         //data
         $data = array(
             'project' => config_model::PRODUCT_ID,
+            'indexData' => $this->index_data_model->getAllData(),
             'projectName' => $this->product_project_model->getFieldById('title', config_model::PRODUCT_ID),
             'typeData' => $this->product_type_model->getAllDataByField(config_model::PRODUCT_ID),
             'userData' => $this->index_about_model->selectById(1),

@@ -41,9 +41,11 @@ class IndexProduct extends CI_Controller {
 
 	public function index()
 	{
+        $this->load->model('index_data_model');
         //account data
         $data = array(
             'lang' => $this->lang->line('index'),
+            'indexData' => $this->index_data_model->getAllData(),
             'project' => $this->urlData['project'],
             'projectName' => $this->product_project_model->getFieldById('title', $this->urlData['project']),
             'typeData' => $this->product_type_model->getAllDataByField($this->urlData['project']),
@@ -56,13 +58,14 @@ class IndexProduct extends CI_Controller {
 
     public function productList()
     {
-
+        $this->load->model('index_data_model');
         $this->load->model('product_details_model');
 
         //account data
         $data = array(
             'lang' => $this->lang->line('index'),
             'project' => $this->urlData['project'],
+            'indexData' => $this->index_data_model->getAllData(),
             'projectName' => $this->product_project_model->getFieldById('title', $this->urlData['project']),
             'type' => $this->urlData['type'],
             'typeName' => $this->product_type_model->getFieldById('title', $this->urlData['type']),
@@ -80,12 +83,14 @@ class IndexProduct extends CI_Controller {
     public function productDetails()
     {
 
+        $this->load->model('index_data_model');
         $this->load->model('product_details_model');
 
         //account data
         $data = array(
             'lang' => $this->lang->line('index'),
             'project' => $this->urlData['project'],
+            'indexData' => $this->index_data_model->getAllData(),
             'projectName' => $this->product_project_model->getFieldById('title', $this->urlData['project']),
             'type' => $this->urlData['type'],
             'typeName' => $this->product_type_model->getFieldById('title', $this->urlData['type']),
