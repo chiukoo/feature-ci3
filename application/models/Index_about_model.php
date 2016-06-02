@@ -1,9 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Index_other_model extends CI_Model {
+class Index_about_model extends CI_Model {
 
-	const DB_NAME = 'index_other';
+	const DB_NAME = 'about';
 
 	/**
 	 * __construct function.
@@ -18,14 +18,15 @@ class Index_other_model extends CI_Model {
 		$this->load->database();
 		
 	}
+
 	/**
 	 * update Password By Id
 	 * @return bool true on success, false on failure
 	 */
-	public function updateFieldById($id, $youtube)
+	public function updateFieldById($id, $content)
 	{
 		$data = array(
-			'youtube'   => $youtube,
+			'content'   => $content,
 		);
 
 		return $this->db->update(self::DB_NAME, $data, array('id' => $id));

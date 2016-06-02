@@ -130,8 +130,14 @@
 					<li class="<?php if ($left_active == 'indexData') { echo 'active';}?>">
 						<a href="<?php echo base_url(); ?>indexData/indexDataList"><i class="linecons-star"></i><span class="title"><?php echo $layout['left_index_data_setting']; ?></span></a>
 					</li>
+					<li class="<?php if ($left_active == 'news') { echo 'active';}?>">
+						<a href="<?php echo base_url(); ?>news/newsList"><i class="linecons-star"></i><span class="title"><?php echo $layout['left_news']; ?></span></a>
+					</li>
 					<li class="<?php if ($left_active == 'indexOther') { echo 'active';}?>">
 						<a href="<?php echo base_url(); ?>indexOther/indexOtherEdit"><i class="linecons-star"></i><span class="title"><?php echo $layout['left_index_other_add_setting']; ?></span></a>
+					</li>
+					<li class="<?php if ($left_active == 'indexAbout') { echo 'active';}?>">
+						<a href="<?php echo base_url(); ?>indexAbout/indexAboutEdit"><i class="linecons-star"></i><span class="title"><?php echo $layout['left_index_about_add_setting']; ?></span></a>
 					</li>
 					<?php if ($this->session->systemLevel) { ?>
 						<li class="<?php if ($left_active == 'product') { echo 'active';}?>">
