@@ -40,7 +40,6 @@ class Contact extends CI_Controller {
         //驗證碼
         $cap = $this->createCaptcha();
 
-        var_dump($cap);
         //data
         $data = array(
             'captcha' => $cap['image'],
