@@ -34,14 +34,62 @@ class Contact extends CI_Controller {
             'layoutHash' => $this->security->get_csrf_hash(),
         );
     }
+
 	public function index()
 	{
+        //驗證碼
+        $cap = $this->createCaptcha();
+
+        var_dump($cap);
         //data
         $data = array(
+            'captcha' => $cap['image'],
         );
 
         //layout data
-        $this->layoutData['content'] = $this->load->view('contact/index', '', true);
+        $this->layoutData['content'] = $this->load->view('contact/index', $data, true);
 		$this->load->view('layout/layout', $this->layoutData);
 	}
+
+    public function changeCaptcha()
+    {
+        //驗證碼
+        $cap = $this->createCaptcha();
+
+        //設定session
+        $this->session->set_userdata('webCaptcha', $cap['word']);
+
+        echo $cap['filename'];
+    }
+
+    private function createCaptcha()
+    {
+        $this->load->helper('captcha');
+        $vals = array(
+        'img_path'      => './captcha/',
+        'img_url'       => base_url().'captcha/',
+        'img_width'     => '100',
+        'img_height'    => 30,
+        'expiration'    => 3600,
+        'word_length'   => 4,
+        'font_size'     => 20,
+        'img_id'        => 'captchaId',
+        'pool'          => '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
+
+        // White background and border, black text and red grid
+        'colors'        => array(
+                'background' => array(255, 255, 255),
+                'border' => array(255, 255, 255),
+                'text' => array(0, 0, 0),
+                'grid' => array(255, 40, 40)
+        )
+        );
+
+        $cap = create_captcha($vals);
+
+        //設定session
+        $this->session->set_userdata('webCaptcha', $cap['word']);
+
+        return $cap;
+    }
 }
