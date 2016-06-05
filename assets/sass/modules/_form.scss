@@ -3,6 +3,7 @@
 	.form-group {
 		position: relative;
 		@include squish(0.5);
+		@include clearfix;
 		//- 錯誤
 		&.error {
 		}
@@ -22,10 +23,13 @@
 				}
 			}
 		}
+		&-label {
+			float: left;
+		}
 		&-input, &-select, &-textarea {
 			width: 100%;
 			color: brand-gray(100);
-			border: 1px solid brand-gray(500);
+			border: 1px solid brand-gray(400);
 			background-color: brand-gray(700);
 			@include border-radius(5px);
 			padding: 5px;

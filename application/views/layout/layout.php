@@ -30,7 +30,7 @@
 			<div class="header-bar">
 				<div class="header-inner">
 					<div class="btn-facebook">
-						<a href="">
+						<a href="https://www.facebook.com/aircomfy.tw/" target="_blank">
 							<img src="<?php echo base_url();?>assets/images/web/fb.png">
 						</a>
 					</div>

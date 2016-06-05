@@ -7,16 +7,23 @@
 	<div class="form contact-form">
 		<div class="form-mandatory text-red">填寫聯絡表單： (*)號表示必須填寫</div>
 		<div class="form-group">
-			<label class="form-label"><span class="text-red">*</span>公司名稱</label>
-			<input type="text" class="form-input">
-		</div>
-		<div class="form-group">
 			<label class="form-label"><span class="text-red">*</span>聯絡人</label>
-			<input type="text" class="form-input">
+			<input type="text" class="form-input form-w5">
+			<select class="form-input form-w5">
+				<option>先生</option>
+				<option>小姐</option>
+			</select>
 		</div>
 		<div class="form-group">
 			<label class="form-label">地址</label>
-			<input type="text" class="form-input">
+			<div class="form-address">
+				<div id="twzipcode">
+					<div data-role="county" data-style="Style Name" data-value=""></div>
+					<div data-role="district" data-style="Style Name" data-value=""></div>
+					<div data-role="zipcode" data-style="Style Name" data-value=""></div>
+				</div>
+				<input type="text" class="form-input">
+			</div>
 		</div>
 		<div class="form-group">
 			<label class="form-label"><span class="text-red">*</span>聯絡電話</label>
@@ -37,7 +44,12 @@
 		</div>
 		<div class="form-group">
 			<label class="form-label"><span class="text-red">*</span>聯絡主旨</label>
-			<input type="text" class="form-input">
+			<select class="form-input">
+				<option>產品相關</option>
+				<option>現場估價</option>
+				<option>維修服務</option>
+				<option>其他</option>
+			</select>
 		</div>
 		<div class="form-group">
 			<label class="form-label"><span class="text-red">*</span>內容</label>
@@ -49,7 +61,9 @@
 	</div>
 </div>
 
+<script src="<?php echo base_url();?>assets/js/jquery.twzipcode.min.js"></script>
 <script>
+$('#twzipcode').twzipcode();
 $(function() {
 	$( "#captchaId" ).click(function() {
 		var captcha = $(this);

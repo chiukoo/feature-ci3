@@ -248,7 +248,6 @@ samp {
 button,
 input,
 optgroup,
-select,
 textarea {
   color: inherit;
   /* 1 */
@@ -262,6 +261,14 @@ textarea {
   -moz-appearance: none;
   -webkit-appearance: none;
   appearance: none;
+}
+
+select {
+  color: inherit;
+  /* 1 */
+  font: inherit;
+  /* 2 */
+  margin: 0;
 }
 
 select {
@@ -3290,6 +3297,13 @@ ol, ul {
   margin-left: 4.34783%;
   margin-right: 4.34783%;
 }
+.form .form-group:before, .form .form-group:after {
+  content: " ";
+  display: table;
+}
+.form .form-group:after {
+  clear: both;
+}
 .form .form-btn {
   position: absolute;
   right: 0;
@@ -3310,10 +3324,13 @@ ol, ul {
 .form .form-btn a:hover, .form .form-btn a:focus, .form .form-btn a:active, .form .form-btn a.is-active {
   color: #1ba8ca;
 }
+.form .form-label {
+  float: left;
+}
 .form .form-input, .form .form-select, .form .form-textarea {
   width: 100%;
   color: #404040;
-  border: 1px solid #eeeeee;
+  border: 1px solid #e3e3e3;
   background-color: #fbfbfb;
   -moz-border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -4087,6 +4104,32 @@ a {
 .contact .contact-form .form-mandatory {
   margin-left: 4.34783%;
 }
+.contact .contact-form .form-address {
+  float: left;
+}
+.contact .contact-form .form-address #twzipcode > div {
+  float: left;
+  padding-right: 5px;
+}
+.contact .contact-form .form-address #twzipcode > div select, .contact .contact-form .form-address #twzipcode > div input {
+  min-width: 98.5px;
+  height: 32px;
+  color: #404040;
+  border: 1px solid #e3e3e3;
+  background-color: #fbfbfb;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  padding: 5px;
+}
+.contact .contact-form .form-address #twzipcode > div select:focus, .contact .contact-form .form-address #twzipcode > div input:focus {
+  outline: 0;
+  border-color: #1ba8ca;
+}
+.contact .contact-form .form-address #twzipcode + .form-input {
+  margin-top: 5px;
+  width: 99%;
+}
 .contact .contact-form .form-label {
   position: relative;
   display: inline-block;
@@ -4451,6 +4494,9 @@ a {
   }
   .contact .contact-form .form-input, .contact .contact-form .form-textarea {
     width: 80%;
+  }
+  .contact .contact-form .form-w5 {
+    width: 39.6%;
   }
 }
 @media (min-width: 768px) {

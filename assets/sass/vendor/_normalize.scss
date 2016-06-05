@@ -275,7 +275,6 @@ samp {
 button,
 input,
 optgroup,
-select,
 textarea {
   color: inherit; /* 1 */
   font: inherit; /* 2 */
@@ -283,6 +282,12 @@ textarea {
   @include border-radius(0);
   @include appearance(none);
   appearance: none;
+}
+
+select {
+  color: inherit; /* 1 */
+  font: inherit; /* 2 */
+  margin: 0;
 }
 
 select {

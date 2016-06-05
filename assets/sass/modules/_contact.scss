@@ -19,6 +19,32 @@
 			&-mandatory {
 				@include pre(.5);
 			}
+			&-address {
+				float: left;
+				#twzipcode {
+					> div {
+						float: left;
+						padding-right: 5px;
+						select, input {
+							min-width: 98.5px;
+							height: $form-h;
+							color: brand-gray(100);
+							border: 1px solid brand-gray(400);
+							background-color: brand-gray(700);
+							@include border-radius(5px);
+							padding: 5px;
+							&:focus {
+								outline: 0;
+								border-color: $brand-base;
+							}
+						}
+					}
+					+ .form-input {
+						margin-top: 5px;
+						width: 99%;
+					}
+				}
+			}
 			&-label {
 				position: relative;
 				display: inline-block;
