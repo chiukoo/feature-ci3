@@ -192,17 +192,20 @@ if ( ! function_exists('create_captcha'))
 		//  Write the text
 		// -----------------------------------
 
+		//word position 隨機: '', 固定: 輸入數值
+		$wordPositionIsRand = 30;
+
 		$use_font = ($font_path !== '' && file_exists($font_path) && function_exists('imagettftext'));
 		if ($use_font === FALSE)
 		{
 			($font_size > 5) && $font_size = 5;
-			$x = mt_rand(0, $img_width / ($length / 3));
+			$x = ($wordPositionIsRand === '') ? mt_rand(0, $img_width / ($length / 3)) : $wordPositionIsRand;
 			$y = 0;
 		}
 		else
 		{
 			($font_size > 30) && $font_size = 30;
-			$x = mt_rand(0, $img_width / ($length / 1.5));
+			$x = ($wordPositionIsRand === '') ? mt_rand(0, $img_width / ($length / 1.5)) : $wordPositionIsRand;
 			$y = $font_size + 2;
 		}
 
