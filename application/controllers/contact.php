@@ -43,6 +43,9 @@ class Contact extends CI_Controller {
         //data
         $data = array(
             'captcha' => $cap['image'],
+            'token' => $this->security->get_csrf_token_name(),
+            'hash' => $this->security->get_csrf_hash(),
+            'layoutProject' => $this->product_project_model->getAllData(),
         );
 
         //layout data
@@ -59,6 +62,12 @@ class Contact extends CI_Controller {
         $this->session->set_userdata('webCaptcha', $cap['word']);
 
         echo $cap['filename'];
+    }
+
+    public function mailPost()
+    {
+        $post = $this->input->post();
+        var_dump($post);
     }
 
     private function createCaptcha()

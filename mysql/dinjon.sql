@@ -142,7 +142,6 @@ CREATE TABLE `product_details` (
   `type` int(11) DEFAULT NULL,
   `lang` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `index_s_banner` int(11) DEFAULT NULL,
-  `product_detailscol` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;

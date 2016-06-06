@@ -43,12 +43,15 @@
 				<div class="search">
 					<div class="form">
 						<div class="form-group">
+							<form id="searchForm" role="form" class="validate" method="post" action="<?php echo base_url('indexProduct/search'); ?>">
 							<div class="form-btn">
-								<a href="">
+								<a href="#">
 									<i class="fa fa-search"></i>
 								</a>
 							</div>
-							<input type="search" class="form-input" placeholder="請輸入關鍵字">
+								<input type="search" name="search" class="form-input" placeholder="請輸入關鍵字">
+								<input type="hidden" name="<?php echo $layoutToken;?>" value="<?php echo $layoutHash;?>" />
+							</form>
 						</div>
 					</div>
 				</div>
@@ -209,3 +212,9 @@
         <script src="<?php echo base_url();?>assets/js/main.js"></script>
     </body>
 </html>
+<script>
+$(".fa-search").click(function(e) {
+	e.stopPropagation();
+	$('#searchForm').submit();
+});
+</script>

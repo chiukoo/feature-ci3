@@ -131,6 +131,16 @@ class Product_details_model extends CI_Model {
 	}
 
 	/**
+	 * search function.
+	 * 
+	 * @return array
+	 */
+	public function getSearchByTitle($search, $project)
+	{
+		return $this->db->order_by('order', 'asc')->like(array('title' => $search))->get_where(self::DB_NAME, array('lang' => $this->session->dataLang, 'project' => $project))->result_array();
+	}
+
+	/**
 	 * 取得首頁小輪播圖
 	 * @return array
 	 */

@@ -4,7 +4,7 @@
 				<nav class="pro-slider-nav">
 					<ul class="list-ul">
 						<?php foreach ($typeData as $data) { ?>
-							<li><a href="<?php echo base_url();?>indexProduct/productList/project/<?php echo $project;?>/type/<?php echo $data['id'];?>"><?php echo $data['title'];?></a></li>
+							<li class="<?php if ($data['id'] == $type) { echo 'is-active';}?>"><a href="<?php echo base_url();?>indexProduct/productList/project/<?php echo $project;?>/type/<?php echo $data['id'];?>"><?php echo $data['title'];?></a></li>
 						<?php } ?>
 					</ul>
 				</nav>
