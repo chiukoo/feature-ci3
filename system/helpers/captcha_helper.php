@@ -168,11 +168,11 @@ if ( ! function_exists('create_captcha'))
 		// -----------------------------------
 		//  Create the spiral pattern
 		// -----------------------------------
-		$theta		= 1;
-		$thetac		= 7;
-		$radius		= 16;
-		$circles	= 20;
-		$points		= 32;
+		$theta   = 1;
+        $thetac  = 7;
+        $radius  = 16;
+        $circles = 20;
+        $points  = 32;
 
 		for ($i = 0, $cp = ($circles * $points) - 1; $i < $cp; $i++)
 		{
@@ -193,33 +193,34 @@ if ( ! function_exists('create_captcha'))
 		// -----------------------------------
 
 		//word position 隨機: '', 固定: 輸入數值
-		$wordPositionIsRand = 30;
+		$wordPositionXIsRand = 20;
+		$wordPositionYIsRand = 8;
 
 		$use_font = ($font_path !== '' && file_exists($font_path) && function_exists('imagettftext'));
 		if ($use_font === FALSE)
 		{
 			($font_size > 5) && $font_size = 5;
-			$x = ($wordPositionIsRand === '') ? mt_rand(0, $img_width / ($length / 3)) : $wordPositionIsRand;
-			$y = 0;
+			$x = ($wordPositionXIsRand === '') ? mt_rand(0, $img_width / ($length / 3)) : $wordPositionXIsRand;
+			$y = ($wordPositionYIsRand === '') ? 0 : $wordPositionYIsRand;
 		}
 		else
 		{
 			($font_size > 30) && $font_size = 30;
-			$x = ($wordPositionIsRand === '') ? mt_rand(0, $img_width / ($length / 1.5)) : $wordPositionIsRand;
-			$y = $font_size + 2;
+			$x = ($wordPositionXIsRand === '') ? mt_rand(0, $img_width / ($length / 1.5)) : $wordPositionXIsRand;
+			$y = ($wordPositionYIsRand === '') ? $font_size + 2 : $wordPositionYIsRand;
 		}
 
 		for ($i = 0; $i < $length; $i++)
 		{
 			if ($use_font === FALSE)
 			{
-				$y = mt_rand(0 , $img_height / 2);
+				$y = ($wordPositionYIsRand === '') ? mt_rand(0 , $img_height / 2) : $wordPositionYIsRand;
 				imagestring($im, $font_size, $x, $y, $word[$i], $colors['text']);
 				$x += ($font_size * 2);
 			}
 			else
 			{
-				$y = mt_rand($img_height / 2, $img_height - 3);
+				$y = ($wordPositionYIsRand === '') ? mt_rand($img_height / 2, $img_height - 3) : $wordPositionYIsRand;
 				imagettftext($im, $font_size, $angle, $x, $y, $colors['text'], $font_path, $word[$i]);
 				$x += $font_size;
 			}

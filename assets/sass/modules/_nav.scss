@@ -48,13 +48,6 @@
 			}
 		}
 	}
-	.header {
-		.search {
-			position: absolute;
-			top: 6px;
-			right: 0;
-		}
-	}
 }
 @include MQ(md) {
 	.nav {

@@ -21,12 +21,16 @@
 			}
 			&-address {
 				float: left;
+				width: 100%;
 				#twzipcode {
+					@include centering;
 					> div {
-						float: left;
-						padding-right: 5px;
+						flex: 1;
+						&:nth-child(1),&:nth-child(2) {
+							padding-right: 5px;
+						}
 						select, input {
-							min-width: 98.5px;
+							width: 100%;	
 							height: $form-h;
 							color: brand-gray(100);
 							border: 1px solid brand-gray(400);
@@ -40,8 +44,8 @@
 						}
 					}
 					+ .form-input {
+						width: 100%;
 						margin-top: 5px;
-						width: 99%;
 					}
 				}
 			}
@@ -57,9 +61,6 @@
 					top: 5px;
 					left: 0;
 				}
-			}
-			&-input, &-textarea {
-				width: 100%;
 			}
 			&-code {
 				width: 100px !important;

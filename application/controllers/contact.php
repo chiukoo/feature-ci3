@@ -86,20 +86,20 @@ class Contact extends CI_Controller {
         $vals = array(
         'img_path'      => './captcha/',
         'img_url'       => base_url().'captcha/',
-        'img_width'     => '100',
+        'img_width'     => '80',
         'img_height'    => 30,
         'expiration'    => 3600,
         'word_length'   => 4,
         'font_size'     => 20,
         'img_id'        => 'captchaId',
-        'pool'          => '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
+        'pool'          => '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ',
 
         // White background and border, black text and red grid
         'colors'        => array(
-                'background' => array(255, 255, 255),
+                'background' => array(235, 235, 235),
                 'border' => array(255, 255, 255),
                 'text' => array(0, 0, 0),
-                'grid' => array(255, 40, 40)
+                'grid' => array(220, 220, 220)
         )
         );
 

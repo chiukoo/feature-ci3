@@ -38,16 +38,10 @@ a {
         flex: 1;
     }
 }
-@include MQ(sm) {
-    .container {
-        .con-group {
-            @include display-flex;
-        }
-    }
-}
 @include MQ(md) {
     .container {
         .con-group {
+            @include display-flex;
             @include max-w;
         }
     }

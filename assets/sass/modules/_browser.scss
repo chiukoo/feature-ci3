@@ -1,69 +1,49 @@
 @include MQ(mobile) {
+    .contact  {
+		.contact-form {
+			.form {
+				&-w5 {
+					+ .form-w5 {
+						margin-top: 5px;
+					}
+				}
+			}
+		}
+	}
+}
+@include MQ(tablet) {
+	.header {
+		&-btn {
+			@include centering;
+			@include sq-size($form-h * 2);
+			font-size: 2.6rem;
+		}
+		&-bar {
+			.btn-facebook {
+				float: left;
+			}
+		}
+		.search {
+			position: absolute;
+			top: 6px;
+			right: 0;
+		}
+	}
 	.index {
-        .video {
-            display: none;
-        }
-        .home {
-        	&-news {
-        		display: none;
-        	}
-        }
-    }
+		.home-news {
+			padding-bottom: 2rem;
+			margin-bottom: 2rem;
+			border-bottom: 1px solid brand-gray(500);
+		}
+	}
+	.application {
+		margin-bottom: 1rem;
+	}
 }
 @include MQ(sm) {
-	.index {
-		.application {
-			@include suffix(0.3);
-		}
-		.home {
-			&-news {
-				position: relative;
-				width: 340px;
-				border-right: 1px solid brand-gray(400);
-				&:after {
-					content: '';
-					display: block;
-					position: absolute;
-					right: -1px;
-					top: 0;
-					@include size(1px,30px);
-					background-color: $brand-base;
-				}
-				.news {
-					&-inner {
-						@include clearfix;
-						position: relative;
-						width: 320px;
-					}
-					&-btn {
-						position: absolute;
-						right: 0;
-						top: 0;
-						> a {
-							display: block;
-							font-size: 1rem;
-							background-color: brand-gray(600);
-							@include border-radius(8px);
-							margin: 0px 5px;
-							padding: 3px 8px;
-						}
-					}
-				}
-				.contact-list {
-					li {
-						float: left;
-					}
-				}
-			}
-			&-pro {
-				flex: 1;
-				margin-left: 3rem;
-				&-list {
-					.pro-item {
-						width: 260px !important;
-					}
-				}
-			}
+	.header {
+		.search {
+			width: 250px;
 		}
 	}
 	.location {
@@ -93,6 +73,9 @@
 	.contact  {
 		.contact-form {
 			.form {
+				&-address {
+					width: 80%;
+				}
 				&-label {
 					padding-bottom: 0;
 				}
@@ -107,6 +90,46 @@
 	}
 }
 @include MQ(md) {
+	.header {
+		&-bar {
+			.btn-facebook {
+				float: right;
+			}
+		}
+	}
+	.index {
+		.video {
+			width: 100%;
+		}
+		.application {
+			@include suffix(0.3);
+			min-width: 400px;
+		}
+		.home {
+			&-pro {
+				margin-left: 2rem;
+			}
+			&-news {
+				border-right: 1px solid brand-gray(400);
+				&:after {
+					content: '';
+					display: block;
+					position: absolute;
+					right: -1px;
+					top: 0;
+					@include size(1px,30px);
+					background-color: $brand-base;
+				}
+				.news-inner{
+					width: 360px;
+					padding-right: 1rem;
+				}
+				.news-btn {
+					right: 1rem;
+				}
+			}
+		}
+	}
 	.location {
 		&-list {
 			> li {

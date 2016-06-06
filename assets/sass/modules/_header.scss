@@ -8,30 +8,6 @@
 		border-top: 4px solid brand-gray(100);
 	}
 	&-btn {
-		@include centering;
-		@include sq-size($form-h * 2);
-		font-size: 2.6rem;
-	}
-}
-
-@include MQ(tablet) {
-	.header {
-		.search {
-			position: absolute;
-			top: 6px;
-			right: 0;
-		}
-	}
-}
-@include MQ(md) {
-	.header {
-		&-bar {
-			.btn-facebook {
-				float: right;
-			}
-		}
-		&-btn {
-			display: none;
-		}
+		display: none;
 	}
 }

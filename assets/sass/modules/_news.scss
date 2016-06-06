@@ -7,8 +7,7 @@
 		}
 	}
 	&-list {
-		padding-top: 1rem;
-		padding-right: 1rem;
+		@include ptd(1rem);
 		.news-list-ttl {
 			font-weight: bold;
 			border-width: 3px;

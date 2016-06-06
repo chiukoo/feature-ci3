@@ -34,6 +34,7 @@
 
 //- 首頁
 .application {
+	@include clearfix;
 	&-ttl {
 		border-bottom: 1px dotted brand-gray(300);
 		padding-bottom: 1rem;
@@ -90,15 +91,38 @@
 			}
 		}
 	}
-	&-news,
-	&-pro {
-		min-height: 230px;
-	}
-	&-new {
-		.news-list {
-			padding-bottom: 2rem;
-			li > a {
-				padding: 5px 3px 5px 1rem;
+	&-news {
+		@include centering;
+		position: relative;
+		.news {
+			&-inner {
+				@include clearfix;
+				position: relative;
+				width: 100%;
+			}
+			&-btn {
+				position: absolute;
+				right: 0;
+				top: 0;
+				> a {
+					display: block;
+					font-size: 1rem;
+					background-color: brand-gray(600);
+					@include border-radius(8px);
+					margin: 0px 5px;
+					padding: 3px 8px;
+				}
+			}
+			&-list {
+				padding-bottom: 2rem;
+				li > a {
+					padding: 5px 3px 5px 1rem;
+				}
+			}
+		}
+		.contact-list {
+			li {
+				float: left;
 			}
 		}
 	}

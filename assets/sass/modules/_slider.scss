@@ -26,6 +26,7 @@
 		}
 		&-controls {
 			@include max-w;
+			@include pad(1rem);
 			&-direction {
 				float: right;
 				> a {

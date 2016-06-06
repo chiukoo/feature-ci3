@@ -26,7 +26,7 @@
 					</ul>
 				</section>
 				<section class="video">
-					<iframe width="400" height="250" src="<?php echo $youtube[0]['youtube']?>" frameborder="0" allowfullscreen></iframe>
+					<iframe width="100%" height="250" src="<?php echo $youtube[0]['youtube']?>" frameborder="0" allowfullscreen></iframe>
 				</section>
 			</div>
 			<div class="bg-gray pt2">

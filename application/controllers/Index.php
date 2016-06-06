@@ -45,7 +45,7 @@ class Index extends CI_Controller {
         $data = array(
             'indexData' => $this->index_data_model->getAllData(),
             'youtube' => $this->index_other_model->selectById(1),
-            'newsData' => $this->news_model->getAllDataLimit(3),
+            'newsData' => $this->news_model->getAllDataLimit(2),
             's_banner' => $this->product_details_model->getIndexSbanner(),
             'token' => $this->security->get_csrf_token_name(),
             'hash' => $this->security->get_csrf_hash(),
