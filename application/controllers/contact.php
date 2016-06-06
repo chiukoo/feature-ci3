@@ -67,7 +67,17 @@ class Contact extends CI_Controller {
     public function mailPost()
     {
         $post = $this->input->post();
-        var_dump($post);
+
+        if ($post['captcha'] != $this->session->webCaptcha) {
+            echo "<script>alert('驗證碼錯誤');</script>";
+            echo "<script>history.go(-1)</script>";
+        } else {
+            $to = "aircomfy@gmail.com";
+            $subject = $post['type'].' 來自'.$post['username'].$post['gender'];
+            $message = "姓名：" . $post['username'] . $post['gender'] . "\n\n" . "地址：" . $post['county'] . $post['district'] . $post['zipcode'] . $post['address'] . "\n\n" . "聯絡電話：" . $post['phone'] . "\n\n" . "傳真：" . $post['fax'] . "\n\n" . "email：" . $post['email'] . "\n\n" . "內容：" . $post['content'];
+            $retval = mail($to, $subject, $message, $subject);
+            redirect('contact');
+        }
     }
 
     private function createCaptcha()
