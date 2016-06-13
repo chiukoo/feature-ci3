@@ -133,6 +133,7 @@
 							<li class="fax"><?php echo $layout['fax'];?></li>
 							<li class="mail"><?php echo $layout['mail'];?></li>
 							<li class="user"><?php echo $layout['user'];?></li>
+							<li class="tel-free"><?php echo $layout['tel5'];?></li>
 						</ol>
 					</li>
 					<li>

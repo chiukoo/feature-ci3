@@ -1,3 +1,10 @@
+#btn-nav {
+	&.is-active {
+		&:before {
+			content: '\f00d';
+		}
+	}
+}
 .nav {
 	&-menu {
 		> li {

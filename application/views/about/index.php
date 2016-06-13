@@ -18,7 +18,7 @@
 						<li class="is-active"><a href="#">關於我們</a></li>
 					</ol>
 				</header>
-				<div class="pro-list">
+				<div class="about-content">
 					<?php echo $userData[0]['content'];?>
 				</div>
 			</section>

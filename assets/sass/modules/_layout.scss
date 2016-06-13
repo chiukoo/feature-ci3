@@ -38,7 +38,7 @@ a {
         flex: 1;
     }
 }
-@include MQ(md) {
+@include MQ(sm) {
     .container {
         .con-group {
             @include display-flex;

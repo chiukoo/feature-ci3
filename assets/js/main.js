@@ -10,6 +10,7 @@ $('.home-pro-list').bxSlider({
 // menu for mob
 var drop = $("#btn-nav");
 var nav = $("#nav");
-drop.on('click', function (event) {
+drop.on('click', function () {
+	drop.toggleClass('is-active');
     nav.toggleClass('is-active');
 });

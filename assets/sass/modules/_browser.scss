@@ -46,6 +46,41 @@
 			width: 250px;
 		}
 	}
+	.index {
+		.video {
+			width: 100%;
+		}
+		.application {
+			@include suffix(0.3);
+			min-width: 400px;
+		}
+		.home {
+			&-pro {
+				text-align: center;
+				margin-left: 2rem;
+			}
+			&-news {
+				border-right: 1px solid brand-gray(400);
+				border-bottom: 0;
+				&:after {
+					content: '';
+					display: block;
+					position: absolute;
+					right: -1px;
+					top: 0;
+					@include size(1px,30px);
+					background-color: $brand-base;
+				}
+				.news-inner{
+					width: 400px;
+					padding-right: 1rem;
+				}
+				.news-btn {
+					right: 1rem;
+				}
+			}
+		}
+	}
 	.location {
 		&-list {
 			> li {
@@ -94,39 +129,6 @@
 		&-bar {
 			.btn-facebook {
 				float: right;
-			}
-		}
-	}
-	.index {
-		.video {
-			width: 100%;
-		}
-		.application {
-			@include suffix(0.3);
-			min-width: 400px;
-		}
-		.home {
-			&-pro {
-				margin-left: 2rem;
-			}
-			&-news {
-				border-right: 1px solid brand-gray(400);
-				&:after {
-					content: '';
-					display: block;
-					position: absolute;
-					right: -1px;
-					top: 0;
-					@include size(1px,30px);
-					background-color: $brand-base;
-				}
-				.news-inner{
-					width: 360px;
-					padding-right: 1rem;
-				}
-				.news-btn {
-					right: 1rem;
-				}
 			}
 		}
 	}
