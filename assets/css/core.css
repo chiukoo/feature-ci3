@@ -848,12 +848,14 @@ body {
   color: #979898;
   text-decoration: none;
   display: block;
-  padding: 13px 5px;
+  padding: 13px 0 13px 2rem;
   border-bottom: 1px solid #313437;
+  position: relative;;
 }
 .sidebar-menu .main-menu a > i {
-  display: inline-block;
-  margin-right: 10px;
+  position: absolute;
+  left: 0;
+  top: 1.3rem;
 }
 .sidebar-menu .main-menu a > i + span {
   padding-right: 10px;

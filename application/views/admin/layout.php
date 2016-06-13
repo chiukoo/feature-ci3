@@ -128,33 +128,33 @@
 						</ul>
 					</li>-->
 					<li class="<?php if ($left_active == 'indexData') { echo 'active';}?>">
-						<a href="<?php echo base_url(); ?>indexData/indexDataList"><i class="linecons-star"></i><span class="title"><?php echo $layout['left_index_data_setting']; ?></span></a>
+						<a href="<?php echo base_url(); ?>indexData/indexDataList"><i class="fa fa-photo"></i><span class="title"><?php echo $layout['left_index_data_setting']; ?></span></a>
 					</li>
 					<li class="<?php if ($left_active == 'news') { echo 'active';}?>">
-						<a href="<?php echo base_url(); ?>news/newsList"><i class="linecons-star"></i><span class="title"><?php echo $layout['left_news']; ?></span></a>
+						<a href="<?php echo base_url(); ?>news/newsList"><i class="fa fa-newspaper-o"></i><span class="title"><?php echo $layout['left_news']; ?></span></a>
 					</li>
 					<li class="<?php if ($left_active == 'indexOther') { echo 'active';}?>">
-						<a href="<?php echo base_url(); ?>indexOther/indexOtherEdit"><i class="linecons-star"></i><span class="title"><?php echo $layout['left_index_other_add_setting']; ?></span></a>
+						<a href="<?php echo base_url(); ?>indexOther/indexOtherEdit"><i class="fa fa-video-camera"></i><span class="title"><?php echo $layout['left_index_other_add_setting']; ?></span></a>
 					</li>
 					<li class="<?php if ($left_active == 'indexAbout') { echo 'active';}?>">
-						<a href="<?php echo base_url(); ?>indexAbout/indexAboutEdit"><i class="linecons-star"></i><span class="title"><?php echo $layout['left_index_about_add_setting']; ?></span></a>
+						<a href="<?php echo base_url(); ?>indexAbout/indexAboutEdit"><i class="fa fa-copyright"></i><span class="title"><?php echo $layout['left_index_about_add_setting']; ?></span></a>
 					</li>
 					<?php if ($this->session->systemLevel) { ?>
 						<li class="<?php if ($left_active == 'product') { echo 'active';}?>">
-							<a href="<?php echo base_url(); ?>product/productProjectList"><i class="linecons-star"></i><span class="title"><?php echo $layout['left_product_project_setting']; ?></span></a>
+							<a href="<?php echo base_url(); ?>product/productProjectList"><i class="fa fa-spinner fa-spin"></i><span class="title"><?php echo $layout['left_product_project_setting']; ?></span></a>
 						</li>
 					<?php }?>
 					<?php foreach ($project as $projects) { ?>
 						<li data-id="<?php echo $projects['id'];?>" class="<?php if ($left_active ==  $projects['id']) { echo 'active';}?>">
-							<a href="<?php echo base_url(); ?>product/productTypeList/project/<?php echo $projects['id'];?>"><i class="linecons-star"></i><span class="title"><?php echo $projects['title']; ?></span></a>
+							<a href="<?php echo base_url(); ?>product/productTypeList/project/<?php echo $projects['id'];?>"><i class="fa fa-list-ul"></i><span class="title"><?php echo $projects['title']; ?></span></a>
 						</li>
 					<?php } ?>
 					<li class="<?php if ($left_active == 'account') { echo 'active';}?>">
-						<a href="<?php echo base_url(); ?>admin/accountList"><i class="linecons-star"></i><span class="title"><?php echo $layout['left_account_setting']; ?></span></a>
+						<a href="<?php echo base_url(); ?>admin/accountList"><i class="fa fa-user"></i><span class="title"><?php echo $layout['left_account_setting']; ?></span></a>
 					</li>
 					<li>
 						<a href="#" onclick="fileMessageUrl();">
-							<i class="linecons-cloud"></i>
+							<i class="fa fa-cloud"></i>
 							<span class="label label-purple pull-right hidden-collapsed">File Upload</span>
 							<span class="title"><?php echo $layout['left_file_explorer']; ?></span>
 						</a>
@@ -172,7 +172,7 @@
 			<nav class="navbar user-info-navbar" role="navigation">
 				
 				<!-- Left links for user info navbar -->
-				<ul class="user-info-menu left-links list-inline list-unstyled">
+				<!-- <ul class="user-info-menu left-links list-inline list-unstyled">
 					
 					<li class="hidden-sm hidden-xs">
 						<a href="#" data-toggle="sidebar">
@@ -180,7 +180,7 @@
 						</a>
 					</li>
 					
-				</ul>
+				</ul> -->
 				
 				
 				<!-- Right links for user info navbar -->
