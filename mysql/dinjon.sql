@@ -16,6 +16,31 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `about`
+--
+
+DROP TABLE IF EXISTS `about`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `about` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `content` text COLLATE utf8_unicode_ci NOT NULL,
+  `lang` varchar(45) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'ch',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `about`
+--
+
+LOCK TABLES `about` WRITE;
+/*!40000 ALTER TABLE `about` DISABLE KEYS */;
+INSERT INTO `about` VALUES (1,'<p>關於我們</p>\r\n','ch'),(2,'test','ch'),(3,'test','ch');
+/*!40000 ALTER TABLE `about` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `account`
 --
 
@@ -66,7 +91,7 @@ CREATE TABLE `index_data` (
 
 LOCK TABLES `index_data` WRITE;
 /*!40000 ALTER TABLE `index_data` DISABLE KEYS */;
-INSERT INTO `index_data` VALUES (43,'/feature-ci3/assets/filemanager/userfiles/img/W_Motors_Lykan_HyperSport.jpg','2016-05-26 22:19:29',1,'ch'),(44,'/feature-ci3/assets/filemanager/userfiles/img/img-3.jpg','2016-05-29 00:34:17',2,'ch'),(45,'/feature-ci3/assets/filemanager/userfiles/img/img-4.jpg','2016-05-29 00:34:43',3,'ch');
+INSERT INTO `index_data` VALUES (43,'/feature-ci3/assets/filemanager/userfiles/img/gb.jpg','2016-05-26 22:19:29',1,'ch'),(45,'/feature-ci3/assets/filemanager/userfiles/img/W_Motors_Lykan_HyperSport.jpg','2016-05-29 00:34:43',3,'ch');
 /*!40000 ALTER TABLE `index_data` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -111,7 +136,7 @@ CREATE TABLE `news` (
   `order` int(5) NOT NULL DEFAULT '0',
   `create_dt` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -120,6 +145,7 @@ CREATE TABLE `news` (
 
 LOCK TABLES `news` WRITE;
 /*!40000 ALTER TABLE `news` DISABLE KEYS */;
+INSERT INTO `news` VALUES (2,'mm','<p>jj</p>\r\n','ch',2,'2016-06-02 22:07:23'),(4,'ggg','<p>gllll</p>\r\n','ch',1,'2016-06-02 22:09:29'),(5,'ggg','<p>gllll</p>\r\n','ch',1,'2016-06-02 22:09:29');
 /*!40000 ALTER TABLE `news` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -132,7 +158,7 @@ DROP TABLE IF EXISTS `product_details`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `product_details` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `content_sample` text CHARACTER SET utf8 NOT NULL,
   `content_details` text CHARACTER SET utf8 NOT NULL,
   `img_url` varchar(200) CHARACTER SET utf8 NOT NULL,
@@ -143,7 +169,7 @@ CREATE TABLE `product_details` (
   `lang` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
   `index_s_banner` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -152,7 +178,7 @@ CREATE TABLE `product_details` (
 
 LOCK TABLES `product_details` WRITE;
 /*!40000 ALTER TABLE `product_details` DISABLE KEYS */;
-INSERT INTO `product_details` VALUES (1,'細項名稱1','<ul>\r\n <li>\r\n  <p>外框</p>\r\n\r\n <p>FRP 玻璃纖維複合材料</p>\r\n </li>\r\n <li>\r\n  <p>葉片</p>\r\n\r\n <p>36&quot;</p>\r\n </li>\r\n <li>\r\n  <p>葉數</p>\r\n\r\n <p>七葉塑鋼</p>\r\n </li>\r\n <li>\r\n  <p>馬達</p>\r\n\r\n <p>3/4HP F級，10Pole</p>\r\n  </li>\r\n <li>\r\n  <p>電壓</p>\r\n\r\n <p>可依區域，國別訂製</p>\r\n  </li>\r\n <li>\r\n  <p>轉速</p>\r\n\r\n <p>630 RPM</p>\r\n  </li>\r\n <li>\r\n  <p>音量</p>\r\n\r\n <p>65~70dB</p>\r\n  </li>\r\n <li>\r\n  <p>尺寸</p>\r\n\r\n <p>108&times;108&times;60cm</p>\r\n </li>\r\n <li>\r\n  <p>總重量</p>\r\n\r\n  <p>45Kg</p>\r\n </li>\r\n</ul>\r\n','<p>dddd</p>\r\n','/feature-ci3/assets/filemanager/userfiles/img/W_Motors_Lykan_HyperSport.jpg','2016-05-28 22:37:46',1,5,1,'ch',1,0),(3,'bbb','','','','2016-05-30 00:23:08',2,5,1,'ch',0,0);
+INSERT INTO `product_details` VALUES (1,'細項名稱1','<ul>\r\n <li>\r\n  <p>外框</p>\r\n\r\n <p>FRP 玻璃纖維複合材料</p>\r\n </li>\r\n <li>\r\n  <p>葉片</p>\r\n\r\n <p>36&quot;</p>\r\n </li>\r\n <li>\r\n  <p>葉數</p>\r\n\r\n <p>七葉塑鋼</p>\r\n </li>\r\n <li>\r\n  <p>馬達</p>\r\n\r\n <p>3/4HP F級，10Pole</p>\r\n  </li>\r\n <li>\r\n  <p>電壓</p>\r\n\r\n <p>可依區域，國別訂製</p>\r\n  </li>\r\n <li>\r\n  <p>轉速</p>\r\n\r\n <p>630 RPM</p>\r\n  </li>\r\n <li>\r\n  <p>音量</p>\r\n\r\n <p>65~70dB</p>\r\n  </li>\r\n <li>\r\n  <p>尺寸</p>\r\n\r\n <p>108&times;108&times;60cm</p>\r\n </li>\r\n <li>\r\n  <p>總重量</p>\r\n\r\n  <p>45Kg</p>\r\n </li>\r\n</ul>\r\n','<p>dddd</p>\r\n','/feature-ci3/assets/filemanager/userfiles/img/W_Motors_Lykan_HyperSport.jpg','2016-05-28 22:37:46',1,5,1,'ch',1),(13,'bbb','','','','2016-05-30 00:23:08',2,5,1,'ch',0),(14,'細項名稱2','','','','0000-00-00 00:00:00',3,5,2,'ch',0);
 /*!40000 ALTER TABLE `product_details` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -221,4 +247,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-06-01 17:49:10
+-- Dump completed on 2016-06-13 21:52:01

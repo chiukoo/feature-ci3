@@ -26,11 +26,14 @@ class News extends CI_Controller {
 
         $this->load->model('news_model');
 
+        //取出左邊項目名稱
+        $this->load->model('product_project_model');
+
         //設定layout data
         $this->layoutData = array(
             'left_active' => 'news',
             'layout'  => $this->lang->line('layout'),
-            'project' => $this->news_model->getAllData(),
+            'project' => $this->product_project_model->getAllData(),
             'layoutToken' => $this->security->get_csrf_token_name(),
             'layoutHash' => $this->security->get_csrf_hash(),
         );

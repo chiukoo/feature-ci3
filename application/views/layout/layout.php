@@ -98,7 +98,7 @@
 	                </li>
                 	<?php } ?>
                 <?php } ?>
-                <li><a href="<?php echo base_url();?>contact"><?php echo $layout['contact'];?></a></li>
+                <li class="<?php if ($outClass == 'contact') { echo 'is-active'; };?>"><a href="<?php echo base_url();?>contact"><?php echo $layout['contact'];?></a></li>
             </ul>
         </nav>
         <!-- /.nav -->
