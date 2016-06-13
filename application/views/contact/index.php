@@ -16,14 +16,14 @@
 				</select>
 			</div>
 			<div class="form-group">
-				<label class="form-label">地址</label>
+				<label class="form-label"><span class="text-red">*</span>地址</label>
 				<div class="form-address">
 					<div id="twzipcode">
 						<div data-role="county" data-style="Style Name" data-value=""></div>
 						<div data-role="district" data-style="Style Name" data-value=""></div>
 						<div data-role="zipcode" data-style="Style Name" data-value=""></div>
 					</div>
-					<input type="text" class="form-input" name="address">
+					<input type="text" class="form-input" name="address" required="required">
 				</div>
 			</div>
 			<div class="form-group">
