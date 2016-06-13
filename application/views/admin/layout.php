@@ -172,7 +172,7 @@
 			<nav class="navbar user-info-navbar" role="navigation">
 				
 				<!-- Left links for user info navbar -->
-				<!-- <ul class="user-info-menu left-links list-inline list-unstyled">
+				<ul class="user-info-menu left-links list-inline list-unstyled">
 					
 					<li class="hidden-sm hidden-xs">
 						<a href="#" data-toggle="sidebar">
@@ -180,7 +180,7 @@
 						</a>
 					</li>
 					
-				</ul> -->
+				</ul>
 				
 				
 				<!-- Right links for user info navbar -->
@@ -188,10 +188,10 @@
 					
 					<li class="search-form"><!-- You can add "always-visible" to show make the search input visible -->
 
-					<select id="changeLanguage" class="form-control language">
-						<option value="chinese" <?php if (!isset($this->session->adminLanguage) || $this->session->adminLanguage == 'chinese') { echo 'selected';}?>>繁體中文</option>
-						<option value="english" <?php if (isset($this->session->adminLanguage) || $this->session->adminLanguage == 'english') { echo 'selected';}?>>English</option>
-					</select>
+					<!-- <select id="changeLanguage" class="form-control language">
+						<option value="chinese" <　?php if (!isset($this->session->adminLanguage) || $this->session->adminLanguage == 'chinese') { echo 'selected';}?>>繁體中文</option>
+						<option value="english" <　?php if (isset($this->session->adminLanguage) || $this->session->adminLanguage == 'english') { echo 'selected';}?>>English</option>
+					</select> -->
 					<input type="hidden" id="layoutToken" name="<?php echo $layoutToken;?>" value="<?php echo $layoutHash;?>" />
 					</li>
 					
