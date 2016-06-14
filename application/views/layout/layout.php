@@ -15,7 +15,7 @@
         <!-- CSS -->
         <link rel="stylesheet" href="<?php echo base_url();?>assets/css/style.css" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="<?php echo base_url();?>assets/js/jquery-1.11.1.min.js"></script>')</script>
+        <script>window.jQuery || document.write('<script src="<?php echo base_url();?>assets/js/jquery-1.11.1.min.js"><\/script>')</script>
 
         <!--[if lt IE 9]>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
