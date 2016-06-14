@@ -84,7 +84,7 @@ class News_model extends CI_Model {
 	 */
 	public function getAllData()
 	{
-		return $this->db->order_by('order', 'asc')->get_where(self::DB_NAME, array('lang' => $this->session->dataLang))->result_array();
+		return $this->db->order_by('create_dt', 'desc')->get_where(self::DB_NAME, array('lang' => $this->session->dataLang))->result_array();
 	}
 
 	/**
