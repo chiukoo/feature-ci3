@@ -3497,8 +3497,20 @@ ol, ul {
     color: #1ba8ca;
   }
 }
+#btn-nav {
+  text-align: center;
+}
+#btn-nav:after {
+  content: 'menu';
+  font-size: 12px;
+  display: block;
+  font-family: Verdana;
+}
 #btn-nav.is-active:before {
   content: '\f00d';
+}
+#btn-nav.is-active:after {
+  content: 'cloas';
 }
 
 .nav-menu > li > a {
@@ -3719,7 +3731,7 @@ a {
 }
 
 .container .con-group {
-  padding: 2rem;
+  padding: 1rem;
 }
 .container .con-group:before, .container .con-group:after {
   content: " ";
@@ -3741,6 +3753,7 @@ a {
     max-width: 960px;
     margin-left: auto;
     margin-right: auto;
+    padding: 2rem;
   }
 
   .products .container, .news .container, .about .container, .contact .container {
@@ -4184,6 +4197,7 @@ a {
 .application-ttl {
   border-bottom: 1px dotted #c8c8c8;
   padding-bottom: 1rem;
+  padding-left: 10px;
 }
 .application-ttl .h1, .application-ttl .h2 {
   display: inline-block;
@@ -4198,7 +4212,6 @@ a {
 .application-ttl .h2 {
   font-size: 1.5rem;
   font-weight: bold;
-  padding-left: 10px;
 }
 .application-con {
   padding: 2rem 1rem;
@@ -4250,19 +4263,8 @@ a {
 .home-ttl .en:before {
   content: '/ ';
 }
-.home-news {
-  position: relative;
-}
 .home-news .news-inner {
   position: relative;
-  width: 100%;
-}
-.home-news .news-inner:before, .home-news .news-inner:after {
-  content: " ";
-  display: table;
-}
-.home-news .news-inner:after {
-  clear: both;
 }
 .home-news .news-btn {
   position: absolute;
@@ -4279,36 +4281,21 @@ a {
   margin: 0px 5px;
   padding: 3px 8px;
 }
-.home-news .news-list {
-  padding-bottom: 2rem;
+.home-news .contact-list:before, .home-news .contact-list:after {
+  content: " ";
+  display: table;
 }
-.home-news .news-list li > a {
-  padding: 5px 3px 5px 1rem;
+.home-news .contact-list:after {
+  clear: both;
 }
-.home-news .contact-list {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-justify-content: center;
-  justify-content: center;
-}
-.home-news .contact-list li:nth-child(1), .home-news .contact-list li:nth-child(2) {
-  flex: 2;
-}
-.home-news .contact-list li:nth-child(3) {
-  flex: 3;
+.home-news .contact-list li {
+  float: left;
 }
 .home-pro {
   position: relative;
 }
 .home-pro .bx-viewport {
   z-index: 1030;
-  padding-left: 3rem;
-  padding-right: 3rem;
 }
 .home-pro .bx-pager-item {
   display: none;
@@ -4353,7 +4340,6 @@ a {
   color: #1ba8ca;
 }
 .home-pro .pro-img {
-  max-width: 130px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -4454,6 +4440,12 @@ a {
   .contact .contact-form .form-w5 + .form-w5 {
     margin-top: 5px;
   }
+
+  .index .home-news {
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #eeeeee;
+  }
 }
 @media (max-width: 770px) {
   .header-btn {
@@ -4479,12 +4471,6 @@ a {
     right: 0;
   }
 
-  .index .home-news {
-    padding-bottom: 2rem;
-    margin-bottom: 2rem;
-    border-bottom: 1px solid #eeeeee;
-  }
-
   .application {
     margin-bottom: 1rem;
   }
@@ -4499,15 +4485,17 @@ a {
   }
   .index .application {
     padding-right: 2.6087%;
-    min-width: 400px;
+    min-width: 300px;
   }
-  .index .home-pro {
-    text-align: center;
-    margin-left: 2rem;
+  .index .home-news, .index .home-pro {
+    float: left;
   }
   .index .home-news {
+    min-width: 300px;
+    width: 65%;
+    position: relative;
+    padding-right: 2rem;
     border-right: 1px solid #e3e3e3;
-    border-bottom: 0;
   }
   .index .home-news:after {
     content: '';
@@ -4519,12 +4507,9 @@ a {
     height: 30px;
     background-color: #1ba8ca;
   }
-  .index .home-news .news-inner {
-    width: 400px;
-    padding-right: 1rem;
-  }
-  .index .home-news .news-btn {
-    right: 1rem;
+  .index .home-pro {
+    width: 40%;
+    margin-left: 2rem;
   }
 
   .location-list > li {
@@ -4561,6 +4546,18 @@ a {
 @media (min-width: 769px) {
   .header-bar .btn-facebook {
     float: right;
+  }
+
+  .index .home-news {
+    min-width: 350px;
+    width: 40%;
+  }
+  .index .home-pro {
+    width: 60%;
+    margin-left: 2rem;
+  }
+  .index .home-pro .pro-item {
+    max-width: 250px;
   }
 
   .location-list > li {
