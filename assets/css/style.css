@@ -3510,7 +3510,7 @@ ol, ul {
   content: '\f00d';
 }
 #btn-nav.is-active:after {
-  content: 'cloas';
+  content: 'close';
 }
 
 .nav-menu > li > a {
@@ -3865,6 +3865,15 @@ a {
   font-weight: bold;
   letter-spacing: 1px;
   padding-bottom: 1rem;
+}
+.products .pro-dtl .pro-description > table {
+  width: 100%;
+}
+.products .pro-dtl .pro-description > table tr:nth-child(even) {
+  background-color: #fbfbfb;
+}
+.products .pro-dtl .pro-description > table tr td {
+  border-bottom: 1px dashed #e3e3e3;
 }
 .products .pro-dtl .pro-description > ul li {
   display: -webkit-box;
@@ -4281,6 +4290,17 @@ a {
   margin: 0px 5px;
   padding: 3px 8px;
 }
+.home-news .contact-list {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
 .home-news .contact-list:before, .home-news .contact-list:after {
   content: " ";
   display: table;
@@ -4290,6 +4310,7 @@ a {
 }
 .home-news .contact-list li {
   float: left;
+  flex: 1;
 }
 .home-pro {
   position: relative;
