@@ -5,7 +5,7 @@
 	<div class="breadcrumb-env">
 		<ol class="breadcrumb bc-1">
 			<li>
-				<a href="index"><i class="fa-home"></i><?php echo $lang['nav_index'];?></a>
+				<a href="<?php echo base_url('admin/accountList'); ?>"><i class="fa-home"></i><?php echo $lang['nav_index'];?></a>
 			</li>
 			<li class="active">
 				<strong><?php echo $lang['main_title'];?></strong>
@@ -31,7 +31,7 @@
 					</div>
 					<div class="form-group col-sm-offset-2">
 						<button type="submit" class="btn btn-success"><?php echo $lang['add_submit'];?></button>
-						<button type="reset" class="btn btn-white"><?php echo $lang['add_reset'];?></button>
+						<button type="reset" onclick="history.go(-1)" class="btn btn-white"><?php echo $lang['add_reset'];?></button>
 					</div>
 					<input type="hidden" name="<?php echo $token;?>" value="<?php echo $hash;?>" />
 				</form>

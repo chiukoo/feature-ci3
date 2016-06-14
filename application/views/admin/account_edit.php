@@ -45,7 +45,7 @@
 					</div>
 					<div class="form-group col-sm-offset-2">
 						<button type="submit" class="btn btn-success"><?php echo $account['account_add_submit'];?></button>
-						<button type="reset" class="btn btn-white"><?php echo $account['account_add_reset'];?></button>
+						<button type="reset" onclick="history.go(-1)" class="btn btn-white"><?php echo $account['account_add_reset'];?></button>
 					</div>
 					<input type="hidden" name="<?php echo $token;?>" value="<?php echo $hash;?>" />
 					<input type="hidden" name="id" value="<?php echo $userData['0']['id'];?>" />

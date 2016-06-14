@@ -58,12 +58,13 @@ class Login extends CI_Controller {
                 //檔案上傳權限開啟
                 $this->session->set_userdata('upload_image_file_manager', true);
                 $this->session->set_userdata('username', $username);
+                $this->session->set_userdata('adminSystemId', $this->account_model->geIdByUsername($username));
                 $this->session->set_userdata('isLogin', true);
                 $this->session->set_userdata('systemLevel', $this->account_model->checkLevel($username));
 
                 //設定預設中文版
                 $this->session->set_userdata('dataLang', 'ch');
-                redirect('indexData/indexDataList');
+                redirect('admin/accountList');
             } else {
                 echo "<script>alert('帳號或密碼錯誤');</script>";
                 echo "<script>history.go(-1)</script>";
@@ -78,7 +79,9 @@ class Login extends CI_Controller {
     {
     	$this->session->unset_userdata('upload_image_file_manager');
     	$this->session->unset_userdata('username');
-    	$this->session->unset_userdata('isLogin');
+        $this->session->unset_userdata('isLogin');
+        $this->session->unset_userdata('adminSystemId');
+    	$this->session->unset_userdata('systemLevel');
     	redirect('login');
     }
 }

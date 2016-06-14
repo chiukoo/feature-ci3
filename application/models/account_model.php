@@ -66,6 +66,17 @@ class Account_model extends CI_Model {
 	}
 
 	/**
+	 * get level
+	 *
+	 * @return 1 or 0
+	 */
+	public function geIdByUsername($username)
+	{
+		$result = $this->db->get_where(self::DB_NAME, array('username' => $username), 1)->result_array();
+		return $result[0]['id'];
+	}
+
+	/**
 	 * update Password By Id
 	 * @return bool true on success, false on failure
 	 */

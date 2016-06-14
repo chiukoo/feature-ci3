@@ -6,7 +6,7 @@
 		
 		<ol class="breadcrumb bc-1">
 			<li>
-				<a href="<?php echo base_url('indexData/indexDataList'); ?>"><i class="fa-home"></i><?php echo $lang['nav_index'];?></a>
+				<a href="<?php echo base_url('admin/accountList'); ?>"><i class="fa-home"></i><?php echo $lang['nav_index'];?></a>
 			</li>
 			<li>
 				<a href="<?php echo base_url();?>product/productTypeList/project/<?php echo $getUrlData;?>"><?php echo $project;?></a>
@@ -69,7 +69,7 @@
 					</div>
 					<div class="form-group col-sm-offset-2">
 						<button type="submit" class="btn btn-success"><?php echo $lang['add_submit'];?></button>
-						<button type="reset" class="btn btn-white"><?php echo $lang['add_reset'];?></button>
+						<button type="reset" onclick="history.go(-1)" class="btn btn-white"><?php echo $lang['add_reset'];?></button>
 					</div>
 					<input type="hidden" name="<?php echo $token;?>" value="<?php echo $hash;?>" />
 					<input type="hidden" name="getProject" value="<?php echo $getUrlData;?>" />

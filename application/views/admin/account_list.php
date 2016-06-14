@@ -28,9 +28,6 @@
 		<table class="table table-bordered table-striped" id="dataList">
 			<thead>
 				<tr>
-					<th class="no-sorting">
-						<input type="checkbox" class="cbr">
-					</th>
 					<th><?php echo $account['table_list_name']; ?></th>
 					<th><?php echo $account['table_list_create_dt']; ?></th>
 					<th><?php echo $account['table_list_actions']; ?></th>
@@ -40,9 +37,6 @@
 			<tbody class="middle-align" id="sortable">
 				<?php foreach ($account_data as $value) {?>
 					<tr data-id="<?php echo $value['id']?>" data-order="<?php echo $value['order']?>">
-						<td>
-							<input type="checkbox" class="cbr">
-						</td>
 						<td><?php echo $value['username'];?></td>
 						<td><?php echo $value['create_dt'];?></td>
 						<td>

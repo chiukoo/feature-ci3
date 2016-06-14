@@ -127,6 +127,9 @@
 							</li>
 						</ul>
 					</li>-->
+					<li class="<?php if ($left_active == 'account') { echo 'active';}?>">
+						<a href="<?php echo base_url(); ?>admin/accountList"><i class="fa fa-user"></i><span class="title"><?php echo $layout['left_account_setting']; ?></span></a>
+					</li>
 					<li class="<?php if ($left_active == 'indexData') { echo 'active';}?>">
 						<a href="<?php echo base_url(); ?>indexData/indexDataList"><i class="fa fa-photo"></i><span class="title"><?php echo $layout['left_index_data_setting']; ?></span></a>
 					</li>
@@ -205,7 +208,7 @@
 						
 						<ul class="dropdown-menu user-profile-menu list-unstyled">
 							<li>
-								<a href="#settings">
+								<a href="<?php echo base_url(); ?>admin/accountEdit/id/<?php echo $this->session->adminSystemId; ?>">
 									<i class="fa-wrench"></i>
 									Settings
 								</a>
