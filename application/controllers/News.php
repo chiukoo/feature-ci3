@@ -52,10 +52,6 @@ class News extends CI_Controller {
      */
     public function newsList()
     {
-        if (!$this->session->systemLevel) {
-            redirect('admin/accountList');
-        }
-
         //account data
         $data = array(
             'lang' => $this->lang->line('news_list'),
@@ -74,10 +70,6 @@ class News extends CI_Controller {
      */
     public function newsAdd()
     {
-        if (!$this->session->systemLevel) {
-            redirect('admin/accountList');
-        }
-
         //account data
         $data = array(
             'lang' => $this->lang->line('news_add'),
@@ -95,9 +87,6 @@ class News extends CI_Controller {
      */
     public function newsAddPost()
     {
-        if (!$this->session->systemLevel) {
-            redirect('admin/accountList');
-        }
         $this->load->library('form_validation');
 
         $rules = array(
@@ -132,9 +121,6 @@ class News extends CI_Controller {
      */
     public function newsDelete()
     {
-        if (!$this->session->systemLevel) {
-            redirect('admin/accountList');
-        }
         $id = $this->input->post('id');
 
         if ($this->news_model->deleteById($id)) {
@@ -149,9 +135,6 @@ class News extends CI_Controller {
      */
     public function newsOrder()
     {
-        if (!$this->session->systemLevel) {
-            redirect('admin/accountList');
-        }
         $id = $this->input->post('id');
         $order = $this->input->post('order');
 
@@ -167,9 +150,6 @@ class News extends CI_Controller {
      */
     public function newsEdit()
     {
-        if (!$this->session->systemLevel) {
-            redirect('admin/accountList');
-        }
         //http url get
         $urlData = $this->uri->uri_to_assoc(3);
 
@@ -191,9 +171,6 @@ class News extends CI_Controller {
      */
     public function newsEditPost()
     {
-        if (!$this->session->systemLevel) {
-            redirect('admin/accountList');
-        }
         $this->load->library('form_validation');
 
         $rules = array(

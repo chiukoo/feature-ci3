@@ -152,9 +152,6 @@
 							<a href="<?php echo base_url(); ?>product/productTypeList/project/<?php echo $projects['id'];?>"><i class="fa fa-list-ul"></i><span class="title"><?php echo $projects['title']; ?></span></a>
 						</li>
 					<?php } ?>
-					<li class="<?php if ($left_active == 'account') { echo 'active';}?>">
-						<a href="<?php echo base_url(); ?>admin/accountList"><i class="fa fa-user"></i><span class="title"><?php echo $layout['left_account_setting']; ?></span></a>
-					</li>
 					<li>
 						<a href="#" onclick="fileMessageUrl();">
 							<i class="fa fa-cloud"></i>
