@@ -38,6 +38,7 @@
 	&-ttl {
 		border-bottom: 1px dotted brand-gray(300);
 		padding-bottom: 1rem;
+		padding-left: 10px;
 		.h1, .h2 {
 			display: inline-block;
 		}
@@ -51,7 +52,6 @@
 		.h2 {
 			font-size: 1.5rem;
 			font-weight: bold;
-			padding-left: 10px;
 		}
 	}
 	&-con {
@@ -92,12 +92,9 @@
 		}
 	}
 	&-news {
-		position: relative;
 		.news {
 			&-inner {
-				@include clearfix;
 				position: relative;
-				width: 100%;
 			}
 			&-btn {
 				position: absolute;
@@ -112,23 +109,13 @@
 					padding: 3px 8px;
 				}
 			}
-			&-list {
-				padding-bottom: 2rem;
-				li > a {
-					padding: 5px 3px 5px 1rem;
-				}
-			}
 		}
 		.contact-list {
+			@include clearfix;
 			@include centering;
 			li {
-				&:nth-child(1),
-				&:nth-child(2) {
-					flex: 2;
-				}
-				&:nth-child(3) {
-					flex: 3;
-				}
+				float: left;
+				flex: 1;
 			}
 		}
 	}
@@ -136,7 +123,6 @@
 		position: relative;
 		.bx-viewport {
 			z-index: 1030;
-			@include pad(3rem);
 		}
 		.bx-pager-item {
 			display: none;
@@ -176,7 +162,6 @@
 			}
 		}
 		.pro-img {
-			max-width: 130px;
 			@include center;
 		}
 	}

@@ -89,6 +89,17 @@
 					padding-bottom: 1rem;
 				}
 				&-description {
+					> table {
+						width: 100%;
+						tr {
+							&:nth-child(even) {
+								background-color: brand-gray(700);
+							}
+							td {
+								border-bottom: 1px dashed brand-gray(400);
+							}
+						}
+					}
 					> ul {
 						li {
 							display: -webkit-box;

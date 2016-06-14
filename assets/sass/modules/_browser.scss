@@ -10,6 +10,13 @@
 			}
 		}
 	}
+	.index {
+		.home-news {
+			padding-bottom: 2rem;
+			margin-bottom: 2rem;
+			border-bottom: 1px solid brand-gray(500);
+		}
+	}
 }
 @include MQ(tablet) {
 	.header {
@@ -29,13 +36,6 @@
 			right: 0;
 		}
 	}
-	.index {
-		.home-news {
-			padding-bottom: 2rem;
-			margin-bottom: 2rem;
-			border-bottom: 1px solid brand-gray(500);
-		}
-	}
 	.application {
 		margin-bottom: 1rem;
 	}
@@ -52,32 +52,33 @@
 		}
 		.application {
 			@include suffix(0.3);
-			min-width: 400px;
+			min-width: 300px;
 		}
 		.home {
+			&-news,
 			&-pro {
-				text-align: center;
-				margin-left: 2rem;
+				float: left;
 			}
 			&-news {
-				border-right: 1px solid brand-gray(400);
-				border-bottom: 0;
+				min-width: 300px;
+				width: 65%;
+				position: relative;
+				padding-right: 2rem;
+				border-right: 1px solid #e3e3e3;
 				&:after {
 					content: '';
 					display: block;
 					position: absolute;
 					right: -1px;
 					top: 0;
-					@include size(1px,30px);
-					background-color: $brand-base;
+					width: 1px;
+					height: 30px;
+					background-color: #1ba8ca;
 				}
-				.news-inner{
-					width: 400px;
-					padding-right: 1rem;
-				}
-				.news-btn {
-					right: 1rem;
-				}
+			}
+			&-pro {
+				width: 40%;
+				margin-left: 2rem;
 			}
 		}
 	}
@@ -129,6 +130,21 @@
 		&-bar {
 			.btn-facebook {
 				float: right;
+			}
+		}
+	}
+	.index {
+		.home {
+			&-news {
+				min-width: 350px;
+				width: 40%;
+			}
+			&-pro {
+				width: 60%;
+				margin-left: 2rem;
+				.pro-item {
+					max-width: 250px;
+				}
 			}
 		}
 	}

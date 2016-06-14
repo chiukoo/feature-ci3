@@ -29,7 +29,7 @@ a {
 	.con {
 		&-group {
             @include clearfix;
-            padding: 2rem;
+            padding: 1rem;
 		}
 	}
     .pro-overview, .news-main, .about-main {
@@ -43,6 +43,7 @@ a {
         .con-group {
             @include display-flex;
             @include max-w;
+            padding: 2rem;
         }
     }
     .products, .news, .about, .contact {
