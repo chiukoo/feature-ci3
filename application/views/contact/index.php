@@ -40,7 +40,7 @@
 			</div>
 			<div class="form-group">
 				<label class="form-label"><span class="text-red">*</span>驗證碼</label>
-				<input type="text" name="captcha" class="form-input form-code" required="required">
+				<input type="text" name="captcha" class="form-input form-code" required="required" style="text-transform:uppercase;">
 				<?php echo $captcha; ?>
 			</div>
 			<div class="form-group">
